@@ -818,6 +818,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
       
+        
         FlatLightLaf.setup();
 
         /* Create and display the form */
