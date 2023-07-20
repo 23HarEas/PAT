@@ -1,5 +1,8 @@
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 import net.miginfocom.swing.*;
 /*
  * Created by JFormDesigner on Mon Jul 10 21:09:25 CAT 2023
@@ -10,12 +13,23 @@ import net.miginfocom.swing.*;
 /**
  * @author harri
  */
-public class JFormMain extends JFrame {
-    public JFormMain() {
+public class LoginScreen extends JFrame {
+    
+    public String hello;
+    
+    public LoginScreen() {
         initComponents();
     }
 
-    private void initComponents() {
+    public void Submit(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void createUIComponents() {
+        // TODO: add custom component creation code here
+    }
+
+    public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
         label1 = new JLabel();
@@ -96,9 +110,10 @@ public class JFormMain extends JFrame {
         //---- button1 ----
         button1.setText("Submit");
         button1.setFont(button1.getFont().deriveFont(button1.getFont().getStyle() | Font.BOLD, button1.getFont().getSize() + 23f));
+        button1.addActionListener(e -> Submit(e));
         contentPane.add(button1, "cell 4 11 13 3,grow");
         setSize(500, 500);
-        setLocationRelativeTo(getOwner());
+        setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 

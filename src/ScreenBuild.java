@@ -1,5 +1,9 @@
 
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,7 +14,7 @@ import com.formdev.flatlaf.FlatLightLaf;
  *
  * @author harri
  */
-public class ScreenBuild {
+public class ScreenBuild{
 
     /**
      * @param args the command line arguments
@@ -18,8 +22,13 @@ public class ScreenBuild {
     public static void main(String[] args) {
         // TODO code application logic here
         FlatLightLaf.setup();
-        new JFormMain().setVisible(true);
-        
+        new LoginScreen().setVisible(true); 
     }
+    
+    public void Submit(ActionEvent e) {
+        // TODO add your code here
+        System.out.println("1");
+    }
+    
     
 }
