@@ -15,8 +15,6 @@ import net.miginfocom.swing.*;
  */
 public class LoginScreen extends JFrame {
     
-    public String hello;
-    
     public LoginScreen() {
         initComponents();
     }
@@ -98,14 +96,14 @@ public class LoginScreen extends JFrame {
         //---- label2 ----
         label2.setText("Username");
         label2.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(label2, "cell 4 7 3 1,align left center,grow 0 0");
-        contentPane.add(formattedTextField1, "cell 7 7 10 1");
+        contentPane.add(label2, "cell 4 7 3 1,alignx left,grow 0 100");
+        contentPane.add(formattedTextField1, "cell 7 7 10 1,growy");
 
         //---- label3 ----
         label3.setText("Password");
         label3.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(label3, "cell 4 9 3 1,alignx left,growx 0");
-        contentPane.add(passwordField1, "cell 7 9 10 1");
+        contentPane.add(label3, "cell 4 9 3 1,alignx left,grow 0 100");
+        contentPane.add(passwordField1, "cell 7 9 10 1,growy");
 
         //---- button1 ----
         button1.setText("Submit");

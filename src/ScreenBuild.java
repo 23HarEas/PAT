@@ -22,7 +22,8 @@ public class ScreenBuild{
     public static void main(String[] args) {
         // TODO code application logic here
         FlatLightLaf.setup();
-        new LoginScreen().setVisible(true); 
+        new LoginScreen().setVisible(true);
+        new MainScreen().setVisible(true);
     }
     
     public void Submit(ActionEvent e) {
