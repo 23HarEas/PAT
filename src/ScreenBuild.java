@@ -1,4 +1,6 @@
 
+import com.formdev.*;
+import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +23,7 @@ public class ScreenBuild{
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        FlatLightLaf.setup();
+        FlatIntelliJLaf.setup();
         new LoginScreen().setVisible(true);
         new MainScreen().setVisible(true);
     }

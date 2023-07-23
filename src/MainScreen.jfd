@@ -4,15 +4,15 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-			"$layoutConstraints": "fill,insets dialog,hidemode 3,align leading center"
-			"$columnConstraints": "[fill]"
-			"$rowConstraints": "[fill]"
+			"$layoutConstraints": "fill,insets dialog,hidemode 3,align center center"
+			"$columnConstraints": "[shrink 0,fill]"
+			"$rowConstraints": "[shrink 0,fill]"
 		} ) {
 			name: "this"
 			"$locationPolicy": 1
-			"$sizePolicy": 1
 			"defaultCloseOperation": 2
 			"title": "Resturant Managment System"
+			"$sizePolicy": 1
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "tabbedPane1"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
@@ -28,10 +28,10 @@ new FormModel {
 							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
 								add( new java.util.Vector {
 									add( null )
+									add( true )
 									add( null )
 									add( null )
-									add( null )
-									add( null )
+									add( "" )
 									add( null )
 									add( null )
 								} )
@@ -60,15 +60,17 @@ new FormModel {
 								add( null )
 								add( null )
 							}, new java.util.Vector {
+								add( new com.jformdesigner.model.SwingTableColumn( null, 75, 0, 75, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 50, true ) )
 								add( null )
 								add( null )
-								add( null )
-								add( null )
-								add( null )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 75, 0, 75, true ) )
 								add( null )
 								add( null )
 							} )
 							"autoCreateRowSorter": true
+							"showHorizontalLines": true
+							"showVerticalLines": true
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0 20 17,growy"
@@ -76,6 +78,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button7"
 						"text": "Filter"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button7", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 18 3 2,growy"
 					} )
@@ -100,21 +103,85 @@ new FormModel {
 					"$rowConstraints": "[][][][][][][][][][][][][][][][][][][][]"
 				} ) {
 					name: "panel1"
-				}, new FormLayoutConstraints( null ) {
-					"title": "Tables"
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-					"$layoutConstraints": "fill,insets dialog,hidemode 3,align center center"
-					"$columnConstraints": "[fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill]"
-					"$rowConstraints": "[][][][][][][][][][][][][][][][][][][][]"
-				} ) {
-					name: "panel2"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane3"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "table3"
+							"showHorizontalLines": true
+							"showVerticalLines": true
+							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+								add( new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+								} )
+							}, new java.util.Vector {
+								add( "Staff ID" )
+								add( "Name" )
+								add( "Surname" )
+								add( "CellNo" )
+								add( "Position" )
+								add( "Wage" )
+							}, new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							}, new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							}, new java.util.Vector {
+								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, true ) )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							"autoCreateRowSorter": true
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0 20 17,grow"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button10"
+						"text": "New"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 18 3 2,growy"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button11"
+						"text": "Remove"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 4 18 3 2,growy"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button9"
+						"text": "Refresh"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 13 18 3 2,growy"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"text": "Save"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 17 18 3 2,growy"
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "Staff"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fill,insets dialog,hidemode 3,align center center"
-					"$columnConstraints": "[fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill]"
+					"$columnConstraints": "[fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill]"
 					"$rowConstraints": "[][][][][][][][][][][][][][][][][][][][]"
 				} ) {
 					name: "panel3"
@@ -144,11 +211,13 @@ new FormModel {
 							}, new java.util.Vector {
 								add( null )
 								add( null )
-								add( null )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, true ) )
 							} )
+							"showVerticalLines": true
+							"showHorizontalLines": true
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 0 19 17,grow"
+						"value": "cell 0 0 20 17,grow"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button2"
@@ -158,7 +227,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button3"
-						"text": "Delete"
+						"text": "Remove"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 18 3 2,growy"
 					} )
@@ -166,23 +235,153 @@ new FormModel {
 						name: "button5"
 						"text": "Refresh"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 12 18 3 2,growy"
+						"value": "cell 13 18 3 2,growy"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button4"
 						"text": "Save"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 16 18 3 2,growy"
+						"value": "cell 17 18 3 2,growy"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "Menu"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "fill,insets dialog,hidemode 3,align center center"
+					"$columnConstraints": "para[shrink 0,fill]para[shrink 0,fill]para[shrink 0,fill]para[shrink 0,fill]para[shrink 0,fill]para[shrink 0,fill]para[shrink 0,fill]para"
+					"$rowConstraints": "para[shrink 0,fill]para[shrink 0,fill]para[shrink 0,fill]para[shrink 0,fill]para[shrink 0,fill]para[27,shrink 0,fill]"
+				} ) {
+					name: "panel2"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button42"
+						"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 1, "D:\\School\\Harrison Easter - PAT\\Layer 2.png" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button59"
+						"icon": &SwingIcon1 new com.jformdesigner.model.SwingIcon( 1, "D:\\School\\Harrison Easter - PAT\\Layer 2.png" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button51"
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 5 0"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button52"
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 6 0"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button43"
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button56"
+						"icon": &SwingIcon2 new com.jformdesigner.model.SwingIcon( 1, "D:\\School\\Harrison Easter - PAT\\Layer 5 VERT.png" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 2 0 1 2"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button57"
+						"icon": #SwingIcon2
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 3 0 1 2"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button60"
+						"icon": #SwingIcon1
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 4 0"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button61"
+						"icon": #SwingIcon1
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button62"
+						"icon": #SwingIcon1
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 4 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button53"
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 5 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button54"
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 6 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button44"
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 2"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button45"
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 3"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button50"
+						"icon": #SwingIcon2
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 2 2 1 2"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button55"
+						"icon": #SwingIcon2
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 3 2 1 2"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button46"
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button47"
+						"icon": &SwingIcon3 new com.jformdesigner.model.SwingIcon( 1, "D:\\School\\Harrison Easter - PAT\\Layer 6.png" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 4 3 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button48"
+						"icon": #SwingIcon3
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 4 4 3 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button12"
+						"text": "New Booking"
+						"margin": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 5 2 1"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Tables"
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 915, 640 )
+			"size": new java.awt.Dimension( 960, 740 )
 		} )
 	}
 }
