@@ -7,10 +7,7 @@
  *
  * @author harri
  */
-public class Table {
-    private int capacity;
-    private String tableNumber;
-    private String currentTabID;
-    private String Staff;
-    
+public class BookingTab extends Tab{
+    private String name;
+    private String cellphoneNumber;
 }

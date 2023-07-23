@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
  * @author harri
  */
 public class Orders {
-    private String orderNumber;
+    private String orderID;
     private Boolean status;
-    private String Order;
+    private String item;
     private int table;
-    private LocalDateTime orderTime;
+    private LocalDateTime time;
     private String staff;
     private String notes;
 }

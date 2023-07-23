@@ -1,7 +1,5 @@
 
-import com.formdev.flatlaf.*;
-import java.awt.event.ActionEvent;
-
+import com.formdev.flatlaf.FlatIntelliJLaf;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,7 +10,7 @@ import java.awt.event.ActionEvent;
  *
  * @author harri
  */
-public class ScreenBuild{
+public class Main {
 
     /**
      * @param args the command line arguments
@@ -20,15 +18,8 @@ public class ScreenBuild{
     public static void main(String[] args) {
         // TODO code application logic here
         FlatIntelliJLaf.setup();
-        new LoginScreen().setVisible(true);
         new MainScreen().setVisible(true);
-        new TableScreen().setVisible(true);
+        
     }
-    
-    public void Submit(ActionEvent e) {
-        // TODO add your code here
-        System.out.println("1");
-    }
-    
     
 }

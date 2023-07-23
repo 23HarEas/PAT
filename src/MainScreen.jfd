@@ -36,7 +36,7 @@ new FormModel {
 									add( null )
 								} )
 							}, new java.util.Vector {
-								add( "Number" )
+								add( "Order ID" )
 								add( "Status" )
 								add( "Order" )
 								add( "Table" )
@@ -76,15 +76,9 @@ new FormModel {
 						"value": "cell 0 0 20 17,growy"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button7"
-						"text": "Filter"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button7", true ) )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 18 3 2,growy"
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button8"
 						"text": "Refresh"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button8", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 13 18 3 2,growy"
 					} )
@@ -195,8 +189,16 @@ new FormModel {
 									add( null )
 									add( null )
 									add( null )
+									add( null )
+								} )
+								add( new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+									add( null )
 								} )
 							}, new java.util.Vector {
+								add( "Item ID" )
 								add( "Item" )
 								add( "Description" )
 								add( "Price" )
@@ -204,11 +206,14 @@ new FormModel {
 								add( null )
 								add( null )
 								add( null )
-							}, new java.util.Vector {
-								add( null )
-								add( null )
 								add( null )
 							}, new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							}, new java.util.Vector {
+								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, true ) )
 								add( null )
 								add( null )
 								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, true ) )

@@ -9,7 +9,10 @@
  */
 public class Menu {
     private String menueID;
-    private String itemName;
-    private String itemDescription;
+    private String name;
+    private String description;
     private Double price;
+    
+    
+    
 }

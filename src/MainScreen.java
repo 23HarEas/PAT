@@ -39,6 +39,11 @@ public class MainScreen extends JFrame {
          String input = (String)JOptionPane.showInputDialog(null, "Filter Orders By", "Order Filters", JOptionPane.PLAIN_MESSAGE, null, test, "1");
     }
 
+    private void button8(ActionEvent e) {
+        // TODO add your code here
+        
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
@@ -46,7 +51,6 @@ public class MainScreen extends JFrame {
         panel4 = new JPanel();
         scrollPane2 = new JScrollPane();
         table2 = new JTable();
-        button7 = new JButton();
         button8 = new JButton();
         button6 = new JButton();
         panel1 = new JPanel();
@@ -159,7 +163,7 @@ public class MainScreen extends JFrame {
                             {null, true, null, null, "", null, null},
                         },
                         new String[] {
-                            "Number", "Status", "Order", "Table", "Time", "Staff", "Notes"
+                            "Order ID", "Status", "Order", "Table", "Time", "Staff", "Notes"
                         }
                     ) {
                         Class<?>[] columnTypes = new Class<?>[] {
@@ -186,13 +190,9 @@ public class MainScreen extends JFrame {
                 }
                 panel4.add(scrollPane2, new CC().cell(0, 0, 20, 17).growY());
 
-                //---- button7 ----
-                button7.setText("Filter");
-                button7.addActionListener(e -> button7(e));
-                panel4.add(button7, new CC().cell(0, 18, 3, 2).growY());
-
                 //---- button8 ----
                 button8.setText("Refresh");
+                button8.addActionListener(e -> button8(e));
                 panel4.add(button8, new CC().cell(13, 18, 3, 2).growY());
 
                 //---- button6 ----
@@ -348,16 +348,19 @@ public class MainScreen extends JFrame {
                     table1.setAutoCreateRowSorter(true);
                     table1.setModel(new DefaultTableModel(
                         new Object[][] {
-                            {null, null, null},
+                            {null, null, null, null},
+                            {null, null, null, null},
                         },
                         new String[] {
-                            "Item", "Description", "Price"
+                            "Item ID", "Item", "Description", "Price"
                         }
                     ));
                     {
                         TableColumnModel cm = table1.getColumnModel();
-                        cm.getColumn(2).setMaxWidth(80);
-                        cm.getColumn(2).setPreferredWidth(80);
+                        cm.getColumn(0).setMaxWidth(80);
+                        cm.getColumn(0).setPreferredWidth(80);
+                        cm.getColumn(3).setMaxWidth(80);
+                        cm.getColumn(3).setPreferredWidth(80);
                     }
                     table1.setShowVerticalLines(true);
                     table1.setShowHorizontalLines(true);
@@ -500,7 +503,6 @@ public class MainScreen extends JFrame {
     private JPanel panel4;
     private JScrollPane scrollPane2;
     private JTable table2;
-    private JButton button7;
     private JButton button8;
     private JButton button6;
     private JPanel panel1;
