@@ -53,6 +53,7 @@ public class TableScreen extends JFrame {
 
         //======== this ========
         setTitle("Table 4 Current Tab");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         Container contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
             new LC().fill().insets("dialog").hideMode(3).align("center", "center"),

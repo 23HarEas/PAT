@@ -29,6 +29,30 @@ public class Staff {
         this.position = position;
         this.salary = salary;
     }
+
+    public String getStaffID() {
+        return staffID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getCellphoneNumber() {
+        return cellphoneNumber;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
     
     
     

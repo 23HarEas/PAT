@@ -17,6 +17,10 @@ import net.miginfocom.swing.*;
  * @author harri
  */
 public class MainScreen extends JFrame {
+        
+    StaffArr staffArr = new StaffArr(); 
+    MenuArr menuArr = new MenuArr();
+    
     public MainScreen() {
         initComponents();
     }
@@ -42,6 +46,18 @@ public class MainScreen extends JFrame {
     private void button8(ActionEvent e) {
         // TODO add your code here
         
+    }
+
+    private void button9(ActionEvent e) {
+        // TODO add your code here
+
+        table3.setModel(staffArr.StaffLoad(table3));
+                
+    }
+
+    private void button5(ActionEvent e) {
+        // TODO add your code here
+        table1.setModel(menuArr.MenuLoad(table1));
     }
 
     private void initComponents() {
@@ -284,6 +300,12 @@ public class MainScreen extends JFrame {
 
                 //---- button9 ----
                 button9.setText("Refresh");
+                button9.addActionListener(e -> {
+			button9(e);
+			button9(e);
+			button9(e);
+			button9(e);
+		});
                 panel1.add(button9, new CC().cell(13, 18, 3, 2).growY());
 
                 //---- button1 ----
@@ -378,6 +400,7 @@ public class MainScreen extends JFrame {
 
                 //---- button5 ----
                 button5.setText("Refresh");
+                button5.addActionListener(e -> button5(e));
                 panel3.add(button5, new CC().cell(13, 18, 3, 2).growY());
 
                 //---- button4 ----
@@ -410,78 +433,171 @@ public class MainScreen extends JFrame {
 
                 //---- button42 ----
                 button42.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button42.setText("Table 1");
+                button42.setHorizontalTextPosition(SwingConstants.CENTER);
+                button42.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button42.setIconTextGap(0);
+                button42.setMargin(new Insets(0, 0, 0, 0));
                 panel2.add(button42, new CC().cell(0, 0));
 
                 //---- button59 ----
                 button59.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button59.setText("Table 2");
+                button59.setHorizontalTextPosition(SwingConstants.CENTER);
+                button59.setIconTextGap(0);
+                button59.setMargin(new Insets(0, 0, 0, 0));
+                button59.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button59, new CC().cell(1, 0));
 
                 //---- button51 ----
                 button51.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button51.setText("Table 15");
+                button51.setHorizontalTextPosition(SwingConstants.CENTER);
+                button51.setIconTextGap(0);
+                button51.setMargin(new Insets(0, 0, 0, 0));
+                button51.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button51, new CC().cell(5, 0));
 
                 //---- button52 ----
                 button52.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button52.setText("Table 16");
+                button52.setHorizontalTextPosition(SwingConstants.CENTER);
+                button52.setIconTextGap(0);
+                button52.setMargin(new Insets(0, 0, 0, 0));
+                button52.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button52, new CC().cell(6, 0));
 
                 //---- button43 ----
                 button43.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button43.setText("Table 3");
+                button43.setHorizontalTextPosition(SwingConstants.CENTER);
+                button43.setIconTextGap(0);
+                button43.setMargin(new Insets(0, 0, 0, 0));
+                button43.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button43, new CC().cell(0, 1));
 
                 //---- button56 ----
                 button56.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 5 VERT.png"));
+                button56.setText("Table 8");
+                button56.setHorizontalTextPosition(SwingConstants.CENTER);
+                button56.setIconTextGap(7);
+                button56.setMargin(new Insets(0, 0, 0, 0));
+                button56.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button56, new CC().cell(2, 0, 1, 2));
 
                 //---- button57 ----
                 button57.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 5 VERT.png"));
+                button57.setText("Table 9");
+                button57.setHorizontalTextPosition(SwingConstants.CENTER);
+                button57.setIconTextGap(7);
+                button57.setMargin(new Insets(0, 0, 0, 0));
+                button57.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button57, new CC().cell(3, 0, 1, 2));
 
                 //---- button60 ----
                 button60.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button60.setText("Table 14");
+                button60.setHorizontalTextPosition(SwingConstants.CENTER);
+                button60.setIconTextGap(0);
+                button60.setMargin(new Insets(0, 0, 0, 0));
+                button60.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button60, new CC().cell(4, 0));
 
                 //---- button61 ----
                 button61.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button61.setText("Table 4");
+                button61.setHorizontalTextPosition(SwingConstants.CENTER);
+                button61.setIconTextGap(0);
+                button61.setMargin(new Insets(0, 0, 0, 0));
+                button61.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button61, new CC().cell(1, 1));
 
                 //---- button62 ----
                 button62.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button62.setText("Table 17");
+                button62.setHorizontalTextPosition(SwingConstants.CENTER);
+                button62.setIconTextGap(0);
+                button62.setMargin(new Insets(0, 0, 0, 0));
+                button62.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button62, new CC().cell(4, 1));
 
                 //---- button53 ----
                 button53.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button53.setText("Table 18");
+                button53.setHorizontalTextPosition(SwingConstants.CENTER);
+                button53.setIconTextGap(0);
+                button53.setMargin(new Insets(0, 0, 0, 0));
+                button53.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button53, new CC().cell(5, 1));
 
                 //---- button54 ----
                 button54.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button54.setText("Table 19");
+                button54.setHorizontalTextPosition(SwingConstants.CENTER);
+                button54.setIconTextGap(0);
+                button54.setMargin(new Insets(0, 0, 0, 0));
+                button54.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button54, new CC().cell(6, 1));
 
                 //---- button44 ----
                 button44.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button44.setText("Table 5");
+                button44.setHorizontalTextPosition(SwingConstants.CENTER);
+                button44.setIconTextGap(0);
+                button44.setMargin(new Insets(0, 0, 0, 0));
+                button44.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button44, new CC().cell(0, 2));
 
                 //---- button45 ----
                 button45.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button45.setText("Table 6");
+                button45.setHorizontalTextPosition(SwingConstants.CENTER);
+                button45.setIconTextGap(0);
+                button45.setMargin(new Insets(0, 0, 0, 0));
+                button45.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button45, new CC().cell(0, 3));
 
                 //---- button50 ----
                 button50.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 5 VERT.png"));
+                button50.setText("Table 10");
+                button50.setHorizontalTextPosition(SwingConstants.CENTER);
+                button50.setIconTextGap(7);
+                button50.setMargin(new Insets(0, 0, 0, 0));
+                button50.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button50, new CC().cell(2, 2, 1, 2));
 
                 //---- button55 ----
                 button55.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 5 VERT.png"));
+                button55.setText("Table 11");
+                button55.setHorizontalTextPosition(SwingConstants.CENTER);
+                button55.setIconTextGap(7);
+                button55.setMargin(new Insets(0, 0, 0, 0));
+                button55.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button55, new CC().cell(3, 2, 1, 2));
 
                 //---- button46 ----
                 button46.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 2.png"));
+                button46.setText("Table 7");
+                button46.setHorizontalTextPosition(SwingConstants.CENTER);
+                button46.setIconTextGap(0);
+                button46.setMargin(new Insets(0, 0, 0, 0));
+                button46.setVerticalTextPosition(SwingConstants.BOTTOM);
                 panel2.add(button46, new CC().cell(0, 4));
 
                 //---- button47 ----
                 button47.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 6.png"));
+                button47.setText("Table 12");
+                button47.setIconTextGap(7);
+                button47.setHorizontalTextPosition(SwingConstants.LEFT);
+                button47.setMargin(new Insets(0, 0, 0, 0));
                 panel2.add(button47, new CC().cell(1, 4, 3, 1));
 
                 //---- button48 ----
                 button48.setIcon(new ImageIcon("D:\\School\\Harrison Easter - PAT\\Layer 6.png"));
+                button48.setText("Table 13");
+                button48.setIconTextGap(7);
+                button48.setHorizontalTextPosition(SwingConstants.LEFT);
+                button48.setMargin(new Insets(0, 0, 0, 0));
                 panel2.add(button48, new CC().cell(4, 4, 3, 1));
 
                 //---- button12 ----

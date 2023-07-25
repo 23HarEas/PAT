@@ -3,6 +3,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,43 +16,41 @@ import java.util.logging.Logger;
  * @author harri
  */
 public class StaffArr {
-    private Staff staffArr[];
+    private Staff staffArr[] = new Staff[100];
     private int numberStaff = 0;
 
-    public StaffArr(ResultSet staffDB) {
+    public StaffArr() {
         try {
+            Connector dbObj = new Connector();
+            ResultSet staffDB = dbObj.execQuerySet("SELECT Staff.StaffID, Staff.Name, Staff.Surname, Staff.CellphoneNumber, Staff.Position, Staff.Salary\n" + "FROM Staff;");
             while (staffDB.next())
             {
+                
                 String staffID = staffDB.getString(1);
                 String name = staffDB.getString(2);
-                String surname = staffDB.getString(1);
-                String cellphoneNumber = staffDB.getString(3);
-                String position = staffDB.getString(4);
-                Double salary = staffDB.getDouble(5);
-                numberStaff++;
+                String surname = staffDB.getString(3);
+                String cellphoneNumber = staffDB.getString(4);
+                String position = staffDB.getString(5);
+                Double salary = staffDB.getDouble(6);
+                
                 staffArr[numberStaff] = new Staff(staffID, name, surname, cellphoneNumber, position, salary);
+                numberStaff++;
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(StaffArr.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public Staff[] getStaffArr() {
-        return staffArr;
-    }
-
-    public int getNumberStaff() {
-        return numberStaff;
-    }
-
-    public void setStaffArr(Staff[] staffArr) {
-        this.staffArr = staffArr;
-    }
-
-    public void setNumberStaff(int numberStaff) {
-        this.numberStaff = numberStaff;
+    public DefaultTableModel StaffLoad(JTable table)
+    {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < numberStaff; i++) {
+            model.addRow(new Object[]{staffArr[i].getStaffID(), staffArr[i].getName(), staffArr[i].getSurname(), staffArr[i].getCellphoneNumber(), staffArr[i].getPosition(), staffArr[i].getSalary()});
+        }
+        return model;
     }
     
-    
-    
+ 
 }
