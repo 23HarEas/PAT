@@ -25,17 +25,7 @@ new FormModel {
 						name: "scrollPane2"
 						add( new FormComponent( "javax.swing.JTable" ) {
 							name: "table2"
-							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
-								add( new java.util.Vector {
-									add( null )
-									add( true )
-									add( null )
-									add( null )
-									add( "" )
-									add( null )
-									add( null )
-								} )
-							}, new java.util.Vector {
+							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
 								add( "Order ID" )
 								add( "Status" )
 								add( "Order" )
@@ -44,27 +34,27 @@ new FormModel {
 								add( "Staff" )
 								add( "Notes" )
 							}, new java.util.Vector {
-								add( null )
+								add( class java.lang.Integer )
 								add( class java.lang.Boolean )
-								add( null )
-								add( null )
+								add( class java.lang.String )
+								add( class java.lang.Integer )
 								add( class java.lang.Object )
 								add( null )
 								add( null )
 							}, new java.util.Vector {
+								add( false )
 								add( null )
-								add( null )
-								add( null )
-								add( null )
-								add( null )
-								add( null )
-								add( null )
+								add( false )
+								add( false )
+								add( false )
+								add( false )
+								add( false )
 							}, new java.util.Vector {
 								add( new com.jformdesigner.model.SwingTableColumn( null, 75, 0, 75, true ) )
 								add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 50, true ) )
 								add( null )
 								add( null )
-								add( new com.jformdesigner.model.SwingTableColumn( null, 75, 0, 75, true ) )
+								add( null )
 								add( null )
 								add( null )
 							} )
@@ -103,16 +93,7 @@ new FormModel {
 							name: "table3"
 							"showHorizontalLines": true
 							"showVerticalLines": true
-							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-									add( null )
-									add( null )
-									add( null )
-									add( null )
-								} )
-							}, new java.util.Vector {
+							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
 								add( "Staff ID" )
 								add( "Name" )
 								add( "Surname" )
@@ -120,12 +101,12 @@ new FormModel {
 								add( "Position" )
 								add( "Wage" )
 							}, new java.util.Vector {
+								add( class java.lang.Integer )
 								add( null )
 								add( null )
 								add( null )
 								add( null )
-								add( null )
-								add( null )
+								add( class java.lang.Double )
 							}, new java.util.Vector {
 								add( null )
 								add( null )
@@ -155,15 +136,13 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button11"
 						"text": "Remove"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button11", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 18 3 2,growy"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button9"
 						"text": "Refresh"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button9", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button9", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button9", true ) )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button9", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 13 18 3 2,growy"
@@ -188,36 +167,23 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTable" ) {
 							name: "table1"
 							"autoCreateRowSorter": true
-							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-									add( null )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-									add( null )
-									add( null )
-								} )
-							}, new java.util.Vector {
+							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
 								add( "Item ID" )
 								add( "Item" )
 								add( "Description" )
 								add( "Price" )
 							}, new java.util.Vector {
+								add( class java.lang.Integer )
 								add( null )
+								add( null )
+								add( class java.lang.Double )
+							}, new java.util.Vector {
+								add( false )
 								add( null )
 								add( null )
 								add( null )
 							}, new java.util.Vector {
-								add( null )
-								add( null )
-								add( null )
-								add( null )
-							}, new java.util.Vector {
-								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, false ) )
 								add( null )
 								add( null )
 								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, true ) )
@@ -231,12 +197,14 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button2"
 						"text": "New"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 18 3 2,growy"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button3"
 						"text": "Remove"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 18 3 2,growy"
 					} )
@@ -270,6 +238,7 @@ new FormModel {
 						"verticalTextPosition": 3
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button42", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
@@ -281,6 +250,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button59", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 0"
 					} )
@@ -292,6 +262,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button51", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 5 0"
 					} )
@@ -303,6 +274,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button52", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 6 0"
 					} )
@@ -314,6 +286,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button43", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1"
 					} )
@@ -325,6 +298,7 @@ new FormModel {
 						"iconTextGap": 7
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button56", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 2 0 1 2"
 					} )
@@ -336,6 +310,7 @@ new FormModel {
 						"iconTextGap": 7
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button57", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 3 0 1 2"
 					} )
@@ -347,6 +322,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button60", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 0"
 					} )
@@ -358,6 +334,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button61", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 1"
 					} )
@@ -369,6 +346,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button62", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 1"
 					} )
@@ -380,6 +358,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button53", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 5 1"
 					} )
@@ -391,6 +370,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button54", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 6 1"
 					} )
@@ -402,6 +382,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button44", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 2"
 					} )
@@ -413,6 +394,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button45", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 3"
 					} )
@@ -424,6 +406,7 @@ new FormModel {
 						"iconTextGap": 7
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button50", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 2 2 1 2"
 					} )
@@ -435,6 +418,7 @@ new FormModel {
 						"iconTextGap": 7
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button55", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 3 2 1 2"
 					} )
@@ -446,6 +430,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button46", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 4"
 					} )
@@ -456,6 +441,7 @@ new FormModel {
 						"iconTextGap": 7
 						"horizontalTextPosition": 2
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button47", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 4 3 1"
 					} )
@@ -466,6 +452,7 @@ new FormModel {
 						"iconTextGap": 7
 						"horizontalTextPosition": 2
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button48", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 4 3 1"
 					} )

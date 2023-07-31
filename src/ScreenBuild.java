@@ -13,22 +13,23 @@ import java.awt.event.ActionEvent;
  * @author harri
  */
 public class ScreenBuild{
-
+    
+    public static MainScreen mainScreen;
+    public static LoginScreen loginScreen;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         FlatIntelliJLaf.setup();
-        new LoginScreen().setVisible(true);
-        new MainScreen().setVisible(true);
-        new TableScreen().setVisible(true);
+        //new LoginScreen().setVisible(true);
+        //new MainScreen().setVisible(true);
+        mainScreen = new MainScreen();
+        mainScreen.setVisible(true);
+        loginScreen = new LoginScreen();
+        loginScreen.setVisible(true);
     }
-    
-    public void Submit(ActionEvent e) {
-        // TODO add your code here
-        System.out.println("1");
-    }
+   
     
     
 }

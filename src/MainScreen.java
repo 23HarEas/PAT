@@ -1,12 +1,17 @@
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
 import com.formdev.flatlaf.ui.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
+import org.jdesktop.swingx.*;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+        
 /*
  * Created by JFormDesigner on Thu Jul 20 19:34:24 CAT 2023
  */
@@ -18,11 +23,24 @@ import net.miginfocom.swing.*;
  */
 public class MainScreen extends JFrame {
         
-    StaffArr staffArr = new StaffArr(); 
-    MenuArr menuArr = new MenuArr();
+    static StaffArr staffArr = new StaffArr(); 
+    static MenuArr menuArr = new MenuArr();
+    static OrdersArr ordersArr = new OrdersArr();
+    static TabArr tabArr = new TabArr();
+    static TableArr tableArr = new TableArr();
+    
+    static int workingTable = 0;
+    
+    public void refreshJTables()
+    {
+        table2.setModel(ordersArr.OrdersLoad(table2));
+        table3.setModel(staffArr.StaffLoad(table3));
+        table1.setModel(menuArr.MenuLoad(table1));
+    }
     
     public MainScreen() {
         initComponents();
+        
     }
 
     private void button1(ActionEvent e) {
@@ -31,20 +49,18 @@ public class MainScreen extends JFrame {
 
     private void button2(ActionEvent e) {
         // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new NewMenuItem().setVisible(true); 
     }
 
     private void createUIComponents() {
         // TODO: add custom component creation code here
     }
 
-    private void button7(ActionEvent e) {
-        // TODO add your code here
-        String[] test = new String[]{"1", "2", "3"};
-         String input = (String)JOptionPane.showInputDialog(null, "Filter Orders By", "Order Filters", JOptionPane.PLAIN_MESSAGE, null, test, "1");
-    }
-
     private void button8(ActionEvent e) {
         // TODO add your code here
+        table2.setModel(ordersArr.OrdersLoad(table2));
+        refreshJTables();
         
     }
 
@@ -58,6 +74,149 @@ public class MainScreen extends JFrame {
     private void button5(ActionEvent e) {
         // TODO add your code here
         table1.setModel(menuArr.MenuLoad(table1));
+    }
+
+    private void button42(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 1;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true);       
+    }
+
+    private void button59(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 2;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true);   
+    }
+
+    private void button43(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 3;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button61(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 4;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button44(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 5;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button45(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 6;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button46(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 7;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button56(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 8;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button57(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 9;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button50(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 10;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button55(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 11;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button47(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 12;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button48(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 13;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button60(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 14;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button51(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 15;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button52(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 16;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button62(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 17;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button53(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 18;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button54(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 19;
+        FlatIntelliJLaf.setup();
+        new TableScreen().setVisible(true); 
+    }
+
+    private void button11(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void button3(ActionEvent e) {
+        // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new RemoveMenuItem().setVisible(true);
     }
 
     private void initComponents() {
@@ -176,18 +335,24 @@ public class MainScreen extends JFrame {
                     //---- table2 ----
                     table2.setModel(new DefaultTableModel(
                         new Object[][] {
-                            {null, true, null, null, "", null, null},
                         },
                         new String[] {
                             "Order ID", "Status", "Order", "Table", "Time", "Staff", "Notes"
                         }
                     ) {
                         Class<?>[] columnTypes = new Class<?>[] {
-                            Object.class, Boolean.class, Object.class, Object.class, Object.class, Object.class, Object.class
+                            Integer.class, Boolean.class, String.class, Integer.class, Object.class, Object.class, Object.class
+                        };
+                        boolean[] columnEditable = new boolean[] {
+                            false, true, false, false, false, false, false
                         };
                         @Override
                         public Class<?> getColumnClass(int columnIndex) {
                             return columnTypes[columnIndex];
+                        }
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                            return columnEditable[columnIndex];
                         }
                     });
                     {
@@ -196,8 +361,6 @@ public class MainScreen extends JFrame {
                         cm.getColumn(0).setPreferredWidth(75);
                         cm.getColumn(1).setMaxWidth(50);
                         cm.getColumn(1).setPreferredWidth(50);
-                        cm.getColumn(4).setMaxWidth(75);
-                        cm.getColumn(4).setPreferredWidth(75);
                     }
                     table2.setAutoCreateRowSorter(true);
                     table2.setShowHorizontalLines(true);
@@ -274,12 +437,19 @@ public class MainScreen extends JFrame {
                     table3.setShowVerticalLines(true);
                     table3.setModel(new DefaultTableModel(
                         new Object[][] {
-                            {null, null, null, null, null, null},
                         },
                         new String[] {
                             "Staff ID", "Name", "Surname", "CellNo", "Position", "Wage"
                         }
-                    ));
+                    ) {
+                        Class<?>[] columnTypes = new Class<?>[] {
+                            Integer.class, Object.class, Object.class, Object.class, Object.class, Double.class
+                        };
+                        @Override
+                        public Class<?> getColumnClass(int columnIndex) {
+                            return columnTypes[columnIndex];
+                        }
+                    });
                     {
                         TableColumnModel cm = table3.getColumnModel();
                         cm.getColumn(0).setMaxWidth(80);
@@ -296,16 +466,12 @@ public class MainScreen extends JFrame {
 
                 //---- button11 ----
                 button11.setText("Remove");
+                button11.addActionListener(e -> button11(e));
                 panel1.add(button11, new CC().cell(4, 18, 3, 2).growY());
 
                 //---- button9 ----
                 button9.setText("Refresh");
-                button9.addActionListener(e -> {
-			button9(e);
-			button9(e);
-			button9(e);
-			button9(e);
-		});
+                button9.addActionListener(e -> button9(e));
                 panel1.add(button9, new CC().cell(13, 18, 3, 2).growY());
 
                 //---- button1 ----
@@ -370,15 +536,29 @@ public class MainScreen extends JFrame {
                     table1.setAutoCreateRowSorter(true);
                     table1.setModel(new DefaultTableModel(
                         new Object[][] {
-                            {null, null, null, null},
-                            {null, null, null, null},
                         },
                         new String[] {
                             "Item ID", "Item", "Description", "Price"
                         }
-                    ));
+                    ) {
+                        Class<?>[] columnTypes = new Class<?>[] {
+                            Integer.class, Object.class, Object.class, Double.class
+                        };
+                        boolean[] columnEditable = new boolean[] {
+                            false, true, true, true
+                        };
+                        @Override
+                        public Class<?> getColumnClass(int columnIndex) {
+                            return columnTypes[columnIndex];
+                        }
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                            return columnEditable[columnIndex];
+                        }
+                    });
                     {
                         TableColumnModel cm = table1.getColumnModel();
+                        cm.getColumn(0).setResizable(false);
                         cm.getColumn(0).setMaxWidth(80);
                         cm.getColumn(0).setPreferredWidth(80);
                         cm.getColumn(3).setMaxWidth(80);
@@ -392,10 +572,12 @@ public class MainScreen extends JFrame {
 
                 //---- button2 ----
                 button2.setText("New");
+                button2.addActionListener(e -> button2(e));
                 panel3.add(button2, new CC().cell(0, 18, 3, 2).growY());
 
                 //---- button3 ----
                 button3.setText("Remove");
+                button3.addActionListener(e -> button3(e));
                 panel3.add(button3, new CC().cell(4, 18, 3, 2).growY());
 
                 //---- button5 ----
@@ -438,6 +620,7 @@ public class MainScreen extends JFrame {
                 button42.setVerticalTextPosition(SwingConstants.BOTTOM);
                 button42.setIconTextGap(0);
                 button42.setMargin(new Insets(0, 0, 0, 0));
+                button42.addActionListener(e -> button42(e));
                 panel2.add(button42, new CC().cell(0, 0));
 
                 //---- button59 ----
@@ -447,6 +630,7 @@ public class MainScreen extends JFrame {
                 button59.setIconTextGap(0);
                 button59.setMargin(new Insets(0, 0, 0, 0));
                 button59.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button59.addActionListener(e -> button59(e));
                 panel2.add(button59, new CC().cell(1, 0));
 
                 //---- button51 ----
@@ -456,6 +640,7 @@ public class MainScreen extends JFrame {
                 button51.setIconTextGap(0);
                 button51.setMargin(new Insets(0, 0, 0, 0));
                 button51.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button51.addActionListener(e -> button51(e));
                 panel2.add(button51, new CC().cell(5, 0));
 
                 //---- button52 ----
@@ -465,6 +650,7 @@ public class MainScreen extends JFrame {
                 button52.setIconTextGap(0);
                 button52.setMargin(new Insets(0, 0, 0, 0));
                 button52.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button52.addActionListener(e -> button52(e));
                 panel2.add(button52, new CC().cell(6, 0));
 
                 //---- button43 ----
@@ -474,6 +660,7 @@ public class MainScreen extends JFrame {
                 button43.setIconTextGap(0);
                 button43.setMargin(new Insets(0, 0, 0, 0));
                 button43.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button43.addActionListener(e -> button43(e));
                 panel2.add(button43, new CC().cell(0, 1));
 
                 //---- button56 ----
@@ -483,6 +670,7 @@ public class MainScreen extends JFrame {
                 button56.setIconTextGap(7);
                 button56.setMargin(new Insets(0, 0, 0, 0));
                 button56.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button56.addActionListener(e -> button56(e));
                 panel2.add(button56, new CC().cell(2, 0, 1, 2));
 
                 //---- button57 ----
@@ -492,6 +680,7 @@ public class MainScreen extends JFrame {
                 button57.setIconTextGap(7);
                 button57.setMargin(new Insets(0, 0, 0, 0));
                 button57.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button57.addActionListener(e -> button57(e));
                 panel2.add(button57, new CC().cell(3, 0, 1, 2));
 
                 //---- button60 ----
@@ -501,6 +690,7 @@ public class MainScreen extends JFrame {
                 button60.setIconTextGap(0);
                 button60.setMargin(new Insets(0, 0, 0, 0));
                 button60.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button60.addActionListener(e -> button60(e));
                 panel2.add(button60, new CC().cell(4, 0));
 
                 //---- button61 ----
@@ -510,6 +700,7 @@ public class MainScreen extends JFrame {
                 button61.setIconTextGap(0);
                 button61.setMargin(new Insets(0, 0, 0, 0));
                 button61.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button61.addActionListener(e -> button61(e));
                 panel2.add(button61, new CC().cell(1, 1));
 
                 //---- button62 ----
@@ -519,6 +710,7 @@ public class MainScreen extends JFrame {
                 button62.setIconTextGap(0);
                 button62.setMargin(new Insets(0, 0, 0, 0));
                 button62.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button62.addActionListener(e -> button62(e));
                 panel2.add(button62, new CC().cell(4, 1));
 
                 //---- button53 ----
@@ -528,6 +720,7 @@ public class MainScreen extends JFrame {
                 button53.setIconTextGap(0);
                 button53.setMargin(new Insets(0, 0, 0, 0));
                 button53.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button53.addActionListener(e -> button53(e));
                 panel2.add(button53, new CC().cell(5, 1));
 
                 //---- button54 ----
@@ -537,6 +730,7 @@ public class MainScreen extends JFrame {
                 button54.setIconTextGap(0);
                 button54.setMargin(new Insets(0, 0, 0, 0));
                 button54.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button54.addActionListener(e -> button54(e));
                 panel2.add(button54, new CC().cell(6, 1));
 
                 //---- button44 ----
@@ -546,6 +740,7 @@ public class MainScreen extends JFrame {
                 button44.setIconTextGap(0);
                 button44.setMargin(new Insets(0, 0, 0, 0));
                 button44.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button44.addActionListener(e -> button44(e));
                 panel2.add(button44, new CC().cell(0, 2));
 
                 //---- button45 ----
@@ -555,6 +750,7 @@ public class MainScreen extends JFrame {
                 button45.setIconTextGap(0);
                 button45.setMargin(new Insets(0, 0, 0, 0));
                 button45.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button45.addActionListener(e -> button45(e));
                 panel2.add(button45, new CC().cell(0, 3));
 
                 //---- button50 ----
@@ -564,6 +760,7 @@ public class MainScreen extends JFrame {
                 button50.setIconTextGap(7);
                 button50.setMargin(new Insets(0, 0, 0, 0));
                 button50.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button50.addActionListener(e -> button50(e));
                 panel2.add(button50, new CC().cell(2, 2, 1, 2));
 
                 //---- button55 ----
@@ -573,6 +770,7 @@ public class MainScreen extends JFrame {
                 button55.setIconTextGap(7);
                 button55.setMargin(new Insets(0, 0, 0, 0));
                 button55.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button55.addActionListener(e -> button55(e));
                 panel2.add(button55, new CC().cell(3, 2, 1, 2));
 
                 //---- button46 ----
@@ -582,6 +780,7 @@ public class MainScreen extends JFrame {
                 button46.setIconTextGap(0);
                 button46.setMargin(new Insets(0, 0, 0, 0));
                 button46.setVerticalTextPosition(SwingConstants.BOTTOM);
+                button46.addActionListener(e -> button46(e));
                 panel2.add(button46, new CC().cell(0, 4));
 
                 //---- button47 ----
@@ -590,6 +789,7 @@ public class MainScreen extends JFrame {
                 button47.setIconTextGap(7);
                 button47.setHorizontalTextPosition(SwingConstants.LEFT);
                 button47.setMargin(new Insets(0, 0, 0, 0));
+                button47.addActionListener(e -> button47(e));
                 panel2.add(button47, new CC().cell(1, 4, 3, 1));
 
                 //---- button48 ----
@@ -598,6 +798,7 @@ public class MainScreen extends JFrame {
                 button48.setIconTextGap(7);
                 button48.setHorizontalTextPosition(SwingConstants.LEFT);
                 button48.setMargin(new Insets(0, 0, 0, 0));
+                button48.addActionListener(e -> button48(e));
                 panel2.add(button48, new CC().cell(4, 4, 3, 1));
 
                 //---- button12 ----

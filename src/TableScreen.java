@@ -2,6 +2,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import javax.swing.table.*;
 import net.miginfocom.layout.*;
@@ -18,12 +19,55 @@ import net.miginfocom.swing.*;
 public class TableScreen extends JFrame {
     public TableScreen() {
         initComponents();
+        refreshTable();
     }
 
+    private void refreshTable(){
+        int workingTable = MainScreen.workingTable;
+        int currentTabID = MainScreen.tableArr.getCurrentTabID(workingTable);
+        Tab currentTabObj = MainScreen.tabArr.getTabObj(currentTabID);
+        Table currentTableObj = MainScreen.tableArr.getCurrentTableOBJ(workingTable);
+        
+        
+        setTitle("Table " + workingTable + " current tab");
+        textField1.setText("" + currentTabID);
+        textField2.setText(currentTableObj.getStaff());
+        textField3.setText("" + currentTabObj.getPax() + "/" + currentTableObj.getCapacity());
+        textField4.setText("" + currentTabObj.getTime().format(DateTimeFormatter.ofPattern("dd MMM hh:mm")));
+        textField8.setText("R" + MainScreen.ordersArr.CalcTabTotal(currentTabID, MainScreen.menuArr));
+        if (currentTabObj instanceof BookingTab)
+        {
+           textField5.setText("Booking");
+           
+           label6.setVisible(true);
+           label7.setVisible(true);
+           textField6.setVisible(true);
+           textField7.setVisible(true);
+           
+           textField6.setText(((BookingTab) currentTabObj).getName());
+           textField7.setText(((BookingTab) currentTabObj).getCellphoneNumber());
+           
+        }
+            
+        else
+        {
+            textField5.setText("Walk In");
+            
+            label6.setVisible(false);
+            label7.setVisible(false);
+            textField6.setVisible(false);
+            textField7.setVisible(false);
+            
+        }
+            
+        
+        OrdersArr orderArr = MainScreen.ordersArr;
+        table1.setModel(orderArr.TabOrdersLoad(table1,currentTabID));
+    }
+    
     private void button1(ActionEvent e) {
         // TODO add your code here
-        String[] test = new String[]{"1", "2", "3"};
-         String input = (String)JOptionPane.showInputDialog(null, "Item", "New Order", JOptionPane.PLAIN_MESSAGE, null, test, "1");
+        
     }
 
     private void initComponents() {
@@ -52,7 +96,7 @@ public class TableScreen extends JFrame {
         textField8 = new JTextField();
 
         //======== this ========
-        setTitle("Table 4 Current Tab");
+        setTitle("Table 0 Current Tab");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         Container contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
@@ -196,7 +240,6 @@ public class TableScreen extends JFrame {
 
         //---- button1 ----
         button1.setText("Remove Order");
-        button1.addActionListener(e -> button1(e));
         contentPane.add(button1, new CC().cell(1, 13, 7, 2).grow());
 
         //---- button2 ----
@@ -240,3 +283,5 @@ public class TableScreen extends JFrame {
     private JTextField textField8;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
+
+
