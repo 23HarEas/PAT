@@ -14,14 +14,14 @@ import java.util.logging.Logger;
  * @author harri
  */
 public class Staff {
-    private String staffID;
+    private int staffID;
     private String name;
     private String surname;
     private String cellphoneNumber;
     private String position;
     private Double salary;
 
-    public Staff(String staffID, String name, String surname, String cellphoneNumber, String position, Double salary) {
+    public Staff(int staffID, String name, String surname, String cellphoneNumber, String position, Double salary) {
         this.staffID = staffID;
         this.name = name;
         this.surname = surname;
@@ -30,7 +30,7 @@ public class Staff {
         this.salary = salary;
     }
 
-    public String getStaffID() {
+    public int getStaffID() {
         return staffID;
     }
 

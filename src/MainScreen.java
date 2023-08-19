@@ -29,6 +29,7 @@ public class MainScreen extends JFrame {
     static TabArr tabArr = new TabArr();
     static TableArr tableArr = new TableArr();
     
+    
     static int workingTable = 0;
     
     public void refreshJTables()
@@ -40,7 +41,7 @@ public class MainScreen extends JFrame {
     
     public MainScreen() {
         initComponents();
-        
+        refreshJTables();
     }
 
     private void button1(ActionEvent e) {
@@ -66,7 +67,6 @@ public class MainScreen extends JFrame {
 
     private void button9(ActionEvent e) {
         // TODO add your code here
-
         table3.setModel(staffArr.StaffLoad(table3));
                 
     }
@@ -217,6 +217,12 @@ public class MainScreen extends JFrame {
         // TODO add your code here
         FlatIntelliJLaf.setup();
         new RemoveMenuItem().setVisible(true);
+    }
+
+    private void button4(ActionEvent e) {
+        // TODO add your code here
+        menuArr.MenuSave(table1);
+        table1.setModel(menuArr.MenuLoad(table1));
     }
 
     private void initComponents() {
@@ -587,6 +593,7 @@ public class MainScreen extends JFrame {
 
                 //---- button4 ----
                 button4.setText("Save");
+                button4.addActionListener(e -> button4(e));
                 panel3.add(button4, new CC().cell(17, 18, 3, 2).growY());
             }
             tabbedPane1.addTab("Menu", panel3);

@@ -42,6 +42,7 @@ public class Connector {
             
             Statement stmt3 = conn.createStatement();
             stmt3.execute(query); 
+            
 
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null, "Error:.\n"+e);

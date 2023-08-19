@@ -25,11 +25,11 @@ public class OrdersArr {
     public OrdersArr() {
         try {
             Connector dbObj = new Connector();
-            ResultSet ordersDB = dbObj.execQuerySet("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID;");
+            ResultSet ordersDB = dbObj.execQuerySet("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID ORDER BY Order.OrderID;");
             while (ordersDB.next())
             {
                 
-                String orderID = ordersDB.getString(1);
+                int orderID = ordersDB.getInt(1);
                 Boolean status = ordersDB.getBoolean(3);
                 String item = ordersDB.getString(2);
                 int table = ordersDB.getInt(4);

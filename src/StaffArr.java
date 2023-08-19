@@ -26,7 +26,7 @@ public class StaffArr {
             while (staffDB.next())
             {
                 
-                String staffID = staffDB.getString(1);
+                int staffID = staffDB.getInt(1);
                 String name = staffDB.getString(2);
                 String surname = staffDB.getString(3);
                 String cellphoneNumber = staffDB.getString(4);

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @author harri
  */
 public class Orders {
-    private String orderID;
+    private int orderID;
     private Boolean status;
     private String item;
     private int table;
@@ -21,7 +21,7 @@ public class Orders {
     private int tabID;
     private int itemID;
 
-    public Orders(String orderID, Boolean status, String item, int table, LocalDateTime time, String staff, String notes, int tabID, int itemID) {
+    public Orders(int orderID, Boolean status, String item, int table, LocalDateTime time, String staff, String notes, int tabID, int itemID) {
         this.orderID = orderID;
         this.status = status;
         this.item = item;
@@ -33,7 +33,7 @@ public class Orders {
         this.itemID = itemID;
     }
 
-    public String getOrderID() {
+    public int getOrderID() {
         return orderID;
     }
 

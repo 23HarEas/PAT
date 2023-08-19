@@ -8,19 +8,19 @@
  * @author harri
  */
 public class Menu {
-    private String menueID;
+    private int menueID;
     private String name;
     private String description;
     private Double price;
 
-    public Menu(String menueID, String name, String description, Double price) {
+    public Menu(int menueID, String name, String description, Double price) {
         this.menueID = menueID;
         this.name = name;
         this.description = description;
         this.price = price;
     }
 
-    public String getMenueID() {
+    public int getMenueID() {
         return menueID;
     }
 
