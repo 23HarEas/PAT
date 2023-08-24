@@ -8,27 +8,27 @@ new FormModel {
 			"$columnConstraints": "[shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill]"
 			"$rowConstraints": "[shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill]"
 		} ) {
-			name: "this"
+			name: "TableView"
 			"title": "Table 0 Current Tab"
 			"$locationPolicy": 1
 			"$sizePolicy": 1
 			"defaultCloseOperation": 2
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
+				name: "lblTab"
 				"text": "Tab ID"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 1 3 1"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
+				name: "txtTab"
 				"editable": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 4 1 4 1"
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-				name: "scrollPane1"
+				name: "scrOrders"
 				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "table1"
+					name: "tblOrders"
 					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
 						add( new java.util.Vector {
 							add( "" )
@@ -68,103 +68,103 @@ new FormModel {
 				"value": "cell 9 1 17 18"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label2"
+				name: "lblStaff"
 				"text": "Staff"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 2 3 1"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField2"
+				name: "txtStaff"
 				"editable": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 4 2 4 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label3"
+				name: "lblPax"
 				"text": "Pax"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 3 3 1"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField3"
+				name: "txtPax"
 				"editable": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 4 3 4 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label4"
+				name: "lblTime"
 				"text": "Time"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 4 3 1"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField4"
+				name: "txtTime"
 				"editable": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 4 4 4 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label5"
+				name: "lblType"
 				"text": "Type"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 5 3 1"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField5"
+				name: "txtType"
 				"editable": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 4 5 4 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label6"
+				name: "lblBookingName"
 				"text": "Booking Name"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 6 3 1"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField6"
+				name: "txtBookingName"
 				"editable": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 4 6 4 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label7"
+				name: "lblBookingPhone"
 				"text": "Phone Number"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 7 3 1"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField7"
+				name: "txtBookingPhone"
 				"editable": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 4 7 4 1"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button4"
+				name: "btnNewOrder"
 				"text": "New Order"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 11 7 2"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
+				name: "btnRemoveOrder"
 				"text": "Remove Order"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 13 7 2,grow"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
+				name: "btnCloseTab"
 				"text": "Close Tab"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 15 7 2,grow"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label8"
+				name: "lblTotal"
 				"text": "Total"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 18 3 1,growy"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField8"
+				name: "txtTotal"
 				"editable": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 4 18 4 1,growy"
