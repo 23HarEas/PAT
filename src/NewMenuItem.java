@@ -12,7 +12,7 @@ import net.miginfocom.swing.*;
 /**
  * @author harri
  */
-public class NewMenuItem {
+public class NewMenuItem extends JFrame {
     public NewMenuItem() {
         initComponents();
     }
@@ -30,7 +30,6 @@ public class NewMenuItem {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
-        NewMenu = new JFrame();
         lblNewMenuName = new JLabel();
         txtNewMenuName = new JTextField();
         lblNewMenuDescription = new JLabel();
@@ -39,63 +38,62 @@ public class NewMenuItem {
         txtNewMenuPrice = new JTextField();
         btnNewMenuSubmit = new JButton();
 
-        //======== NewMenu ========
-        {
-            NewMenu.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            NewMenu.setAlwaysOnTop(true);
-            NewMenu.setTitle("New Menu Item");
-            Container NewMenuContentPane = NewMenu.getContentPane();
-            NewMenuContentPane.setLayout(new MigLayout(
-                "fill,insets dialog,hidemode 3,align center center",
-                // columns
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]",
-                // rows
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]"));
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setTitle("New Menu Item");
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new MigLayout(
+            new LC().fill().insets("dialog").hideMode(3).align("center", "center"),
+            // columns
+            new AC()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill(),
+            // rows
+            new AC()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill()));
 
-            //---- lblNewMenuName ----
-            lblNewMenuName.setText("Item Name");
-            NewMenuContentPane.add(lblNewMenuName, "cell 1 1 4 1,grow");
-            NewMenuContentPane.add(txtNewMenuName, "cell 4 1 4 1");
+        //---- lblNewMenuName ----
+        lblNewMenuName.setText("Item Name");
+        contentPane.add(lblNewMenuName, new CC().cell(1, 1, 4, 1).grow());
+        contentPane.add(txtNewMenuName, new CC().cell(4, 1, 4, 1));
 
-            //---- lblNewMenuDescription ----
-            lblNewMenuDescription.setText("Item Description");
-            NewMenuContentPane.add(lblNewMenuDescription, "cell 1 3 4 1");
-            NewMenuContentPane.add(txtNewMenuDescription, "cell 4 3 4 1");
+        //---- lblNewMenuDescription ----
+        lblNewMenuDescription.setText("Item Description");
+        contentPane.add(lblNewMenuDescription, new CC().cell(1, 3, 4, 1));
+        contentPane.add(txtNewMenuDescription, new CC().cell(4, 3, 4, 1));
 
-            //---- lblNewMenuPrice ----
-            lblNewMenuPrice.setText("Item Price");
-            NewMenuContentPane.add(lblNewMenuPrice, "cell 1 5 4 1");
-            NewMenuContentPane.add(txtNewMenuPrice, "cell 4 5 4 1");
+        //---- lblNewMenuPrice ----
+        lblNewMenuPrice.setText("Item Price");
+        contentPane.add(lblNewMenuPrice, new CC().cell(1, 5, 4, 1));
+        contentPane.add(txtNewMenuPrice, new CC().cell(4, 5, 4, 1));
 
-            //---- btnNewMenuSubmit ----
-            btnNewMenuSubmit.setText("Add Item");
-            btnNewMenuSubmit.addActionListener(e -> button1(e));
-            NewMenuContentPane.add(btnNewMenuSubmit, "cell 1 7 7 1");
-            NewMenu.setSize(500, 500);
-            NewMenu.setLocationRelativeTo(null);
-        }
+        //---- btnNewMenuSubmit ----
+        btnNewMenuSubmit.setText("Add Item");
+        btnNewMenuSubmit.addActionListener(e -> button1(e));
+        contentPane.add(btnNewMenuSubmit, new CC().cell(1, 7, 7, 1));
+        setSize(500, 500);
+        setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
-    private JFrame NewMenu;
     private JLabel lblNewMenuName;
     private JTextField txtNewMenuName;
     private JLabel lblNewMenuDescription;

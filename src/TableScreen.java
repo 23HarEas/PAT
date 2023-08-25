@@ -16,7 +16,7 @@ import net.miginfocom.swing.*;
 /**
  * @author harri
  */
-public class TableScreen {
+public class TableScreen extends JFrame {
     public TableScreen() {
         initComponents();
         refreshTable();
@@ -73,7 +73,6 @@ public class TableScreen {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
-        TableView = new JFrame();
         lblTab = new JLabel();
         txtTab = new JTextField();
         scrOrders = new JScrollPane();
@@ -96,172 +95,171 @@ public class TableScreen {
         lblTotal = new JLabel();
         txtTotal = new JTextField();
 
-        //======== TableView ========
+        //======== this ========
+        setTitle("Table 0 Current Tab");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new MigLayout(
+            new LC().fill().insets("dialog").hideMode(3).align("center", "center"),
+            // columns
+            new AC()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill(),
+            // rows
+            new AC()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill()));
+
+        //---- lblTab ----
+        lblTab.setText("Tab ID");
+        contentPane.add(lblTab, new CC().cell(1, 1, 3, 1));
+
+        //---- txtTab ----
+        txtTab.setEditable(false);
+        contentPane.add(txtTab, new CC().cell(4, 1, 4, 1));
+
+        //======== scrOrders ========
         {
-            TableView.setTitle("Table 0 Current Tab");
-            TableView.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            Container TableViewContentPane = TableView.getContentPane();
-            TableViewContentPane.setLayout(new MigLayout(
-                "fill,insets dialog,hidemode 3,align center center",
-                // columns
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]",
-                // rows
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]"));
 
-            //---- lblTab ----
-            lblTab.setText("Tab ID");
-            TableViewContentPane.add(lblTab, "cell 1 1 3 1");
-
-            //---- txtTab ----
-            txtTab.setEditable(false);
-            TableViewContentPane.add(txtTab, "cell 4 1 4 1");
-
-            //======== scrOrders ========
-            {
-
-                //---- tblOrders ----
-                tblOrders.setModel(new DefaultTableModel(
-                    new Object[][] {
-                        {"", null, null, null},
-                        {null, null, null, null},
-                    },
-                    new String[] {
-                        "Order ID", "Order", "Time", "Status"
-                    }
-                ) {
-                    Class<?>[] columnTypes = new Class<?>[] {
-                        Object.class, Object.class, Object.class, Boolean.class
-                    };
-                    @Override
-                    public Class<?> getColumnClass(int columnIndex) {
-                        return columnTypes[columnIndex];
-                    }
-                });
-                scrOrders.setViewportView(tblOrders);
-            }
-            TableViewContentPane.add(scrOrders, "cell 9 1 17 18");
-
-            //---- lblStaff ----
-            lblStaff.setText("Staff");
-            TableViewContentPane.add(lblStaff, "cell 1 2 3 1");
-
-            //---- txtStaff ----
-            txtStaff.setEditable(false);
-            TableViewContentPane.add(txtStaff, "cell 4 2 4 1");
-
-            //---- lblPax ----
-            lblPax.setText("Pax");
-            TableViewContentPane.add(lblPax, "cell 1 3 3 1");
-
-            //---- txtPax ----
-            txtPax.setEditable(false);
-            TableViewContentPane.add(txtPax, "cell 4 3 4 1");
-
-            //---- lblTime ----
-            lblTime.setText("Time");
-            TableViewContentPane.add(lblTime, "cell 1 4 3 1");
-
-            //---- txtTime ----
-            txtTime.setEditable(false);
-            TableViewContentPane.add(txtTime, "cell 4 4 4 1");
-
-            //---- lblType ----
-            lblType.setText("Type");
-            TableViewContentPane.add(lblType, "cell 1 5 3 1");
-
-            //---- txtType ----
-            txtType.setEditable(false);
-            TableViewContentPane.add(txtType, "cell 4 5 4 1");
-
-            //---- lblBookingName ----
-            lblBookingName.setText("Booking Name");
-            TableViewContentPane.add(lblBookingName, "cell 1 6 3 1");
-
-            //---- txtBookingName ----
-            txtBookingName.setEditable(false);
-            TableViewContentPane.add(txtBookingName, "cell 4 6 4 1");
-
-            //---- lblBookingPhone ----
-            lblBookingPhone.setText("Phone Number");
-            TableViewContentPane.add(lblBookingPhone, "cell 1 7 3 1");
-
-            //---- txtBookingPhone ----
-            txtBookingPhone.setEditable(false);
-            TableViewContentPane.add(txtBookingPhone, "cell 4 7 4 1");
-
-            //---- btnNewOrder ----
-            btnNewOrder.setText("New Order");
-            TableViewContentPane.add(btnNewOrder, "cell 1 11 7 2");
-
-            //---- btnRemoveOrder ----
-            btnRemoveOrder.setText("Remove Order");
-            TableViewContentPane.add(btnRemoveOrder, "cell 1 13 7 2,grow");
-
-            //---- btnCloseTab ----
-            btnCloseTab.setText("Close Tab");
-            TableViewContentPane.add(btnCloseTab, "cell 1 15 7 2,grow");
-
-            //---- lblTotal ----
-            lblTotal.setText("Total");
-            TableViewContentPane.add(lblTotal, "cell 1 18 3 1,growy");
-
-            //---- txtTotal ----
-            txtTotal.setEditable(false);
-            TableViewContentPane.add(txtTotal, "cell 4 18 4 1,growy");
-            TableView.setSize(960, 740);
-            TableView.setLocationRelativeTo(null);
+            //---- tblOrders ----
+            tblOrders.setModel(new DefaultTableModel(
+                new Object[][] {
+                    {"", null, null, null},
+                    {null, null, null, null},
+                },
+                new String[] {
+                    "Order ID", "Order", "Time", "Status"
+                }
+            ) {
+                Class<?>[] columnTypes = new Class<?>[] {
+                    Object.class, Object.class, Object.class, Boolean.class
+                };
+                @Override
+                public Class<?> getColumnClass(int columnIndex) {
+                    return columnTypes[columnIndex];
+                }
+            });
+            scrOrders.setViewportView(tblOrders);
         }
+        contentPane.add(scrOrders, new CC().cell(9, 1, 17, 18));
+
+        //---- lblStaff ----
+        lblStaff.setText("Staff");
+        contentPane.add(lblStaff, new CC().cell(1, 2, 3, 1));
+
+        //---- txtStaff ----
+        txtStaff.setEditable(false);
+        contentPane.add(txtStaff, new CC().cell(4, 2, 4, 1));
+
+        //---- lblPax ----
+        lblPax.setText("Pax");
+        contentPane.add(lblPax, new CC().cell(1, 3, 3, 1));
+
+        //---- txtPax ----
+        txtPax.setEditable(false);
+        contentPane.add(txtPax, new CC().cell(4, 3, 4, 1));
+
+        //---- lblTime ----
+        lblTime.setText("Time");
+        contentPane.add(lblTime, new CC().cell(1, 4, 3, 1));
+
+        //---- txtTime ----
+        txtTime.setEditable(false);
+        contentPane.add(txtTime, new CC().cell(4, 4, 4, 1));
+
+        //---- lblType ----
+        lblType.setText("Type");
+        contentPane.add(lblType, new CC().cell(1, 5, 3, 1));
+
+        //---- txtType ----
+        txtType.setEditable(false);
+        contentPane.add(txtType, new CC().cell(4, 5, 4, 1));
+
+        //---- lblBookingName ----
+        lblBookingName.setText("Booking Name");
+        contentPane.add(lblBookingName, new CC().cell(1, 6, 3, 1));
+
+        //---- txtBookingName ----
+        txtBookingName.setEditable(false);
+        contentPane.add(txtBookingName, new CC().cell(4, 6, 4, 1));
+
+        //---- lblBookingPhone ----
+        lblBookingPhone.setText("Phone Number");
+        contentPane.add(lblBookingPhone, new CC().cell(1, 7, 3, 1));
+
+        //---- txtBookingPhone ----
+        txtBookingPhone.setEditable(false);
+        contentPane.add(txtBookingPhone, new CC().cell(4, 7, 4, 1));
+
+        //---- btnNewOrder ----
+        btnNewOrder.setText("New Order");
+        contentPane.add(btnNewOrder, new CC().cell(1, 11, 7, 2));
+
+        //---- btnRemoveOrder ----
+        btnRemoveOrder.setText("Remove Order");
+        contentPane.add(btnRemoveOrder, new CC().cell(1, 13, 7, 2).grow());
+
+        //---- btnCloseTab ----
+        btnCloseTab.setText("Close Tab");
+        contentPane.add(btnCloseTab, new CC().cell(1, 15, 7, 2).grow());
+
+        //---- lblTotal ----
+        lblTotal.setText("Total");
+        contentPane.add(lblTotal, new CC().cell(1, 18, 3, 1).growY());
+
+        //---- txtTotal ----
+        txtTotal.setEditable(false);
+        contentPane.add(txtTotal, new CC().cell(4, 18, 4, 1).growY());
+        setSize(960, 740);
+        setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
-    private JFrame TableView;
     private JLabel lblTab;
     private JTextField txtTab;
     private JScrollPane scrOrders;

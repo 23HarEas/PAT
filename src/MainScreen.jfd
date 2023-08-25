@@ -8,7 +8,7 @@ new FormModel {
 			"$columnConstraints": "[shrink 0,fill]"
 			"$rowConstraints": "[shrink 0,fill]"
 		} ) {
-			name: "MainScreen"
+			name: "this"
 			"$locationPolicy": 1
 			"defaultCloseOperation": 2
 			"title": "Resturant Managment System"
