@@ -21,10 +21,11 @@ public class TableArr {
     
     private Table tableArr[] = new Table[100];
     private int numberTables = 0;
+    Connector dbObj = new Connector();
     
     public TableArr() {
         try {
-            Connector dbObj = new Connector();
+            
             ResultSet tableDB = dbObj.execQuerySet("SELECT Table.TableNumber, Table.CurrentTabID, Staff.Name, Table.Capacity\n" + "FROM Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID;");
             while (tableDB.next())
             {
@@ -42,6 +43,28 @@ public class TableArr {
             Logger.getLogger(StaffArr.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void TableDBReload(){
+        
+        try {
+            
+            ResultSet tableDB = dbObj.execQuerySet("SELECT Table.TableNumber, Table.CurrentTabID, Staff.Name, Table.Capacity\n" + "FROM Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID;");
+            while (tableDB.next())
+            {
+                
+                int tableNumber = tableDB.getInt(1);
+                int currentTabID = tableDB.getInt(2);
+                String staff = tableDB.getString(3);
+                int capacity = tableDB.getInt(4);
+                
+                tableArr[tableNumber] = new Table(tableNumber, currentTabID, staff, capacity);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffArr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
     public int getNumberTables() {
         return numberTables;
@@ -55,6 +78,11 @@ public class TableArr {
     public Table getCurrentTableOBJ(int table)
     {
         return tableArr[table];
+    }
+    
+    public void closeTab(int tableNumber)
+    {
+        dbObj.Insert("UPDATE [Table] SET [Table].CurrentTabID = 0 WHERE (((Table.TableNumber)= " + tableNumber + " ));");
     }
     
 }

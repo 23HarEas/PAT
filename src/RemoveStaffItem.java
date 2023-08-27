@@ -1,7 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 /*
  * Created by JFormDesigner on Thu Aug 24 13:34:31 SAST 2023
  */
@@ -11,72 +13,76 @@ import net.miginfocom.swing.*;
 /**
  * @author harrisoneaster
  */
-public class RemoveStaffItem extends JPanel {
+public class RemoveStaffItem extends JFrame {
     public RemoveStaffItem() {
         initComponents();
+        cmbRemoveStaff.setModel(MainScreen.staffArr.StaffComboLoad(cmbRemoveStaff));
+        AutoCompleteDecorator.decorate(cmbRemoveStaff);
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        
+        String remove = (String)cmbRemoveStaff.getSelectedItem();
+        MainScreen.staffArr.removeStaffItem(remove);
+        dispose();
+        ScreenBuild.mainScreen.refreshJTables();
+        ScreenBuild.mainScreen.saveJTables();
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
-        RemoveStaff = new JFrame();
         lblRemoveStaff = new JLabel();
         cmbRemoveStaff = new JComboBox();
         btnRemoveStaffSubmit = new JButton();
 
-        //======== RemoveStaff ========
-        {
-            RemoveStaff.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            RemoveStaff.setAlwaysOnTop(true);
-            RemoveStaff.setTitle("Remove Staff Member");
-            Container RemoveStaffContentPane = RemoveStaff.getContentPane();
-            RemoveStaffContentPane.setLayout(new MigLayout(
-                "fill,insets dialog,hidemode 3,align center center",
-                // columns
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]",
-                // rows
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]" +
-                "[shrink 0,fill]"));
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setTitle("Remove Staff Member");
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new MigLayout(
+            new LC().fill().insets("dialog").hideMode(3).align("center", "center"),
+            // columns
+            new AC()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill(),
+            // rows
+            new AC()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill().gap()
+                .shrink(0).fill()));
 
-            //---- lblRemoveStaff ----
-            lblRemoveStaff.setText("Staff Member To Remove");
-            lblRemoveStaff.setHorizontalAlignment(SwingConstants.LEFT);
-            RemoveStaffContentPane.add(lblRemoveStaff, "cell 1 2 7 1");
-            RemoveStaffContentPane.add(cmbRemoveStaff, "cell 1 3 7 1");
+        //---- lblRemoveStaff ----
+        lblRemoveStaff.setText("Staff Member To Remove");
+        lblRemoveStaff.setHorizontalAlignment(SwingConstants.LEFT);
+        contentPane.add(lblRemoveStaff, new CC().cell(1, 2, 7, 1));
+        contentPane.add(cmbRemoveStaff, new CC().cell(1, 3, 7, 1));
 
-            //---- btnRemoveStaffSubmit ----
-            btnRemoveStaffSubmit.setText("Remove Staff Member");
-            btnRemoveStaffSubmit.addActionListener(e -> button1(e));
-            RemoveStaffContentPane.add(btnRemoveStaffSubmit, "cell 1 7 7 1");
-            RemoveStaff.setSize(500, 500);
-            RemoveStaff.setLocationRelativeTo(null);
-        }
+        //---- btnRemoveStaffSubmit ----
+        btnRemoveStaffSubmit.setText("Remove Staff Member");
+        btnRemoveStaffSubmit.addActionListener(e -> button1(e));
+        contentPane.add(btnRemoveStaffSubmit, new CC().cell(1, 7, 7, 1));
+        setSize(500, 500);
+        setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
-    private JFrame RemoveStaff;
     private JLabel lblRemoveStaff;
     private JComboBox cmbRemoveStaff;
     private JButton btnRemoveStaffSubmit;

@@ -13,65 +13,33 @@ new FormModel {
 			"$sizePolicy": 1
 			"defaultCloseOperation": 2
 			"alwaysOnTop": true
-			"title": "New Staff Member"
+			"title": "New Order"
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "lblNewStaffName"
-				"text": "Name"
+				name: "lblNewOrderItem"
+				"text": "Item"
+				"horizontalAlignment": 2
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 1 4 1,grow"
+				"value": "cell 1 2"
 			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "txtNewStaffName"
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "cmbNewOrderItem"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 4 1 4 1"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "lblNewStaffSurname"
-				"text": "Surname"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 2 3 1,grow"
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "txtNewStaffSurname"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 4 2 4 1"
+				"value": "cell 2 2 6 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "lblNewStaffCell"
-				"text": "Cellphone"
+				name: "lblNewOrderNotes"
+				"text": "Notes"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 3 5 1"
+				"value": "cell 1 4"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "txtNewStaffCell"
+				name: "txtNewOrderNotes"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 4 3 4 1"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "lblNewStaffPosition"
-				"text": "Position"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 4 3 1,grow"
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "txtNewStaffPosition"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 4 4 4 1"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "lblNewStaffWage"
-				"text": "Wage"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 5 4 1"
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "txtNewStaffWage"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 4 5 4 1"
+				"value": "cell 2 4 6 1"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "btnNewStaffSubmit"
-				"text": "Add Staff Member"
+				name: "btnNewOrderSubmit"
+				"text": "Place Order"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 7 7 1"

@@ -16,16 +16,17 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 public class RemoveMenuItem extends JFrame {
     public RemoveMenuItem() {
         initComponents();
-        comboBox1.setModel(MainScreen.menuArr.MenuComboLoad(comboBox1));
-        AutoCompleteDecorator.decorate(comboBox1);
+        cmbRemoveMenu.setModel(MainScreen.menuArr.MenuComboLoad(cmbRemoveMenu));
+        AutoCompleteDecorator.decorate(cmbRemoveMenu);
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        String remove = (String)comboBox1.getSelectedItem();
+        String remove = (String)cmbRemoveMenu.getSelectedItem();
         MainScreen.menuArr.removeMenuItem(remove);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();
+        ScreenBuild.mainScreen.saveJTables();
     }
 
     private void initComponents() {

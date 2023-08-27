@@ -1,5 +1,6 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -47,8 +48,9 @@ public class MenuArr {
     public void MenuDBRelod() {
         try {
             
-            ResultSet menueDB = dbObj.execQuerySet("SELECT Menu.ItemID, Menu.Name, Menu.Description, Menu.Price\n" + "FROM Menu;");
             int i = 0;
+            ResultSet menueDB = dbObj.execQuerySet("SELECT Menu.ItemID, Menu.Name, Menu.Description, Menu.Price\n" + "FROM Menu;");
+            
             
             while(menueDB.next()) {
                 
@@ -118,7 +120,7 @@ public class MenuArr {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
         for (int i = 0; i < numberMenu; i++) {
-            model.addElement(menuArr[i].getName());
+            model.addElement(menuArr[i].getMenueID() + " " + menuArr[i].getName());
         }
         return model;
     }
@@ -149,15 +151,15 @@ public class MenuArr {
     
     public void removeMenuItem(String item)
     {
+       
+        int idToRemove = Integer.parseInt(new Scanner(item).useDelimiter(" ").next());
         boolean found = false;
-        int idToRemove = -1;
         
         for (int i = 0; i < numberMenu; i++) {
             
-            if (menuArr[i].getName().equals(item) || found)
+            if (menuArr[i].getMenueID() == idToRemove || found)
             {
                 found = true;
-                idToRemove = menuArr[i].getMenueID();
                 menuArr[i] = menuArr[i+1];
             }
             
@@ -166,9 +168,11 @@ public class MenuArr {
         if (found)
         {
             numberMenu--;
-            dbObj.Insert("DELETE FROM Menu WHERE (Menu.ItemID=" + idToRemove + ");");
+            dbObj.Insert("DELETE * FROM Menu WHERE (Menu.ItemID=" + idToRemove + ");");
         }
         
     }
+    
+    
     
 }

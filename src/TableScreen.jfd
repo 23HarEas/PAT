@@ -34,7 +34,7 @@ new FormModel {
 							add( "" )
 							add( null )
 							add( null )
-							add( null )
+							add( false )
 						} )
 						add( new java.util.Vector {
 							add( null )
@@ -53,15 +53,15 @@ new FormModel {
 						add( null )
 						add( class java.lang.Boolean )
 					}, new java.util.Vector {
-						add( null )
-						add( null )
-						add( null )
-						add( null )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
 					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 55, 0, 70, true ) )
 						add( null )
-						add( null )
-						add( null )
-						add( null )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 70, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 70, true ) )
 					} )
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -142,18 +142,21 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnNewOrder"
 				"text": "New Order"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnNewOrder", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 11 7 2"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnRemoveOrder"
 				"text": "Remove Order"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRemoveOrder", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 13 7 2,grow"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnCloseTab"
 				"text": "Close Tab"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCloseTab", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 15 7 2,grow"
 			} )

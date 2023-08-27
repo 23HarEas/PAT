@@ -1,10 +1,16 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 import javax.swing.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 /*
- * Created by JFormDesigner on Mon Jul 31 20:41:09 CAT 2023
+ * Created by JFormDesigner on Sat Aug 26 15:19:29 CAT 2023
  */
 
 
@@ -12,37 +18,37 @@ import net.miginfocom.swing.*;
 /**
  * @author harri
  */
-public class NewMenuItem extends JFrame {
-    public NewMenuItem() {
+public class NewOrder extends JFrame {
+    public NewOrder() {
         initComponents();
+        cmbNewOrderItem.setModel(MainScreen.menuArr.MenuComboLoad(cmbNewOrderItem));
+        AutoCompleteDecorator.decorate(cmbNewOrderItem);
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        String name = txtNewMenuName.getText();
-        String description = txtNewMenuDescription.getText();
-        Double price = Double.parseDouble(txtNewMenuPrice.getText());
-        MainScreen.menuArr.newMenuItem(name, description, price);
+        int itemID = Integer.parseInt(new Scanner(cmbNewOrderItem.getSelectedItem()+"").useDelimiter(" ").next());
+        String notes = txtNewOrderNotes.getText();
+        int tabID = MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable);
+        
+        MainScreen.ordersArr.NewOrder(itemID, tabID, notes);
+        MainScreen.tableScreen.refreshTable();
         dispose();
-        ScreenBuild.mainScreen.refreshJTables();
-        ScreenBuild.mainScreen.saveJTables();
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
-        lblNewMenuName = new JLabel();
-        txtNewMenuName = new JTextField();
-        lblNewMenuDescription = new JLabel();
-        txtNewMenuDescription = new JTextField();
-        lblNewMenuPrice = new JLabel();
-        txtNewMenuPrice = new JTextField();
-        btnNewMenuSubmit = new JButton();
+        lblNewOrderItem = new JLabel();
+        cmbNewOrderItem = new JComboBox();
+        lblNewOrderNotes = new JLabel();
+        txtNewOrderNotes = new JTextField();
+        btnNewOrderSubmit = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setTitle("New Menu Item");
+        setTitle("New Order");
         Container contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
             new LC().fill().insets("dialog").hideMode(3).align("center", "center"),
@@ -69,25 +75,21 @@ public class NewMenuItem extends JFrame {
                 .shrink(0).fill().gap()
                 .shrink(0).fill()));
 
-        //---- lblNewMenuName ----
-        lblNewMenuName.setText("Item Name");
-        contentPane.add(lblNewMenuName, new CC().cell(1, 1, 4, 1).grow());
-        contentPane.add(txtNewMenuName, new CC().cell(4, 1, 4, 1));
+        //---- lblNewOrderItem ----
+        lblNewOrderItem.setText("Item");
+        lblNewOrderItem.setHorizontalAlignment(SwingConstants.LEFT);
+        contentPane.add(lblNewOrderItem, new CC().cell(1, 2));
+        contentPane.add(cmbNewOrderItem, new CC().cell(2, 2, 6, 1));
 
-        //---- lblNewMenuDescription ----
-        lblNewMenuDescription.setText("Item Description");
-        contentPane.add(lblNewMenuDescription, new CC().cell(1, 3, 4, 1));
-        contentPane.add(txtNewMenuDescription, new CC().cell(4, 3, 4, 1));
+        //---- lblNewOrderNotes ----
+        lblNewOrderNotes.setText("Notes");
+        contentPane.add(lblNewOrderNotes, new CC().cell(1, 4));
+        contentPane.add(txtNewOrderNotes, new CC().cell(2, 4, 6, 1));
 
-        //---- lblNewMenuPrice ----
-        lblNewMenuPrice.setText("Item Price");
-        contentPane.add(lblNewMenuPrice, new CC().cell(1, 5, 4, 1));
-        contentPane.add(txtNewMenuPrice, new CC().cell(4, 5, 4, 1));
-
-        //---- btnNewMenuSubmit ----
-        btnNewMenuSubmit.setText("Add Item");
-        btnNewMenuSubmit.addActionListener(e -> button1(e));
-        contentPane.add(btnNewMenuSubmit, new CC().cell(1, 7, 7, 1));
+        //---- btnNewOrderSubmit ----
+        btnNewOrderSubmit.setText("Place Order");
+        btnNewOrderSubmit.addActionListener(e -> button1(e));
+        contentPane.add(btnNewOrderSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);
         setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
@@ -95,12 +97,10 @@ public class NewMenuItem extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
-    private JLabel lblNewMenuName;
-    private JTextField txtNewMenuName;
-    private JLabel lblNewMenuDescription;
-    private JTextField txtNewMenuDescription;
-    private JLabel lblNewMenuPrice;
-    private JTextField txtNewMenuPrice;
-    private JButton btnNewMenuSubmit;
+    private JLabel lblNewOrderItem;
+    private JComboBox cmbNewOrderItem;
+    private JLabel lblNewOrderNotes;
+    private JTextField txtNewOrderNotes;
+    private JButton btnNewOrderSubmit;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

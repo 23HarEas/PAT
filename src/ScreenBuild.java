@@ -22,12 +22,14 @@ public class ScreenBuild{
     public static void main(String[] args) {
         // TODO code application logic here
         FlatIntelliJLaf.setup();
-        //new LoginScreen().setVisible(true);
-        //new MainScreen().setVisible(true);
         mainScreen = new MainScreen();
         mainScreen.setVisible(true);
-        loginScreen = new LoginScreen();
-        loginScreen.setVisible(true);
+        mainScreen.setBtnIcons();
+        
+        //loginScreen = new LoginScreen();
+        //loginScreen.setVisible(true);
+        
+        
     }
    
     

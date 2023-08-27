@@ -22,21 +22,39 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  * @author harri
  */
 public class MainScreen extends JFrame {
-        
+    
+    
     static StaffArr staffArr = new StaffArr(); 
     static MenuArr menuArr = new MenuArr();
     static OrdersArr ordersArr = new OrdersArr();
     static TabArr tabArr = new TabArr();
     static TableArr tableArr = new TableArr();
-    
-    
     static int workingTable = 0;
+    static TableScreen tableScreen;
+    
+    public void reloadTables()
+    {
+        MainScreen.tabArr.TabDBReload();
+        MainScreen.tableArr.TableDBReload();
+        MainScreen.menuArr.MenuDBRelod();
+        MainScreen.staffArr.StaffDBReload();
+        MainScreen.ordersArr.OrderDBReload();
+    }
     
     public void refreshJTables()
     {
         tblOrders.setModel(ordersArr.OrdersLoad(tblOrders));
         tblStaff.setModel(staffArr.StaffLoad(tblStaff));
         tblMenu.setModel(menuArr.MenuLoad(tblMenu));
+    }
+    
+    public void saveJTables()
+    {
+        menuArr.MenuSave(tblMenu);
+        staffArr.StaffSave(tblStaff);
+        
+        
+        refreshJTables();
     }
     
     public MainScreen() {
@@ -52,6 +70,7 @@ public class MainScreen extends JFrame {
         // TODO add your code here
         FlatIntelliJLaf.setup();
         new NewMenuItem().setVisible(true); 
+
     }
 
     private void createUIComponents() {
@@ -67,150 +86,154 @@ public class MainScreen extends JFrame {
 
     private void button9(ActionEvent e) {
         // TODO add your code here
-        tblStaff.setModel(staffArr.StaffLoad(tblStaff));
+        refreshJTables();
                 
     }
 
     private void button5(ActionEvent e) {
         // TODO add your code here
-        tblMenu.setModel(menuArr.MenuLoad(tblMenu));
+        refreshJTables();
     }
 
     private void button42(ActionEvent e) {
         // TODO add your code here
         workingTable = 1;
         FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true);       
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);    
     }
 
     private void button59(ActionEvent e) {
         // TODO add your code here
         workingTable = 2;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true);   
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);  
     }
 
     private void button43(ActionEvent e) {
         // TODO add your code here
         workingTable = 3;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button61(ActionEvent e) {
         // TODO add your code here
         workingTable = 4;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button44(ActionEvent e) {
         // TODO add your code here
         workingTable = 5;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button45(ActionEvent e) {
         // TODO add your code here
         workingTable = 6;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button46(ActionEvent e) {
         // TODO add your code here
         workingTable = 7;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);  
     }
 
     private void button56(ActionEvent e) {
         // TODO add your code here
         workingTable = 8;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);  
     }
 
     private void button57(ActionEvent e) {
         // TODO add your code here
         workingTable = 9;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button50(ActionEvent e) {
         // TODO add your code here
         workingTable = 10;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+        
     }
 
     private void button55(ActionEvent e) {
         // TODO add your code here
         workingTable = 11;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button47(ActionEvent e) {
         // TODO add your code here
         workingTable = 12;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button48(ActionEvent e) {
         // TODO add your code here
         workingTable = 13;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button60(ActionEvent e) {
         // TODO add your code here
         workingTable = 14;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button51(ActionEvent e) {
         // TODO add your code here
         workingTable = 15;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button52(ActionEvent e) {
         // TODO add your code here
         workingTable = 16;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button62(ActionEvent e) {
         // TODO add your code here
         workingTable = 17;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button53(ActionEvent e) {
         // TODO add your code here
         workingTable = 18;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button54(ActionEvent e) {
         // TODO add your code here
         workingTable = 19;
-        FlatIntelliJLaf.setup();
-        new TableScreen().setVisible(true); 
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true); 
     }
 
     private void button11(ActionEvent e) {
         // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new RemoveStaffItem().setVisible(true);
     }
 
     private void button3(ActionEvent e) {
@@ -221,10 +244,202 @@ public class MainScreen extends JFrame {
 
     private void button4(ActionEvent e) {
         // TODO add your code here
-        menuArr.MenuSave(tblMenu);
-        tblMenu.setModel(menuArr.MenuLoad(tblMenu));
+        saveJTables();
     }
 
+    private void btnMenuRemove(ActionEvent e) {
+        // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new RemoveMenuItem().setVisible(true);
+    }
+
+    private void btnStaffNew(ActionEvent e) {
+        // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new NewStaffItem().setVisible(true); 
+        
+    }
+
+    private void btnStaffSave(ActionEvent e) {
+        // TODO add your code here
+        saveJTables();
+    }
+
+    public void setBtnIcons()
+    {
+        
+        if (tableArr.getCurrentTabID(1) == 0)
+        {
+            btnTable1.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable1.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(2) == 0)
+        {
+            btnTable2.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable2.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(3) == 0)
+        {
+            btnTable3.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable3.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(4) == 0)
+        {
+            btnTable4.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable4.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(5) == 0)
+        {
+            btnTable5.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable5.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(6) == 0)
+        {
+            btnTable6.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable6.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(7) == 0)
+        {
+            btnTable7.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable7.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(8) == 0)
+        {
+            btnTable8.setIcon(new ImageIcon("Unocupied8Seat.png"));
+        }
+        else
+        {
+            btnTable8.setIcon(new ImageIcon("Ocupied8Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(9) == 0)
+        {
+            btnTable9.setIcon(new ImageIcon("Unocupied8Seat.png"));
+        }
+        else
+        {
+            btnTable9.setIcon(new ImageIcon("Ocupied8Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(10) == 0)
+        {
+            btnTable10.setIcon(new ImageIcon("Unocupied8Seat.png"));
+        }
+        else
+        {
+            btnTable10.setIcon(new ImageIcon("Ocupied8Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(11) == 0)
+        {
+            btnTable11.setIcon(new ImageIcon("Unocupied8Seat.png"));
+        }
+        else
+        {
+            btnTable11.setIcon(new ImageIcon("Ocupied8Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(12) == 0)
+        {
+            btnTable12.setIcon(new ImageIcon("Unocupied12Seat.png"));
+        }
+        else
+        {
+            btnTable12.setIcon(new ImageIcon("Ocupied12Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(13) == 0)
+        {
+            btnTable13.setIcon(new ImageIcon("Unocupied12Seat.png"));
+        }
+        else
+        {
+            btnTable13.setIcon(new ImageIcon("Ocupied12Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(14) == 0)
+        {
+            btnTable14.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable14.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(15) == 0)
+        {
+            btnTable15.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable15.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(16) == 0)
+        {
+            btnTable16.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable16.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(17) == 0)
+        {
+            btnTable17.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable17.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(18) == 0)
+        {
+            btnTable18.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable18.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+        
+        if (tableArr.getCurrentTabID(19) == 0)
+        {
+            btnTable19.setIcon(new ImageIcon("Unocupied4Seat.png"));
+        }
+        else
+        {
+            btnTable19.setIcon(new ImageIcon("Ocupied4Seat.png"));
+        }
+    }
+    
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
@@ -468,6 +683,7 @@ public class MainScreen extends JFrame {
 
                 //---- btnStaffNew ----
                 btnStaffNew.setText("New");
+                btnStaffNew.addActionListener(e -> btnStaffNew(e));
                 pnlStaff.add(btnStaffNew, new CC().cell(0, 18, 3, 2).growY());
 
                 //---- btnStaffRemove ----
@@ -482,6 +698,7 @@ public class MainScreen extends JFrame {
 
                 //---- btnStaffSave ----
                 btnStaffSave.setText("Save");
+                btnStaffSave.addActionListener(e -> btnStaffSave(e));
                 pnlStaff.add(btnStaffSave, new CC().cell(17, 18, 3, 2).growY());
             }
             tpnMainScreen.addTab("Staff", pnlStaff);
@@ -627,6 +844,7 @@ public class MainScreen extends JFrame {
                 btnTable1.setVerticalTextPosition(SwingConstants.BOTTOM);
                 btnTable1.setIconTextGap(0);
                 btnTable1.setMargin(new Insets(0, 0, 0, 0));
+                btnTable1.setBackground(UIManager.getColor("nb.output.input"));
                 btnTable1.addActionListener(e -> button42(e));
                 pnlTables.add(btnTable1, new CC().cell(0, 0));
 

@@ -1,9 +1,9 @@
-
-
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.*;
 import java.awt.event.*;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 import javax.swing.table.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
@@ -18,56 +18,93 @@ import net.miginfocom.swing.*;
  */
 public class TableScreen extends JFrame {
     public TableScreen() {
+        
+        if (MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable) == 0)
+        {
+            JOptionPane.showMessageDialog(rootPane, "No Active Tab, Creating New Tab");
+            MainScreen.tabArr.newTab(MainScreen.workingTable);
+        }    
+        
         initComponents();
         refreshTable();
+        ScreenBuild.mainScreen.setBtnIcons();
     }
 
-    private void refreshTable(){
+    public void refreshTable(){
+        
+        ScreenBuild.mainScreen.reloadTables();
+        
         int workingTable = MainScreen.workingTable;
         int currentTabID = MainScreen.tableArr.getCurrentTabID(workingTable);
         Tab currentTabObj = MainScreen.tabArr.getTabObj(currentTabID);
         Table currentTableObj = MainScreen.tableArr.getCurrentTableOBJ(workingTable);
         
-        
         setTitle("Table " + workingTable + " current tab");
-        textField1.setText("" + currentTabID);
-        textField2.setText(currentTableObj.getStaff());
-        textField3.setText("" + currentTabObj.getPax() + "/" + currentTableObj.getCapacity());
-        textField4.setText("" + currentTabObj.getTime().format(DateTimeFormatter.ofPattern("dd MMM hh:mm")));
-        textField8.setText("R" + MainScreen.ordersArr.CalcTabTotal(currentTabID, MainScreen.menuArr));
+        txtTab.setText("" + currentTabID);
+        txtStaff.setText(currentTableObj.getStaff());
+        txtPax.setText("" + currentTabObj.getPax() + "/" + currentTableObj.getCapacity());
+        txtTime.setText("" + currentTabObj.getTime().format(DateTimeFormatter.ofPattern("dd MMM HH:mm")));
+        txtTotal.setText("R" + MainScreen.ordersArr.CalcTabTotal(currentTabID, MainScreen.menuArr));
         if (currentTabObj instanceof BookingTab)
         {
-           textField5.setText("Booking");
+           txtType.setText("Booking");
            
-           label6.setVisible(true);
-           label7.setVisible(true);
-           textField6.setVisible(true);
-           textField7.setVisible(true);
+           txtBookingName.setVisible(true);
+           txtBookingPhone.setVisible(true);
+           lblBookingName.setVisible(true);
+           lblBookingPhone.setVisible(true);
            
-           textField6.setText(((BookingTab) currentTabObj).getName());
-           textField7.setText(((BookingTab) currentTabObj).getCellphoneNumber());
+           txtBookingName.setText(((BookingTab) currentTabObj).getName());
+           txtBookingPhone.setText(((BookingTab) currentTabObj).getCellphoneNumber());
            
         }
             
         else
         {
-            textField5.setText("Walk In");
+           txtType.setText("Walk In");
             
-            label6.setVisible(false);
-            label7.setVisible(false);
-            textField6.setVisible(false);
-            textField7.setVisible(false);
+           txtBookingName.setVisible(false);
+           txtBookingPhone.setVisible(false);
+           lblBookingName.setVisible(false);
+           lblBookingPhone.setVisible(false);
             
         }
             
         
         OrdersArr orderArr = MainScreen.ordersArr;
-        table1.setModel(orderArr.TabOrdersLoad(table1,currentTabID));
+        tblOrders.setModel(orderArr.TabOrdersLoad(tblOrders,currentTabID));
     }
     
     private void button1(ActionEvent e) {
         // TODO add your code here
         
+    }
+
+    private void btnNewOrder(ActionEvent e) {
+        // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new NewOrder().setVisible(true);
+    }
+
+    private void btnRemoveOrder(ActionEvent e) {
+        // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new RemoveOrder().setVisible(true);
+    }
+
+    private void btnCloseTab(ActionEvent e) {
+        // TODO add your code here
+        
+        int option = JOptionPane.showConfirmDialog(null, "Close Current Tab for Table " + MainScreen.workingTable , "Close Tab", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        
+        if (option == 0)
+        {
+            MainScreen.tableArr.closeTab(MainScreen.workingTable);
+            ScreenBuild.mainScreen.reloadTables();
+        }
+        
+        dispose();
+        ScreenBuild.mainScreen.setBtnIcons();
     }
 
     private void initComponents() {
@@ -167,7 +204,7 @@ public class TableScreen extends JFrame {
             //---- tblOrders ----
             tblOrders.setModel(new DefaultTableModel(
                 new Object[][] {
-                    {"", null, null, null},
+                    {"", null, null, false},
                     {null, null, null, null},
                 },
                 new String[] {
@@ -177,11 +214,25 @@ public class TableScreen extends JFrame {
                 Class<?>[] columnTypes = new Class<?>[] {
                     Object.class, Object.class, Object.class, Boolean.class
                 };
+                boolean[] columnEditable = new boolean[] {
+                    false, false, false, false
+                };
                 @Override
                 public Class<?> getColumnClass(int columnIndex) {
                     return columnTypes[columnIndex];
                 }
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return columnEditable[columnIndex];
+                }
             });
+            {
+                TableColumnModel cm = tblOrders.getColumnModel();
+                cm.getColumn(0).setMaxWidth(70);
+                cm.getColumn(0).setPreferredWidth(55);
+                cm.getColumn(2).setMaxWidth(70);
+                cm.getColumn(3).setMaxWidth(70);
+            }
             scrOrders.setViewportView(tblOrders);
         }
         contentPane.add(scrOrders, new CC().cell(9, 1, 17, 18));
@@ -236,14 +287,17 @@ public class TableScreen extends JFrame {
 
         //---- btnNewOrder ----
         btnNewOrder.setText("New Order");
+        btnNewOrder.addActionListener(e -> btnNewOrder(e));
         contentPane.add(btnNewOrder, new CC().cell(1, 11, 7, 2));
 
         //---- btnRemoveOrder ----
         btnRemoveOrder.setText("Remove Order");
+        btnRemoveOrder.addActionListener(e -> btnRemoveOrder(e));
         contentPane.add(btnRemoveOrder, new CC().cell(1, 13, 7, 2).grow());
 
         //---- btnCloseTab ----
         btnCloseTab.setText("Close Tab");
+        btnCloseTab.addActionListener(e -> btnCloseTab(e));
         contentPane.add(btnCloseTab, new CC().cell(1, 15, 7, 2).grow());
 
         //---- lblTotal ----
