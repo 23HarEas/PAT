@@ -145,7 +145,6 @@ public class TabArr {
             
             if (!(tabArr[i] == null) && tabArr[i].isBooking() && tabArr[i].getTime().isAfter(LocalDateTime.now().minusHours(1)))
             {
-                System.out.println("123");
                 model.addElement(tabArr[i].getTabID() + " " + ((BookingTab)tabArr[i]).getName() + ", Table: " + tabArr[i].getTableNumber());
             
             }
@@ -170,9 +169,10 @@ public class TabArr {
         
     }
     
-    public void newBooking()
+    public void newBooking(int tableNumber, LocalDateTime time, String name, String cellphone, int pax)
     {
-        
+        dbObj.Insert("INSERT INTO [Tab] (TableNumber, [Time], Name, CellphoneNumber, Booking, Pax) VALUES ("+ tableNumber +", \"" + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\",  \"" + name + "\"  , \"" + cellphone +  "\", TRUE, " + pax + " );");
+        numberTab++;
     }
     
     

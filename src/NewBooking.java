@@ -21,10 +21,14 @@ public class NewBooking extends JFrame {
 
     public NewBooking() {
         initComponents();
+        cmbNewBookingTable.setModel(MainScreen.tableArr.TableComboLoad(cmbNewBookingTable));
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
+        MainScreen.tabArr.newBooking(Integer.parseInt(""+cmbNewBookingTable.getSelectedItem()),dtpNewBookingTime.getDateTimePermissive() , txtNewBookingName.getText(), txtNewBookingCellphone.getText(), Integer.parseInt(""+cmbNewBookingPax.getSelectedItem()));
+        
+        
     }
 
     private void createUIComponents() {
@@ -40,6 +44,14 @@ public class NewBooking extends JFrame {
         dateSettings.setDateRangeLimits(LocalDate.now(), LocalDate.MAX);
         dtpNewBookingTime.datePicker.setDateToToday();
         
+    }
+
+    private void cmbNewBookingTableItemStateChanged(ItemEvent e) {
+        // TODO add your code here
+        cmbNewBookingPax.setModel(MainScreen.tableArr.TablePax(cmbNewBookingPax, Integer.parseInt(""+cmbNewBookingTable.getSelectedItem())));
+        ScreenBuild.mainScreen.reloadTables();
+        dispose();
+        MainScreen.viewBookings.refreshBookingTable();
     }
 
     private void initComponents() {
@@ -61,7 +73,7 @@ public class NewBooking extends JFrame {
         //======== this ========
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setTitle("New Staff Member");
+        setTitle("New Booking");
         Container contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
             new LC().fill().insets("dialog").hideMode(3).align("center", "center"),
@@ -91,6 +103,9 @@ public class NewBooking extends JFrame {
         //---- lblNewBookingTable ----
         lblNewBookingTable.setText("Table");
         contentPane.add(lblNewBookingTable, new CC().cell(1, 1, 2, 1).grow());
+
+        //---- cmbNewBookingTable ----
+        cmbNewBookingTable.addItemListener(e -> cmbNewBookingTableItemStateChanged(e));
         contentPane.add(cmbNewBookingTable, new CC().cell(3, 1, 5, 1));
 
         //---- lblNewBookingName ----
@@ -118,7 +133,7 @@ public class NewBooking extends JFrame {
         contentPane.add(dtpNewBookingTime, new CC().cell(3, 5, 5, 1));
 
         //---- btnNewBookingSubmit ----
-        btnNewBookingSubmit.setText("Add Staff Member");
+        btnNewBookingSubmit.setText("Add Booking");
         btnNewBookingSubmit.addActionListener(e -> button1(e));
         contentPane.add(btnNewBookingSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);

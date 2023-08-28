@@ -13,7 +13,7 @@ new FormModel {
 			"$sizePolicy": 1
 			"defaultCloseOperation": 2
 			"alwaysOnTop": true
-			"title": "New Staff Member"
+			"title": "New Booking"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "lblNewBookingTable"
 				"text": "Table"
@@ -22,6 +22,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "cmbNewBookingTable"
+				addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "cmbNewBookingTableItemStateChanged", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 3 1 5 1"
 			} )
@@ -76,7 +77,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnNewBookingSubmit"
-				"text": "Add Staff Member"
+				"text": "Add Booking"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 7 7 1"

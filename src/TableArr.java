@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -83,6 +85,33 @@ public class TableArr {
     public void closeTab(int tableNumber)
     {
         dbObj.Insert("UPDATE [Table] SET [Table].CurrentTabID = 0 WHERE (((Table.TableNumber)= " + tableNumber + " ));");
+    }
+    
+    public DefaultComboBoxModel TableComboLoad(JComboBox comboBox)
+    {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
+        model.removeAllElements();
+        for (int i = 0; i < numberTables; i++) {
+            
+            if (!(tableArr[i] == null))
+            {
+                model.addElement(tableArr[i].getTableNumber());
+            
+            }
+        }
+        return model;
+    }
+    
+    public DefaultComboBoxModel TablePax(JComboBox comboBox, int table)
+    {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
+        model.removeAllElements();
+        
+        for (int i = 0; i < tableArr[table].getCapacity(); i++) {
+            model.addElement(i+1);
+        }
+        
+        return model;
     }
     
 }
