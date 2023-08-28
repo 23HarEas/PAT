@@ -463,8 +463,22 @@ new FormModel {
 						name: "btnTableNewBooking"
 						"text": "New Booking"
 						"margin": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTableNewBooking", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 5 2 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "btnTableLoadBooking"
+						"text": "Load Booking"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 2 5 2 1"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "btnTableViewBooking"
+						"text": "View Bookings"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTableViewBooking", true ) )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 5 5 2 1"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "Tables"

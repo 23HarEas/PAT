@@ -1,5 +1,7 @@
 
 import java.time.LocalDateTime;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -28,7 +30,7 @@ public class BookingTab extends Tab{
         this.cellphoneNumber = cellphoneNumber;
     }
     
-
+   
     
     
     

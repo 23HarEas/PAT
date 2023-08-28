@@ -31,6 +31,7 @@ public class MainScreen extends JFrame {
     static TableArr tableArr = new TableArr();
     static int workingTable = 0;
     static TableScreen tableScreen;
+    static ViewBookings viewBookings;
     
     public void reloadTables()
     {
@@ -439,6 +440,18 @@ public class MainScreen extends JFrame {
             btnTable19.setIcon(new ImageIcon("Ocupied4Seat.png"));
         }
     }
+
+    private void btnTableViewBooking(ActionEvent e) {
+        // TODO add your code here
+        viewBookings = new ViewBookings();
+        viewBookings.setVisible(true);
+    }
+
+    private void btnTableNewBooking(ActionEvent e) {
+        // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new NewBooking().setVisible(true); 
+    }
     
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -484,6 +497,8 @@ public class MainScreen extends JFrame {
         btnTable12 = new JButton();
         btnTable13 = new JButton();
         btnTableNewBooking = new JButton();
+        btnTableLoadBooking = new JButton();
+        btnTableViewBooking = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -844,7 +859,6 @@ public class MainScreen extends JFrame {
                 btnTable1.setVerticalTextPosition(SwingConstants.BOTTOM);
                 btnTable1.setIconTextGap(0);
                 btnTable1.setMargin(new Insets(0, 0, 0, 0));
-                btnTable1.setBackground(UIManager.getColor("nb.output.input"));
                 btnTable1.addActionListener(e -> button42(e));
                 pnlTables.add(btnTable1, new CC().cell(0, 0));
 
@@ -1029,7 +1043,17 @@ public class MainScreen extends JFrame {
                 //---- btnTableNewBooking ----
                 btnTableNewBooking.setText("New Booking");
                 btnTableNewBooking.setMargin(null);
+                btnTableNewBooking.addActionListener(e -> btnTableNewBooking(e));
                 pnlTables.add(btnTableNewBooking, new CC().cell(0, 5, 2, 1));
+
+                //---- btnTableLoadBooking ----
+                btnTableLoadBooking.setText("Load Booking");
+                pnlTables.add(btnTableLoadBooking, new CC().cell(2, 5, 2, 1));
+
+                //---- btnTableViewBooking ----
+                btnTableViewBooking.setText("View Bookings");
+                btnTableViewBooking.addActionListener(e -> btnTableViewBooking(e));
+                pnlTables.add(btnTableViewBooking, new CC().cell(5, 5, 2, 1));
             }
             tpnMainScreen.addTab("Tables", pnlTables);
         }
@@ -1082,5 +1106,7 @@ public class MainScreen extends JFrame {
     private JButton btnTable12;
     private JButton btnTable13;
     private JButton btnTableNewBooking;
+    private JButton btnTableLoadBooking;
+    private JButton btnTableViewBooking;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

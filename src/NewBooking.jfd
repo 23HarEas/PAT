@@ -1,0 +1,89 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "11.0.18" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "fill,insets dialog,hidemode 3,align center center"
+			"$columnConstraints": "[shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill]"
+			"$rowConstraints": "[shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill]"
+		} ) {
+			name: "this"
+			"$locationPolicy": 1
+			"$sizePolicy": 1
+			"defaultCloseOperation": 2
+			"alwaysOnTop": true
+			"title": "New Staff Member"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblNewBookingTable"
+				"text": "Table"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 1 2 1,grow"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "cmbNewBookingTable"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 3 1 5 1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblNewBookingName"
+				"text": "Name"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 2 2 1,grow"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtNewBookingName"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 3 2 5 1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblNewBookingCellphone"
+				"text": "Cellphone"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 3 2 1"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtNewBookingCellphone"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 3 3 5 1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblNewBookingPax"
+				"text": "Pax"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 4 2 1,grow"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "cmbNewBookingPax"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 3 4 5 1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblNewBookingTime"
+				"text": "Time"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 5 2 1"
+			} )
+			add( new FormComponent( "com.github.lgooddatepicker.components.DateTimePicker" ) {
+				name: "dtpNewBookingTime"
+				"preferredSize": new java.awt.Dimension( 0, 0 )
+				"minimumSize": new java.awt.Dimension( 0, 0 )
+				auxiliary() {
+					"JavaCodeGenerator.customCreate": true
+				}
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 3 5 5 1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnNewBookingSubmit"
+				"text": "Add Staff Member"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 7 7 1"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 500, 500 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

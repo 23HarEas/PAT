@@ -3,8 +3,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,7 +22,8 @@ import java.util.logging.Logger;
  */
 public class TabArr {
     
-    private Tab tabArr[] = new Tab[100];
+    private int tabArrSize = 100;
+    private Tab tabArr[] = new Tab[tabArrSize];
     private int numberTab = 0;
     Connector dbObj = new Connector();
     
@@ -57,6 +63,10 @@ public class TabArr {
     }
     
     public void TabDBReload(){
+        
+            for (int i = 0; i < tabArrSize; i++) {
+            tabArr[i] = null;
+        }
         
         try {
             ResultSet tabDB = dbObj.execQuerySet("SELECT Tab.TabID, Tab.TableNumber, Tab.Time, Tab.Pax, Tab.Booking, Tab.Name, Tab.CellphoneNumber\n" + "FROM (Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID) INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber;");
@@ -112,6 +122,58 @@ public class TabArr {
         numberTab++;
     }
     
+    public DefaultTableModel BookingLoad(JTable table)
+    {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < tabArrSize; i++) {
+            
+            if (!(tabArr[i] == null) && tabArr[i].isBooking() && tabArr[i].getTime().isAfter(LocalDateTime.now().minusHours(1)))
+            {
+                model.addRow(new Object[]{tabArr[i].getTabID(), ((BookingTab)tabArr[i]).getName(), ((BookingTab)tabArr[i]).getCellphoneNumber(), tabArr[i].getPax(), tabArr[i].getTime().format(DateTimeFormatter.ofPattern("dd MMM HH:mm")), tabArr[i].getTableNumber()});
+            
+            }
+        }
+        return model;
+    }
+    
+    public DefaultComboBoxModel BookingComboLoad(JComboBox comboBox)
+    {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
+        model.removeAllElements();
+        for (int i = 0; i < tabArrSize; i++) {
+            
+            if (!(tabArr[i] == null) && tabArr[i].isBooking() && tabArr[i].getTime().isAfter(LocalDateTime.now().minusHours(1)))
+            {
+                System.out.println("123");
+                model.addElement(tabArr[i].getTabID() + " " + ((BookingTab)tabArr[i]).getName() + ", Table: " + tabArr[i].getTableNumber());
+            
+            }
+        }
+        return model;
+    }
+    
+    public void removeBooking(String item)
+    {
+       
+        int idToRemove = Integer.parseInt(new Scanner(item).useDelimiter(" ").next());
+        boolean found = false;
+        
+        for (int i = 0; i < tabArrSize; i++) {
+            
+            if (!(tabArr[i] == null) && tabArr[i].getTabID() == idToRemove)
+            {
+                dbObj.Insert("DELETE * FROM Tab WHERE (Tab.TabID=" + idToRemove + ");");
+            }
+            
+        }
+        
+    }
+    
+    public void newBooking()
+    {
+        
+    }
     
     
 }

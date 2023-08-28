@@ -1,0 +1,104 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "11.0.18" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "fill,insets dialog,hidemode 3,align center center"
+			"$columnConstraints": "[140,shrink 0,fill][140,shrink 0,fill][147,shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill]"
+			"$rowConstraints": "[392,shrink 0,fill][14,shrink 0,fill]"
+		} ) {
+			name: "this"
+			"$locationPolicy": 1
+			"$sizePolicy": 1
+			"defaultCloseOperation": 2
+			"alwaysOnTop": true
+			"title": "Upcoming Bookings"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrBookings"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "tblBookings"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "Booking ID" )
+						add( "Name" )
+						add( "Cellphone" )
+						add( "Pax" )
+						add( "Time" )
+						add( "Table" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( false )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, true ) )
+						add( null )
+						add( null )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 110, 110, 110, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, true ) )
+					} )
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0 16 1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnBookingsSave"
+				"text": "Save"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnBookingsRefresh"
+				"text": "Refresh"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBookingsRefresh", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnBookingsRemove"
+				"text": "Remove Booking"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBookingsRemove", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 2 1"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 1000, 500 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}
