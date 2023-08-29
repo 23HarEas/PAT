@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
-import static javax.swing.JOptionPane.YES_NO_OPTION;
 import javax.swing.table.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
@@ -232,6 +231,8 @@ public class TableScreen extends JFrame {
                 cm.getColumn(2).setPreferredWidth(100);
                 cm.getColumn(3).setPreferredWidth(70);
             }
+            tblOrders.setShowHorizontalLines(true);
+            tblOrders.setShowVerticalLines(true);
             scrOrders.setViewportView(tblOrders);
         }
         contentPane.add(scrOrders, new CC().cell(9, 1, 17, 18));

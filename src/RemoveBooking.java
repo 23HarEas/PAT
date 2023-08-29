@@ -1,19 +1,20 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+
 /*
  * Created by JFormDesigner on Mon Aug 28 17:03:27 CAT 2023
  */
-
-
 
 /**
  * @author harri
  */
 public class RemoveBooking extends JFrame {
+
     public RemoveBooking() {
         initComponents();
         cmbRemoveBooking.setModel(MainScreen.tabArr.BookingComboLoad(cmbRemoveBooking));
@@ -22,7 +23,7 @@ public class RemoveBooking extends JFrame {
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        String remove = (String)cmbRemoveBooking.getSelectedItem();
+        String remove = (String) cmbRemoveBooking.getSelectedItem();
         MainScreen.tabArr.removeBooking(remove);
         dispose();
         ScreenBuild.mainScreen.reloadTables();

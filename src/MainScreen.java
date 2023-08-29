@@ -1,16 +1,10 @@
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.*;
 import javax.swing.*;
-import javax.swing.border.*;
 import javax.swing.table.*;
-import com.formdev.flatlaf.ui.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
-import org.jdesktop.swingx.*;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
         
 /*
  * Created by JFormDesigner on Thu Jul 20 19:34:24 CAT 2023
@@ -65,10 +59,10 @@ public class MainScreen extends JFrame {
         tblStaff.getColumnModel().getColumn(2).setCellEditor(new NonBlankCellEditor());
         tblStaff.getColumnModel().getColumn(3).setCellEditor(new NonBlankCellEditor());
         tblStaff.getColumnModel().getColumn(4).setCellEditor(new NonBlankCellEditor());
-        tblStaff.getColumnModel().getColumn(5).setCellEditor(new NonBlankDecimalCellEditor());
+        tblStaff.getColumnModel().getColumn(5).setCellEditor(new NonBlankIntegerCellEditor());
         tblMenu.getColumnModel().getColumn(1).setCellEditor(new NonBlankCellEditor());
         tblMenu.getColumnModel().getColumn(2).setCellEditor(new NonBlankCellEditor());
-        tblMenu.getColumnModel().getColumn(3).setCellEditor(new NonBlankDecimalCellEditor());
+        tblMenu.getColumnModel().getColumn(3).setCellEditor(new NonBlankIntegerCellEditor());
         
         
         refreshJTables();
@@ -593,6 +587,7 @@ public class MainScreen extends JFrame {
                     //---- tblOrders ----
                     tblOrders.setModel(new DefaultTableModel(
                         new Object[][] {
+                            {null, false, null, null, "", null, null},
                         },
                         new String[] {
                             "Order ID", "Status", "Order", "Table", "Time", "Staff", "Notes"
@@ -615,8 +610,11 @@ public class MainScreen extends JFrame {
                     });
                     {
                         TableColumnModel cm = tblOrders.getColumnModel();
-                        cm.getColumn(0).setPreferredWidth(75);
-                        cm.getColumn(1).setPreferredWidth(50);
+                        cm.getColumn(0).setMaxWidth(65);
+                        cm.getColumn(1).setMaxWidth(65);
+                        cm.getColumn(3).setMaxWidth(55);
+                        cm.getColumn(4).setMaxWidth(80);
+                        cm.getColumn(5).setMaxWidth(100);
                     }
                     tblOrders.setAutoCreateRowSorter(true);
                     tblOrders.setShowHorizontalLines(true);
@@ -694,6 +692,7 @@ public class MainScreen extends JFrame {
                     tblStaff.setShowVerticalLines(true);
                     tblStaff.setModel(new DefaultTableModel(
                         new Object[][] {
+                            {null, null, null, null, null, null},
                         },
                         new String[] {
                             "Staff ID", "Name", "Surname", "CellNo", "Position", "Wage"
@@ -716,8 +715,9 @@ public class MainScreen extends JFrame {
                     });
                     {
                         TableColumnModel cm = tblStaff.getColumnModel();
-                        cm.getColumn(0).setMaxWidth(80);
-                        cm.getColumn(0).setPreferredWidth(80);
+                        cm.getColumn(0).setMaxWidth(65);
+                        cm.getColumn(3).setMaxWidth(100);
+                        cm.getColumn(5).setMaxWidth(65);
                     }
                     tblStaff.setAutoCreateRowSorter(true);
                     scrStaffTbl.setViewportView(tblStaff);
@@ -802,6 +802,7 @@ public class MainScreen extends JFrame {
                     tblMenu.setAutoCreateRowSorter(true);
                     tblMenu.setModel(new DefaultTableModel(
                         new Object[][] {
+                            {null, null, null, null},
                         },
                         new String[] {
                             "Item ID", "Item", "Description", "Price"
@@ -825,10 +826,8 @@ public class MainScreen extends JFrame {
                     {
                         TableColumnModel cm = tblMenu.getColumnModel();
                         cm.getColumn(0).setResizable(false);
-                        cm.getColumn(0).setMaxWidth(80);
-                        cm.getColumn(0).setPreferredWidth(80);
-                        cm.getColumn(3).setMaxWidth(80);
-                        cm.getColumn(3).setPreferredWidth(80);
+                        cm.getColumn(0).setMaxWidth(65);
+                        cm.getColumn(3).setMaxWidth(65);
                     }
                     tblMenu.setShowVerticalLines(true);
                     tblMenu.setShowHorizontalLines(true);

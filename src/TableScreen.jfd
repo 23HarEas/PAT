@@ -63,6 +63,8 @@ new FormModel {
 						add( new com.jformdesigner.model.SwingTableColumn( null, 100, 0, 0, true ) )
 						add( new com.jformdesigner.model.SwingTableColumn( null, 70, 0, 0, true ) )
 					} )
+					"showHorizontalLines": true
+					"showVerticalLines": true
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 9 1 17 18"

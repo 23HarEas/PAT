@@ -1,35 +1,32 @@
+
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.github.lgooddatepicker.components.DatePickerSettings;
-import com.github.lgooddatepicker.components.DateTimePicker;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import com.github.lgooddatepicker.tableeditors.DateTimeTableEditor;
 import java.awt.*;
 import java.awt.event.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import javax.swing.*;
 import javax.swing.table.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
+
 /*
  * Created by JFormDesigner on Mon Aug 28 15:59:27 CAT 2023
  */
-
-
 
 /**
  * @author harri
  */
 public class ViewBookings extends JFrame {
+
     public ViewBookings() {
         initComponents();
-        
+
         tblBookings.getColumnModel().getColumn(1).setCellEditor(new NonBlankCellEditor());
         tblBookings.getColumnModel().getColumn(2).setCellEditor(new NonBlankCellEditor());
         tblBookings.getColumnModel().getColumn(3).setCellEditor(new NonBlankIntegerCellEditor());
         tblBookings.getColumnModel().getColumn(5).setCellEditor(new NonBlankIntegerCellEditor());
-        
+
         DateTimeTableEditor dateTimeCellEditor = new DateTimeTableEditor();
         dateTimeCellEditor.getTimePickerSettings().use24HourClockFormat();
         dateTimeCellEditor.getDatePickerSettings().setAllowKeyboardEditing(false);
@@ -38,25 +35,23 @@ public class ViewBookings extends JFrame {
         dateTimeCellEditor.getTimePickerSettings().setAllowEmptyTimes(false);
         dateTimeCellEditor.getTimePickerSettings().generatePotentialMenuTimes(TimePickerSettings.TimeIncrement.FifteenMinutes, null, null);
         dateTimeCellEditor.getDatePickerSettings().setDateRangeLimits(LocalDate.now(), LocalDate.MAX);
-        
+
         DateTimeTableEditor dateTimeRenderer = new DateTimeTableEditor();
         dateTimeRenderer.getTimePickerSettings().use24HourClockFormat();
-        
+
         tblBookings.getColumnModel().getColumn(4).setCellRenderer(dateTimeRenderer);
         tblBookings.getColumnModel().getColumn(4).setCellEditor(dateTimeCellEditor);
         refreshBookingTable();
-        
-    }
 
+    }
 
     private void btnBookingsRemove(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();
         new RemoveBooking().setVisible(true);
     }
-    
-    public void refreshBookingTable()
-    {
+
+    public void refreshBookingTable() {
         ScreenBuild.mainScreen.reloadTables();
         tblBookings.setModel(MainScreen.tabArr.BookingLoad(tblBookings));
     }
@@ -76,9 +71,9 @@ public class ViewBookings extends JFrame {
     private void btnBookingsNew(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();
-        new NewBooking().setVisible(true); 
+        new NewBooking().setVisible(true);
     }
-    
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Harrison Easter (MRS CLI EASTER)
@@ -150,15 +145,15 @@ public class ViewBookings extends JFrame {
             {
                 TableColumnModel cm = tblBookings.getColumnModel();
                 cm.getColumn(0).setResizable(false);
-                cm.getColumn(0).setMinWidth(80);
-                cm.getColumn(0).setMaxWidth(80);
-                cm.getColumn(0).setPreferredWidth(80);
-                cm.getColumn(3).setMinWidth(80);
-                cm.getColumn(3).setPreferredWidth(80);
+                cm.getColumn(0).setMaxWidth(65);
+                cm.getColumn(2).setMinWidth(150);
+                cm.getColumn(2).setMaxWidth(150);
+                cm.getColumn(3).setMaxWidth(65);
+                cm.getColumn(3).setPreferredWidth(65);
                 cm.getColumn(4).setMinWidth(250);
+                cm.getColumn(4).setMaxWidth(250);
                 cm.getColumn(4).setPreferredWidth(250);
-                cm.getColumn(5).setMinWidth(80);
-                cm.getColumn(5).setPreferredWidth(80);
+                cm.getColumn(5).setMaxWidth(65);
             }
             tblBookings.setShowHorizontalLines(true);
             tblBookings.setShowVerticalLines(true);

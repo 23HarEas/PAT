@@ -18,6 +18,7 @@ import java.awt.event.KeyEvent;
 import java.util.EventObject;
 
 public class NonBlankIntegerCellEditor extends DefaultCellEditor {
+
     private JTextField textField;
     private Border defaultBorder;
 

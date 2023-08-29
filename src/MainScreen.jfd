@@ -25,7 +25,17 @@ new FormModel {
 						name: "scrOrdersTbl"
 						add( new FormComponent( "javax.swing.JTable" ) {
 							name: "tblOrders"
-							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+								add( new java.util.Vector {
+									add( null )
+									add( false )
+									add( null )
+									add( null )
+									add( "" )
+									add( null )
+									add( null )
+								} )
+							}, new java.util.Vector {
 								add( "Order ID" )
 								add( "Status" )
 								add( "Order" )
@@ -50,12 +60,12 @@ new FormModel {
 								add( false )
 								add( false )
 							}, new java.util.Vector {
-								add( new com.jformdesigner.model.SwingTableColumn( null, 75, 0, 0, true ) )
-								add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 0, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 65, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 65, true ) )
 								add( null )
-								add( null )
-								add( null )
-								add( null )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 55, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 80, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 100, true ) )
 								add( null )
 							} )
 							"autoCreateRowSorter": true
@@ -94,7 +104,16 @@ new FormModel {
 							name: "tblStaff"
 							"showHorizontalLines": true
 							"showVerticalLines": true
-							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+								add( new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+								} )
+							}, new java.util.Vector {
 								add( "Staff ID" )
 								add( "Name" )
 								add( "Surname" )
@@ -116,12 +135,12 @@ new FormModel {
 								add( null )
 								add( null )
 							}, new java.util.Vector {
-								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 65, true ) )
 								add( null )
 								add( null )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 100, true ) )
 								add( null )
-								add( null )
-								add( null )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 65, true ) )
 							} )
 							"autoCreateRowSorter": true
 						} )
@@ -170,7 +189,14 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTable" ) {
 							name: "tblMenu"
 							"autoCreateRowSorter": true
-							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+								add( new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+								} )
+							}, new java.util.Vector {
 								add( "Item ID" )
 								add( "Item" )
 								add( "Description" )
@@ -186,10 +212,10 @@ new FormModel {
 								add( null )
 								add( null )
 							}, new java.util.Vector {
-								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, false ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 65, false ) )
 								add( null )
 								add( null )
-								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 0, 80, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 65, true ) )
 							} )
 							"showVerticalLines": true
 							"showHorizontalLines": true
