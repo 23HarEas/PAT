@@ -27,7 +27,9 @@ public class NewBooking extends JFrame {
     private void button1(ActionEvent e) {
         // TODO add your code here
         MainScreen.tabArr.newBooking(Integer.parseInt(""+cmbNewBookingTable.getSelectedItem()),dtpNewBookingTime.getDateTimePermissive() , txtNewBookingName.getText(), txtNewBookingCellphone.getText(), Integer.parseInt(""+cmbNewBookingPax.getSelectedItem()));
-        
+        dispose();
+        ScreenBuild.mainScreen.reloadTables();
+        MainScreen.viewBookings.refreshBookingTable();
         
     }
 
@@ -50,7 +52,6 @@ public class NewBooking extends JFrame {
         // TODO add your code here
         cmbNewBookingPax.setModel(MainScreen.tableArr.TablePax(cmbNewBookingPax, Integer.parseInt(""+cmbNewBookingTable.getSelectedItem())));
         ScreenBuild.mainScreen.reloadTables();
-        dispose();
         MainScreen.viewBookings.refreshBookingTable();
     }
 

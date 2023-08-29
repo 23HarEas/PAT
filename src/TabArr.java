@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -130,7 +131,7 @@ public class TabArr {
             
             if (!(tabArr[i] == null) && tabArr[i].isBooking() && tabArr[i].getTime().isAfter(LocalDateTime.now().minusHours(1)))
             {
-                model.addRow(new Object[]{tabArr[i].getTabID(), ((BookingTab)tabArr[i]).getName(), ((BookingTab)tabArr[i]).getCellphoneNumber(), tabArr[i].getPax(), tabArr[i].getTime().format(DateTimeFormatter.ofPattern("dd MMM HH:mm")), tabArr[i].getTableNumber()});
+                model.addRow(new Object[]{tabArr[i].getTabID(), ((BookingTab)tabArr[i]).getName(), ((BookingTab)tabArr[i]).getCellphoneNumber(), tabArr[i].getPax(), tabArr[i].getTime(), tabArr[i].getTableNumber()});
             
             }
         }
@@ -175,5 +176,45 @@ public class TabArr {
         numberTab++;
     }
     
+    public void saveBooking(JTable bookingTable)
+    {
+    
+        for (int i = 0; i < bookingTable.getModel().getRowCount(); i++) {
+                
+                int bookingID = Integer.parseInt(""+bookingTable.getValueAt(i, 0));
+                String name = (String)bookingTable.getValueAt(i, 1);
+                String cellphone = (String)bookingTable.getValueAt(i, 2);
+                int pax = Integer.parseInt(""+bookingTable.getValueAt(i, 3));
+                LocalDateTime time = (LocalDateTime)bookingTable.getValueAt(i, 4);
+                int table = Integer.parseInt(""+bookingTable.getValueAt(i, 5));
+            
+                dbObj.Insert("UPDATE [Tab] SET TableNumber = " + table + ", Time = \"" + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\" , Name = \"" + name + "\", CellphoneNumber = \"" + cellphone + "\" , Pax = \"" + pax + "\"  WHERE (TabID = " + bookingID + ");");
+                
+            }
+    
+    }
+    
+    public void loadBooking(String item)
+    {
+        
+        Scanner sc = new Scanner(item).useDelimiter(" ");
+        int tabID = Integer.parseInt(sc.next());
+        sc.next();
+        sc.next();
+        int table = Integer.parseInt(sc.next());
+        
+        
+        if (MainScreen.tableArr.getCurrentTabID(table) == 0)
+        {
+            dbObj.Insert("UPDATE [Table] SET [Table].CurrentTabID = " + tabID + " WHERE (((Table.TableNumber)= " + table + " ));");
+            ScreenBuild.mainScreen.reloadTables();
+            ScreenBuild.mainScreen.setBtnIcons();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please close existing tab for Table: " + table);
+        }
+        
+    }
     
 }

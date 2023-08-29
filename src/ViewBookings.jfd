@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "fill,insets dialog,hidemode 3,align center center"
-			"$columnConstraints": "[140,shrink 0,fill][140,shrink 0,fill][147,shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill]"
+			"$columnConstraints": "[150,shrink 0,fill][150,shrink 0,fill][150,shrink 0,fill][150,shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill][shrink 0,fill]"
 			"$rowConstraints": "[392,shrink 0,fill][14,shrink 0,fill]"
 		} ) {
 			name: "this"
@@ -51,12 +51,12 @@ new FormModel {
 						add( "Time" )
 						add( "Table" )
 					}, new java.util.Vector {
+						add( class java.lang.Integer )
 						add( null )
 						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
+						add( class java.lang.Integer )
+						add( class java.lang.Object )
+						add( class java.lang.Integer )
 					}, new java.util.Vector {
 						add( false )
 						add( null )
@@ -65,20 +65,23 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
-						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, false ) )
 						add( null )
 						add( null )
-						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, true ) )
-						add( new com.jformdesigner.model.SwingTableColumn( null, 110, 110, 110, true ) )
-						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 0, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 250, 250, 0, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 0, true ) )
 					} )
+					"showHorizontalLines": true
+					"showVerticalLines": true
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 0 16 1"
+				"value": "cell 0 0 15 1"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnBookingsSave"
 				"text": "Save"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBookingsSave", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 1"
 			} )
@@ -95,6 +98,13 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBookingsRemove", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnBookingsNew"
+				"text": "New Booking"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBookingsNew", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 3 1"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"size": new java.awt.Dimension( 1000, 500 )

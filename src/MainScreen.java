@@ -60,6 +60,17 @@ public class MainScreen extends JFrame {
     
     public MainScreen() {
         initComponents();
+        
+        tblStaff.getColumnModel().getColumn(1).setCellEditor(new NonBlankCellEditor());
+        tblStaff.getColumnModel().getColumn(2).setCellEditor(new NonBlankCellEditor());
+        tblStaff.getColumnModel().getColumn(3).setCellEditor(new NonBlankCellEditor());
+        tblStaff.getColumnModel().getColumn(4).setCellEditor(new NonBlankCellEditor());
+        tblStaff.getColumnModel().getColumn(5).setCellEditor(new NonBlankDecimalCellEditor());
+        tblMenu.getColumnModel().getColumn(1).setCellEditor(new NonBlankCellEditor());
+        tblMenu.getColumnModel().getColumn(2).setCellEditor(new NonBlankCellEditor());
+        tblMenu.getColumnModel().getColumn(3).setCellEditor(new NonBlankDecimalCellEditor());
+        
+        
         refreshJTables();
     }
 
@@ -447,10 +458,22 @@ public class MainScreen extends JFrame {
         viewBookings.setVisible(true);
     }
 
-    private void btnTableNewBooking(ActionEvent e) {
+    private void btnTableLoadBooking(ActionEvent e) {
         // TODO add your code here
-        FlatIntelliJLaf.setup();
-        new NewBooking().setVisible(true); 
+        
+        JComboBox comboBox = new JComboBox();
+        comboBox.setModel(MainScreen.tabArr.BookingComboLoad(comboBox));
+        int i = JOptionPane.showConfirmDialog(null, comboBox, "Booking To Load", JOptionPane.YES_NO_OPTION, JOptionPane.DEFAULT_OPTION);
+        if (i == 0)
+        {
+            tabArr.loadBooking(comboBox.getSelectedItem()+"");
+        }
+
+        
+    }
+
+    private void btnOrdersSave(ActionEvent e) {
+        // TODO add your code here
     }
     
     private void initComponents() {
@@ -496,7 +519,6 @@ public class MainScreen extends JFrame {
         btnTable7 = new JButton();
         btnTable12 = new JButton();
         btnTable13 = new JButton();
-        btnTableNewBooking = new JButton();
         btnTableLoadBooking = new JButton();
         btnTableViewBooking = new JButton();
 
@@ -593,9 +615,7 @@ public class MainScreen extends JFrame {
                     });
                     {
                         TableColumnModel cm = tblOrders.getColumnModel();
-                        cm.getColumn(0).setMaxWidth(75);
                         cm.getColumn(0).setPreferredWidth(75);
-                        cm.getColumn(1).setMaxWidth(50);
                         cm.getColumn(1).setPreferredWidth(50);
                     }
                     tblOrders.setAutoCreateRowSorter(true);
@@ -612,6 +632,7 @@ public class MainScreen extends JFrame {
 
                 //---- btnOrdersSave ----
                 btnOrdersSave.setText("Save");
+                btnOrdersSave.addActionListener(e -> btnOrdersSave(e));
                 pnlOrders.add(btnOrdersSave, new CC().cell(17, 18, 3, 2).growY());
             }
             tpnMainScreen.addTab("Orders", pnlOrders);
@@ -681,9 +702,16 @@ public class MainScreen extends JFrame {
                         Class<?>[] columnTypes = new Class<?>[] {
                             Integer.class, Object.class, Object.class, Object.class, Object.class, Double.class
                         };
+                        boolean[] columnEditable = new boolean[] {
+                            false, true, true, true, true, true
+                        };
                         @Override
                         public Class<?> getColumnClass(int columnIndex) {
                             return columnTypes[columnIndex];
+                        }
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                            return columnEditable[columnIndex];
                         }
                     });
                     {
@@ -1040,15 +1068,10 @@ public class MainScreen extends JFrame {
                 btnTable13.addActionListener(e -> button48(e));
                 pnlTables.add(btnTable13, new CC().cell(4, 4, 3, 1));
 
-                //---- btnTableNewBooking ----
-                btnTableNewBooking.setText("New Booking");
-                btnTableNewBooking.setMargin(null);
-                btnTableNewBooking.addActionListener(e -> btnTableNewBooking(e));
-                pnlTables.add(btnTableNewBooking, new CC().cell(0, 5, 2, 1));
-
                 //---- btnTableLoadBooking ----
                 btnTableLoadBooking.setText("Load Booking");
-                pnlTables.add(btnTableLoadBooking, new CC().cell(2, 5, 2, 1));
+                btnTableLoadBooking.addActionListener(e -> btnTableLoadBooking(e));
+                pnlTables.add(btnTableLoadBooking, new CC().cell(0, 5, 2, 1));
 
                 //---- btnTableViewBooking ----
                 btnTableViewBooking.setText("View Bookings");
@@ -1105,7 +1128,6 @@ public class MainScreen extends JFrame {
     private JButton btnTable7;
     private JButton btnTable12;
     private JButton btnTable13;
-    private JButton btnTableNewBooking;
     private JButton btnTableLoadBooking;
     private JButton btnTableViewBooking;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on

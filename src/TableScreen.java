@@ -228,10 +228,9 @@ public class TableScreen extends JFrame {
             });
             {
                 TableColumnModel cm = tblOrders.getColumnModel();
-                cm.getColumn(0).setMaxWidth(70);
-                cm.getColumn(0).setPreferredWidth(55);
-                cm.getColumn(2).setMaxWidth(70);
-                cm.getColumn(3).setMaxWidth(70);
+                cm.getColumn(0).setPreferredWidth(70);
+                cm.getColumn(2).setPreferredWidth(100);
+                cm.getColumn(3).setPreferredWidth(70);
             }
             scrOrders.setViewportView(tblOrders);
         }
