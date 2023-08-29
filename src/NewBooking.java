@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -7,12 +8,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
+
 /*
  * Created by JFormDesigner on Mon Aug 28 20:31:37 CAT 2023
  */
-
-
-
 /**
  * @author harri
  */
@@ -25,11 +24,11 @@ public class NewBooking extends JFrame {
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        MainScreen.tabArr.newBooking(Integer.parseInt(""+cmbNewBookingTable.getSelectedItem()),dtpNewBookingTime.getDateTimePermissive() , txtNewBookingName.getText(), txtNewBookingCellphone.getText(), Integer.parseInt(""+cmbNewBookingPax.getSelectedItem()));
+        MainScreen.tabArr.newBooking(Integer.parseInt("" + cmbNewBookingTable.getSelectedItem()), dtpNewBookingTime.getDateTimePermissive(), txtNewBookingName.getText(), txtNewBookingCellphone.getText(), Integer.parseInt("" + cmbNewBookingPax.getSelectedItem()));
         dispose();
         ScreenBuild.mainScreen.reloadTables();
         MainScreen.viewBookings.refreshBookingTable();
-        
+
     }
 
     private void createUIComponents() {
@@ -44,12 +43,12 @@ public class NewBooking extends JFrame {
         dtpNewBookingTime = new DateTimePicker(dateSettings, timeSettings);
         dateSettings.setDateRangeLimits(LocalDate.now(), LocalDate.MAX);
         dtpNewBookingTime.datePicker.setDateToToday();
-        
+
     }
 
     private void cmbNewBookingTableItemStateChanged(ItemEvent e) {
         // TODO add your code here
-        cmbNewBookingPax.setModel(MainScreen.tableArr.TablePax(cmbNewBookingPax, Integer.parseInt(""+cmbNewBookingTable.getSelectedItem())));
+        cmbNewBookingPax.setModel(MainScreen.tableArr.TablePax(cmbNewBookingPax, Integer.parseInt("" + cmbNewBookingTable.getSelectedItem())));
         ScreenBuild.mainScreen.reloadTables();
         MainScreen.viewBookings.refreshBookingTable();
     }

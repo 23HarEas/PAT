@@ -9,7 +9,6 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 /*
  * Created by JFormDesigner on Mon Aug 28 17:03:27 CAT 2023
  */
-
 /**
  * @author harri
  */

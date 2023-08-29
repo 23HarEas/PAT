@@ -1,18 +1,18 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
+
 /*
  * Created by JFormDesigner on Mon Jul 31 20:41:09 CAT 2023
  */
-
-
-
 /**
  * @author harri
  */
 public class NewMenuItem extends JFrame {
+
     public NewMenuItem() {
         initComponents();
     }

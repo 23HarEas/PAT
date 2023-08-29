@@ -1,3 +1,4 @@
+
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.*;
 import java.awt.event.*;
@@ -6,77 +7,70 @@ import javax.swing.*;
 import javax.swing.table.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
+
 /*
  * Created by JFormDesigner on Sun Jul 23 19:19:41 CAT 2023
  */
-
-
-
 /**
  * @author harri
  */
 public class TableScreen extends JFrame {
+
     public TableScreen() {
-        
-        if (MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable) == 0)
-        {
+
+        if (MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable) == 0) {
             JOptionPane.showMessageDialog(rootPane, "No Active Tab, Creating New Tab");
             MainScreen.tabArr.newTab(MainScreen.workingTable);
-        }    
-        
+        }
+
         initComponents();
         refreshTable();
         ScreenBuild.mainScreen.setBtnIcons();
     }
 
-    public void refreshTable(){
-        
+    public void refreshTable() {
+
         ScreenBuild.mainScreen.reloadTables();
-        
+
         int workingTable = MainScreen.workingTable;
         int currentTabID = MainScreen.tableArr.getCurrentTabID(workingTable);
         Tab currentTabObj = MainScreen.tabArr.getTabObj(currentTabID);
         Table currentTableObj = MainScreen.tableArr.getCurrentTableOBJ(workingTable);
-        
+
         setTitle("Table " + workingTable + " current tab");
         txtTab.setText("" + currentTabID);
         txtStaff.setText(currentTableObj.getStaff());
         txtPax.setText("" + currentTabObj.getPax() + "/" + currentTableObj.getCapacity());
         txtTime.setText("" + currentTabObj.getTime().format(DateTimeFormatter.ofPattern("dd MMM HH:mm")));
         txtTotal.setText("R" + MainScreen.ordersArr.CalcTabTotal(currentTabID, MainScreen.menuArr));
-        if (currentTabObj instanceof BookingTab)
-        {
-           txtType.setText("Booking");
-           
-           txtBookingName.setVisible(true);
-           txtBookingPhone.setVisible(true);
-           lblBookingName.setVisible(true);
-           lblBookingPhone.setVisible(true);
-           
-           txtBookingName.setText(((BookingTab) currentTabObj).getName());
-           txtBookingPhone.setText(((BookingTab) currentTabObj).getCellphoneNumber());
-           
+        if (currentTabObj instanceof BookingTab) {
+            txtType.setText("Booking");
+
+            txtBookingName.setVisible(true);
+            txtBookingPhone.setVisible(true);
+            lblBookingName.setVisible(true);
+            lblBookingPhone.setVisible(true);
+
+            txtBookingName.setText(((BookingTab) currentTabObj).getName());
+            txtBookingPhone.setText(((BookingTab) currentTabObj).getCellphoneNumber());
+
+        } else {
+            txtType.setText("Walk In");
+
+            txtBookingName.setVisible(false);
+            txtBookingPhone.setVisible(false);
+            lblBookingName.setVisible(false);
+            lblBookingPhone.setVisible(false);
+
         }
-            
-        else
-        {
-           txtType.setText("Walk In");
-            
-           txtBookingName.setVisible(false);
-           txtBookingPhone.setVisible(false);
-           lblBookingName.setVisible(false);
-           lblBookingPhone.setVisible(false);
-            
-        }
-            
-        
+
         OrdersArr orderArr = MainScreen.ordersArr;
-        tblOrders.setModel(orderArr.TabOrdersLoad(tblOrders,currentTabID));
+        tblOrders.setModel(orderArr.TabOrdersLoad(tblOrders, currentTabID));
     }
-    
+
     private void button1(ActionEvent e) {
         // TODO add your code here
-        
+
     }
 
     private void btnNewOrder(ActionEvent e) {
@@ -93,15 +87,14 @@ public class TableScreen extends JFrame {
 
     private void btnCloseTab(ActionEvent e) {
         // TODO add your code here
-        
-        int option = JOptionPane.showConfirmDialog(null, "Close Current Tab for Table " + MainScreen.workingTable , "Close Tab", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-        
-        if (option == 0)
-        {
+
+        int option = JOptionPane.showConfirmDialog(null, "Close Current Tab for Table " + MainScreen.workingTable, "Close Tab", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (option == 0) {
             MainScreen.tableArr.closeTab(MainScreen.workingTable);
             ScreenBuild.mainScreen.reloadTables();
         }
-        
+
         dispose();
         ScreenBuild.mainScreen.setBtnIcons();
     }
@@ -337,5 +330,3 @@ public class TableScreen extends JFrame {
     private JTextField txtTotal;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
-
-

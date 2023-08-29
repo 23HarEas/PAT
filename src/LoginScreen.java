@@ -1,20 +1,19 @@
+
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import net.miginfocom.swing.*;
+
 /*
  * Created by JFormDesigner on Mon Jul 10 21:09:25 CAT 2023
  */
-
-
-
 /**
  * @author harri
  */
 public class LoginScreen extends JFrame {
-    
+
     public LoginScreen() {
         initComponents();
     }

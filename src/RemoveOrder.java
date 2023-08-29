@@ -1,19 +1,19 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+
 /*
  * Created by JFormDesigner on Sun Aug 27 11:34:11 CAT 2023
  */
-
-
-
 /**
  * @author harri
  */
 public class RemoveOrder extends JFrame {
+
     public RemoveOrder() {
         initComponents();
         cmbRemoveOrder.setModel(MainScreen.ordersArr.OrderComboLoad(cmbRemoveOrder));
@@ -22,11 +22,11 @@ public class RemoveOrder extends JFrame {
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        String remove = (String)cmbRemoveOrder.getSelectedItem();
+        String remove = (String) cmbRemoveOrder.getSelectedItem();
         MainScreen.ordersArr.removeOrder(remove);
         MainScreen.tableScreen.refreshTable();
         dispose();
-        
+
     }
 
     private void initComponents() {

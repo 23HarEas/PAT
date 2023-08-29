@@ -15,23 +15,21 @@ import javax.swing.table.DefaultTableModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author harri
  */
 public class OrdersArr {
-    
+
     private Orders ordersArr[] = new Orders[100];
     private int numberOrders = 0;
     Connector dbObj = new Connector();
-    
+
     public OrdersArr() {
         try {
             ResultSet ordersDB = dbObj.execQuerySet("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID ORDER BY Order.OrderID;");
-            while (ordersDB.next())
-            {
-                
+            while (ordersDB.next()) {
+
                 int orderID = ordersDB.getInt(1);
                 Boolean status = ordersDB.getBoolean(3);
                 String item = ordersDB.getString(2);
@@ -41,26 +39,23 @@ public class OrdersArr {
                 String notes = ordersDB.getString(7);
                 int tabID = ordersDB.getInt(8);
                 int itemID = ordersDB.getInt(9);
-                
-                
-                
+
                 ordersArr[numberOrders] = new Orders(orderID, status, item, table, time, staff, notes, tabID, itemID);
                 numberOrders++;
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(StaffArr.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void OrderDBReload(){
-        
+    public void OrderDBReload() {
+
         try {
             int i = 0;
             ResultSet ordersDB = dbObj.execQuerySet("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID ORDER BY Order.OrderID;");
-            while (ordersDB.next())
-            {
-                
+            while (ordersDB.next()) {
+
                 int orderID = ordersDB.getInt(1);
                 Boolean status = ordersDB.getBoolean(3);
                 String item = ordersDB.getString(2);
@@ -70,19 +65,18 @@ public class OrdersArr {
                 String notes = ordersDB.getString(7);
                 int tabID = ordersDB.getInt(8);
                 int itemID = ordersDB.getInt(9);
-                
+
                 ordersArr[i] = new Orders(orderID, status, item, table, time, staff, notes, tabID, itemID);
                 i++;
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(StaffArr.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    public DefaultTableModel OrdersLoad(JTable table)
-    {
+
+    public DefaultTableModel OrdersLoad(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
         for (int i = 0; i < numberOrders; i++) {
@@ -90,88 +84,73 @@ public class OrdersArr {
         }
         return model;
     }
-    
-    public DefaultTableModel TabOrdersLoad(JTable table, int tabID)
-    {
+
+    public DefaultTableModel TabOrdersLoad(JTable table, int tabID) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
         for (int i = 0; i < numberOrders; i++) {
-            
-            if (ordersArr[i].getTabID() == tabID)
-            {
+
+            if (ordersArr[i].getTabID() == tabID) {
                 model.addRow(new Object[]{ordersArr[i].getOrderID(), ordersArr[i].getItem(), ordersArr[i].getTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")), ordersArr[i].getStatus()});
             }
-            
-        }  
-       
+
+        }
+
         return model;
     }
-    
-    
-    public double CalcTabTotal(int tabID, MenuArr menuArr)
-    {
-        
+
+    public double CalcTabTotal(int tabID, MenuArr menuArr) {
+
         int total = 0;
-        
+
         for (int i = 0; i < numberOrders; i++) {
-            
-            if (ordersArr[i].getTabID() == tabID)
-            {
+
+            if (ordersArr[i].getTabID() == tabID) {
                 total += menuArr.findPrice(ordersArr[i].getItemID());
             }
-            
-            
+
         }
         return total;
-    
-        }
-    
-    public void NewOrder (int itemID, int tabID, String notes)
-    {
-       dbObj.Insert("INSERT INTO [Order] (ItemID, [Time], TabID, Notes, Status) VALUES ("+ itemID +", NOW(), " + tabID + ", \""+ notes +"\", FALSE);");
-       numberOrders++;
-       OrderDBReload();
-       
+
     }
-    
-    public void removeOrder (String order)
-    {
+
+    public void NewOrder(int itemID, int tabID, String notes) {
+        dbObj.Insert("INSERT INTO [Order] (ItemID, [Time], TabID, Notes, Status) VALUES (" + itemID + ", NOW(), " + tabID + ", \"" + notes + "\", FALSE);");
+        numberOrders++;
+        OrderDBReload();
+
+    }
+
+    public void removeOrder(String order) {
         int idToRemove = Integer.parseInt(new Scanner(order).useDelimiter(" ").next());
         boolean found = false;
-        
+
         for (int i = 0; i < numberOrders; i++) {
-            
-            if (ordersArr[i].getOrderID() == idToRemove || found)
-            {
+
+            if (ordersArr[i].getOrderID() == idToRemove || found) {
                 found = true;
-                ordersArr[i] = ordersArr[i+1];
+                ordersArr[i] = ordersArr[i + 1];
             }
-            
+
         }
-        
-        if (found)
-        {
+
+        if (found) {
             numberOrders--;
             dbObj.Insert("DELETE * FROM [Order] WHERE (OrderID=" + idToRemove + ");");
         }
     }
-    
-    public DefaultComboBoxModel OrderComboLoad(JComboBox comboBox)
-    {
+
+    public DefaultComboBoxModel OrderComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
         for (int i = 0; i < numberOrders; i++) {
-            
-            if (ordersArr[i].getTabID() == MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable))
-            {
+
+            if (ordersArr[i].getTabID() == MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable)) {
                 model.addElement(ordersArr[i].getOrderID() + " " + ordersArr[i].getItem());
             }
         }
-        
+
         return model;
     }
-    
-    }
 
-
-
+}

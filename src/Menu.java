@@ -8,6 +8,7 @@
  * @author harri
  */
 public class Menu {
+
     private int menueID;
     private String name;
     private String description;
@@ -35,8 +36,5 @@ public class Menu {
     public Double getPrice() {
         return price;
     }
-    
-    
-    
-    
+
 }

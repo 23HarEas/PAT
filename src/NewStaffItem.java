@@ -1,18 +1,18 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
+
 /*
  * Created by JFormDesigner on Thu Aug 24 13:25:06 SAST 2023
  */
-
-
-
 /**
  * @author harrisoneaster
  */
 public class NewStaffItem extends JFrame {
+
     public NewStaffItem() {
         initComponents();
     }
@@ -24,7 +24,7 @@ public class NewStaffItem extends JFrame {
         String cellphone = txtNewStaffCell.getText();
         String position = txtNewStaffPosition.getText();
         Double wage = Double.parseDouble(txtNewStaffWage.getText());
-        
+
         MainScreen.staffArr.newStaffItem(name, surname, cellphone, position, wage);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();

@@ -1,19 +1,19 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+
 /*
  * Created by JFormDesigner on Thu Aug 24 13:34:31 SAST 2023
  */
-
-
-
 /**
  * @author harrisoneaster
  */
 public class RemoveStaffItem extends JFrame {
+
     public RemoveStaffItem() {
         initComponents();
         cmbRemoveStaff.setModel(MainScreen.staffArr.StaffComboLoad(cmbRemoveStaff));
@@ -22,7 +22,7 @@ public class RemoveStaffItem extends JFrame {
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        String remove = (String)cmbRemoveStaff.getSelectedItem();
+        String remove = (String) cmbRemoveStaff.getSelectedItem();
         MainScreen.staffArr.removeStaffItem(remove);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();

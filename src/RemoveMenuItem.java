@@ -1,19 +1,19 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+
 /*
  * Created by JFormDesigner on Mon Jul 31 22:01:19 CAT 2023
  */
-
-
-
 /**
  * @author harri
  */
 public class RemoveMenuItem extends JFrame {
+
     public RemoveMenuItem() {
         initComponents();
         cmbRemoveMenu.setModel(MainScreen.menuArr.MenuComboLoad(cmbRemoveMenu));
@@ -22,7 +22,7 @@ public class RemoveMenuItem extends JFrame {
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        String remove = (String)cmbRemoveMenu.getSelectedItem();
+        String remove = (String) cmbRemoveMenu.getSelectedItem();
         MainScreen.menuArr.removeMenuItem(remove);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();

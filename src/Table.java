@@ -8,6 +8,7 @@
  * @author harri
  */
 public class Table {
+
     private int tableNumber;
     private int currentTabID;
     private String staff;
@@ -35,6 +36,5 @@ public class Table {
     public int getCapacity() {
         return capacity;
     }
-    
-    
+
 }

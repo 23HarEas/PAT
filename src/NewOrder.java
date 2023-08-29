@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import java.time.LocalDate;
@@ -9,16 +10,15 @@ import javax.swing.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+
 /*
  * Created by JFormDesigner on Sat Aug 26 15:19:29 CAT 2023
  */
-
-
-
 /**
  * @author harri
  */
 public class NewOrder extends JFrame {
+
     public NewOrder() {
         initComponents();
         cmbNewOrderItem.setModel(MainScreen.menuArr.MenuComboLoad(cmbNewOrderItem));
@@ -27,10 +27,10 @@ public class NewOrder extends JFrame {
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        int itemID = Integer.parseInt(new Scanner(cmbNewOrderItem.getSelectedItem()+"").useDelimiter(" ").next());
+        int itemID = Integer.parseInt(new Scanner(cmbNewOrderItem.getSelectedItem() + "").useDelimiter(" ").next());
         String notes = txtNewOrderNotes.getText();
         int tabID = MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable);
-        
+
         MainScreen.ordersArr.NewOrder(itemID, tabID, notes);
         MainScreen.tableScreen.refreshTable();
         dispose();

@@ -13,7 +13,6 @@ import net.miginfocom.swing.*;
 /*
  * Created by JFormDesigner on Mon Aug 28 15:59:27 CAT 2023
  */
-
 /**
  * @author harri
  */
