@@ -1,6 +1,5 @@
 
 import com.formdev.flatlaf.*;
-import java.awt.event.ActionEvent;
 
 
 /*
@@ -14,7 +13,6 @@ import java.awt.event.ActionEvent;
 public class ScreenBuild {
 
     public static MainScreen mainScreen;
-    public static LoginScreen loginScreen;
 
     /**
      * @param args the command line arguments
@@ -26,8 +24,6 @@ public class ScreenBuild {
         mainScreen.setVisible(true);
         mainScreen.setBtnIcons();
 
-        //loginScreen = new LoginScreen();
-        //loginScreen.setVisible(true);
     }
 
 }
