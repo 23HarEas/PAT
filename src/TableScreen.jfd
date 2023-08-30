@@ -34,7 +34,7 @@ new FormModel {
 							add( "" )
 							add( null )
 							add( null )
-							add( false )
+							add( true )
 						} )
 						add( new java.util.Vector {
 							add( null )
@@ -58,10 +58,10 @@ new FormModel {
 						add( false )
 						add( false )
 					}, new java.util.Vector {
-						add( new com.jformdesigner.model.SwingTableColumn( null, 70, 0, 0, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 70, 0, 70, true ) )
 						add( null )
-						add( new com.jformdesigner.model.SwingTableColumn( null, 100, 0, 0, true ) )
-						add( new com.jformdesigner.model.SwingTableColumn( null, 70, 0, 0, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 100, 0, 100, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 70, 0, 70, true ) )
 					} )
 					"showHorizontalLines": true
 					"showVerticalLines": true

@@ -2,6 +2,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import com.github.lgooddatepicker.zinternaltools.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
 
@@ -36,7 +37,7 @@ public class NewMenuItem extends JFrame {
         lblNewMenuDescription = new JLabel();
         txtNewMenuDescription = new JTextField();
         lblNewMenuPrice = new JLabel();
-        txtNewMenuPrice = new JTextField();
+        txtNewMenuPrice = new JIntegerTextField();
         btnNewMenuSubmit = new JButton();
 
         //======== this ========
@@ -100,7 +101,7 @@ public class NewMenuItem extends JFrame {
     private JLabel lblNewMenuDescription;
     private JTextField txtNewMenuDescription;
     private JLabel lblNewMenuPrice;
-    private JTextField txtNewMenuPrice;
+    private JIntegerTextField txtNewMenuPrice;
     private JButton btnNewMenuSubmit;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

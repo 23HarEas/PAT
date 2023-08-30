@@ -153,4 +153,24 @@ public class OrdersArr {
         return model;
     }
 
+    public void saveOrders(JTable ordersTable) {
+        for (int i = 0; i < numberOrders; i++) {
+
+            int orderID = Integer.parseInt("" + ordersTable.getValueAt(i, 0));
+            boolean stauts = (boolean) ordersTable.getValueAt(i, 1);
+
+            for (int j = 0; j < numberOrders; j++) {
+
+                if (ordersArr[j].getOrderID() == orderID) {
+
+                    ordersArr[j].setStatus(stauts);
+                    dbObj.Update("UPDATE Order SET Status = \"" + stauts + "\" WHERE (OrderID=" + orderID + ");");
+                }
+            }
+
+            OrderDBReload();
+
+        }
+    }
+
 }

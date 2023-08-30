@@ -2,6 +2,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import com.github.lgooddatepicker.zinternaltools.*;
 import net.miginfocom.layout.*;
 import net.miginfocom.swing.*;
 
@@ -11,9 +12,9 @@ import net.miginfocom.swing.*;
 /**
  * @author harrisoneaster
  */
-public class NewStaffItem extends JFrame {
+public class NewStaff extends JFrame {
 
-    public NewStaffItem() {
+    public NewStaff() {
         initComponents();
     }
 
@@ -43,7 +44,7 @@ public class NewStaffItem extends JFrame {
         lblNewStaffPosition = new JLabel();
         txtNewStaffPosition = new JTextField();
         lblNewStaffWage = new JLabel();
-        txtNewStaffWage = new JTextField();
+        txtNewStaffWage = new JIntegerTextField();
         btnNewStaffSubmit = new JButton();
 
         //======== this ========
@@ -121,7 +122,7 @@ public class NewStaffItem extends JFrame {
     private JLabel lblNewStaffPosition;
     private JTextField txtNewStaffPosition;
     private JLabel lblNewStaffWage;
-    private JTextField txtNewStaffWage;
+    private JIntegerTextField txtNewStaffWage;
     private JButton btnNewStaffSubmit;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

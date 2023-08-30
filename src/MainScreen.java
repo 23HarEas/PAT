@@ -41,7 +41,7 @@ public class MainScreen extends JFrame {
     public void saveJTables() {
         menuArr.MenuSave(tblMenu);
         staffArr.StaffSave(tblStaff);
-
+        ordersArr.saveOrders(tblOrders);
         refreshJTables();
     }
 
@@ -254,7 +254,7 @@ public class MainScreen extends JFrame {
     private void btnStaffNew(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();
-        new NewStaffItem().setVisible(true);
+        new NewStaff().setVisible(true);
 
     }
 
@@ -400,6 +400,9 @@ public class MainScreen extends JFrame {
 
     private void btnOrdersSave(ActionEvent e) {
         // TODO add your code here
+        ordersArr.saveOrders(tblOrders);
+        reloadTables();
+
     }
 
     private void initComponents() {

@@ -69,4 +69,8 @@ public class Orders {
         return itemID;
     }
 
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
 }

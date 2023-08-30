@@ -196,7 +196,7 @@ public class TableScreen extends JFrame {
             //---- tblOrders ----
             tblOrders.setModel(new DefaultTableModel(
                 new Object[][] {
-                    {"", null, null, false},
+                    {"", null, null, true},
                     {null, null, null, null},
                 },
                 new String[] {
@@ -220,8 +220,11 @@ public class TableScreen extends JFrame {
             });
             {
                 TableColumnModel cm = tblOrders.getColumnModel();
+                cm.getColumn(0).setMaxWidth(70);
                 cm.getColumn(0).setPreferredWidth(70);
+                cm.getColumn(2).setMaxWidth(100);
                 cm.getColumn(2).setPreferredWidth(100);
+                cm.getColumn(3).setMaxWidth(70);
                 cm.getColumn(3).setPreferredWidth(70);
             }
             tblOrders.setShowHorizontalLines(true);
