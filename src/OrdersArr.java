@@ -27,7 +27,7 @@ public class OrdersArr {
 
     public OrdersArr() {
         try {
-            ResultSet ordersDB = dbObj.execQuerySet("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID ORDER BY Order.OrderID;");
+            ResultSet ordersDB = dbObj.readQuery("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID ORDER BY Order.OrderID;");
             while (ordersDB.next()) {
 
                 int orderID = ordersDB.getInt(1);
@@ -49,11 +49,11 @@ public class OrdersArr {
         }
     }
 
-    public void OrderDBReload() {
+    public void ordersDBReload() {
 
         try {
             int i = 0;
-            ResultSet ordersDB = dbObj.execQuerySet("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID ORDER BY Order.OrderID;");
+            ResultSet ordersDB = dbObj.readQuery("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID ORDER BY Order.OrderID;");
             while (ordersDB.next()) {
 
                 int orderID = ordersDB.getInt(1);
@@ -76,7 +76,7 @@ public class OrdersArr {
 
     }
 
-    public DefaultTableModel OrdersLoad(JTable table) {
+    public DefaultTableModel ordersTableLoad(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
         for (int i = 0; i < numberOrders; i++) {
@@ -85,7 +85,7 @@ public class OrdersArr {
         return model;
     }
 
-    public DefaultTableModel TabOrdersLoad(JTable table, int tabID) {
+    public DefaultTableModel ordersTabTableLoad(JTable table, int tabID) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
         for (int i = 0; i < numberOrders; i++) {
@@ -99,7 +99,7 @@ public class OrdersArr {
         return model;
     }
 
-    public double CalcTabTotal(int tabID, MenuArr menuArr) {
+    public double calcTab(int tabID, MenuArr menuArr) {
 
         int total = 0;
 
@@ -114,14 +114,14 @@ public class OrdersArr {
 
     }
 
-    public void NewOrder(int itemID, int tabID, String notes) {
-        dbObj.Insert("INSERT INTO [Order] (ItemID, [Time], TabID, Notes, Status) VALUES (" + itemID + ", NOW(), " + tabID + ", \"" + notes + "\", FALSE);");
+    public void ordersNewItem(int itemID, int tabID, String notes) {
+        dbObj.writeQuery("INSERT INTO [Order] (ItemID, [Time], TabID, Notes, Status) VALUES (" + itemID + ", NOW(), " + tabID + ", \"" + notes + "\", FALSE);");
         numberOrders++;
-        OrderDBReload();
+        ordersDBReload();
 
     }
 
-    public void removeOrder(String order) {
+    public void ordersRemoveItem(String order) {
         int idToRemove = Integer.parseInt(new Scanner(order).useDelimiter(" ").next());
         boolean found = false;
 
@@ -136,11 +136,11 @@ public class OrdersArr {
 
         if (found) {
             numberOrders--;
-            dbObj.Insert("DELETE * FROM [Order] WHERE (OrderID=" + idToRemove + ");");
+            dbObj.writeQuery("DELETE * FROM [Order] WHERE (OrderID=" + idToRemove + ");");
         }
     }
 
-    public DefaultComboBoxModel OrderComboLoad(JComboBox comboBox) {
+    public DefaultComboBoxModel ordersComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
         for (int i = 0; i < numberOrders; i++) {
@@ -153,7 +153,7 @@ public class OrdersArr {
         return model;
     }
 
-    public void saveOrders(JTable ordersTable) {
+    public void ordersTableSave(JTable ordersTable) {
         for (int i = 0; i < numberOrders; i++) {
 
             int orderID = Integer.parseInt("" + ordersTable.getValueAt(i, 0));
@@ -164,11 +164,11 @@ public class OrdersArr {
                 if (ordersArr[j].getOrderID() == orderID) {
 
                     ordersArr[j].setStatus(stauts);
-                    dbObj.Update("UPDATE Order SET Status = \"" + stauts + "\" WHERE (OrderID=" + orderID + ");");
+                    dbObj.writeQuery("UPDATE Order SET Status = \"" + stauts + "\" WHERE (OrderID=" + orderID + ");");
                 }
             }
 
-            OrderDBReload();
+            ordersDBReload();
 
         }
     }

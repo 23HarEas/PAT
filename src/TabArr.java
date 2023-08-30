@@ -30,7 +30,7 @@ public class TabArr {
     public TabArr() {
         try {
 
-            ResultSet tabDB = dbObj.execQuerySet("SELECT Tab.TabID, Tab.TableNumber, Tab.Time, Tab.Pax, Tab.Booking, Tab.Name, Tab.CellphoneNumber\n" + "FROM (Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID) INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber;");
+            ResultSet tabDB = dbObj.readQuery("SELECT Tab.TabID, Tab.TableNumber, Tab.Time, Tab.Pax, Tab.Booking, Tab.Name, Tab.CellphoneNumber\n" + "FROM (Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID) INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber;");
             while (tabDB.next()) {
 
                 int tabID = tabDB.getInt(1);
@@ -55,14 +55,14 @@ public class TabArr {
         }
     }
 
-    public void TabDBReload() {
+    public void tabDBReload() {
 
         for (int i = 0; i < tabArrSize; i++) {
             tabArr[i] = null;
         }
 
         try {
-            ResultSet tabDB = dbObj.execQuerySet("SELECT Tab.TabID, Tab.TableNumber, Tab.Time, Tab.Pax, Tab.Booking, Tab.Name, Tab.CellphoneNumber\n" + "FROM (Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID) INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber;");
+            ResultSet tabDB = dbObj.readQuery("SELECT Tab.TabID, Tab.TableNumber, Tab.Time, Tab.Pax, Tab.Booking, Tab.Name, Tab.CellphoneNumber\n" + "FROM (Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID) INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber;");
             while (tabDB.next()) {
 
                 int tabID = tabDB.getInt(1);
@@ -90,15 +90,15 @@ public class TabArr {
         return tabArr[currentTabID];
     }
 
-    public void newTab(int tableNumber) {
+    public void tabNewItem(int tableNumber) {
 
-        dbObj.Insert("INSERT INTO [Tab] (TableNumber, [Time], Booking, Pax) VALUES (" + tableNumber + ", NOW(), FALSE, -1);");
+        dbObj.writeQuery("INSERT INTO [Tab] (TableNumber, [Time], Booking, Pax) VALUES (" + tableNumber + ", NOW(), FALSE, -1);");
         try {
-            ResultSet tabDB = dbObj.execQuerySet("SELECT Tab.TabID FROM Tab WHERE (((Tab.Pax)=-1));");
+            ResultSet tabDB = dbObj.readQuery("SELECT Tab.TabID FROM Tab WHERE (((Tab.Pax)=-1));");
             tabDB.next();
             int newTabID = tabDB.getInt(1);
-            dbObj.Insert("UPDATE [Table] SET [Table].CurrentTabID = " + newTabID + " WHERE (((Table.TableNumber)= " + tableNumber + " ));");
-            dbObj.Insert("UPDATE Tab SET Tab.Pax = 0 WHERE (((Tab.Pax)=-1));");
+            dbObj.writeQuery("UPDATE [Table] SET [Table].CurrentTabID = " + newTabID + " WHERE (((Table.TableNumber)= " + tableNumber + " ));");
+            dbObj.writeQuery("UPDATE Tab SET Tab.Pax = 0 WHERE (((Tab.Pax)=-1));");
         } catch (SQLException ex) {
             Logger.getLogger(TabArr.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -106,7 +106,7 @@ public class TabArr {
         numberTab++;
     }
 
-    public DefaultTableModel BookingLoad(JTable table) {
+    public DefaultTableModel bookingTableLoad(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
         for (int i = 0; i < tabArrSize; i++) {
@@ -119,7 +119,7 @@ public class TabArr {
         return model;
     }
 
-    public DefaultComboBoxModel BookingComboLoad(JComboBox comboBox) {
+    public DefaultComboBoxModel bookingComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
         for (int i = 0; i < tabArrSize; i++) {
@@ -132,7 +132,7 @@ public class TabArr {
         return model;
     }
 
-    public void removeBooking(String item) {
+    public void bookingeRemoveItem(String item) {
 
         int idToRemove = Integer.parseInt(new Scanner(item).useDelimiter(" ").next());
         boolean found = false;
@@ -140,19 +140,19 @@ public class TabArr {
         for (int i = 0; i < tabArrSize; i++) {
 
             if (!(tabArr[i] == null) && tabArr[i].getTabID() == idToRemove) {
-                dbObj.Insert("DELETE * FROM Tab WHERE (Tab.TabID=" + idToRemove + ");");
+                dbObj.writeQuery("DELETE * FROM Tab WHERE (Tab.TabID=" + idToRemove + ");");
             }
 
         }
 
     }
 
-    public void newBooking(int tableNumber, LocalDateTime time, String name, String cellphone, int pax) {
-        dbObj.Insert("INSERT INTO [Tab] (TableNumber, [Time], Name, CellphoneNumber, Booking, Pax) VALUES (" + tableNumber + ", \"" + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\",  \"" + name + "\"  , \"" + cellphone + "\", TRUE, " + pax + " );");
+    public void bookingNewItem(int tableNumber, LocalDateTime time, String name, String cellphone, int pax) {
+        dbObj.writeQuery("INSERT INTO [Tab] (TableNumber, [Time], Name, CellphoneNumber, Booking, Pax) VALUES (" + tableNumber + ", \"" + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\",  \"" + name + "\"  , \"" + cellphone + "\", TRUE, " + pax + " );");
         numberTab++;
     }
 
-    public void saveBooking(JTable bookingTable) {
+    public void bookingTableSave(JTable bookingTable) {
 
         for (int i = 0; i < bookingTable.getModel().getRowCount(); i++) {
 
@@ -163,13 +163,13 @@ public class TabArr {
             LocalDateTime time = (LocalDateTime) bookingTable.getValueAt(i, 4);
             int table = Integer.parseInt("" + bookingTable.getValueAt(i, 5));
 
-            dbObj.Insert("UPDATE [Tab] SET TableNumber = " + table + ", Time = \"" + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\" , Name = \"" + name + "\", CellphoneNumber = \"" + cellphone + "\" , Pax = \"" + pax + "\"  WHERE (TabID = " + bookingID + ");");
+            dbObj.writeQuery("UPDATE [Tab] SET TableNumber = " + table + ", Time = \"" + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\" , Name = \"" + name + "\", CellphoneNumber = \"" + cellphone + "\" , Pax = \"" + pax + "\"  WHERE (TabID = " + bookingID + ");");
 
         }
 
     }
 
-    public void loadBooking(String item) {
+    public void bookingLoad(String item) {
 
         Scanner sc = new Scanner(item).useDelimiter(" ");
         int tabID = Integer.parseInt(sc.next());
@@ -178,8 +178,8 @@ public class TabArr {
         int table = Integer.parseInt(sc.next());
 
         if (MainScreen.tableArr.getCurrentTabID(table) == 0) {
-            dbObj.Insert("UPDATE [Table] SET [Table].CurrentTabID = " + tabID + " WHERE (((Table.TableNumber)= " + table + " ));");
-            ScreenBuild.mainScreen.reloadTables();
+            dbObj.writeQuery("UPDATE [Table] SET [Table].CurrentTabID = " + tabID + " WHERE (((Table.TableNumber)= " + table + " ));");
+            ScreenBuild.mainScreen.reloadDBs();
             ScreenBuild.mainScreen.setBtnIcons();
         } else {
             JOptionPane.showMessageDialog(null, "Please close existing tab for Table: " + table);

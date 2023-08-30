@@ -10,14 +10,12 @@ import javax.swing.JOptionPane;
 public class Connector {
 
     private Connection conn = null;
-    private Statement stmt = null;
 
-    public Connector() { //Connect
+    public Connector() { //Connect to the database
         String driver = "jdbc:ucanaccess://";
         String database = "Resturant.accdb";
         try {
             conn = DriverManager.getConnection(driver + database);
-            //JOptionPane.showMessageDialog(null, "Connection successful");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cannot connect to db");
             System.out.println(e);
@@ -25,7 +23,7 @@ public class Connector {
 
     }
 
-    public ResultSet execQuerySet(String query) { //Select
+    public ResultSet readQuery(String query) { //Read from the database, Select
         ResultSet set = null;
         try {
             Statement statement = conn.createStatement();
@@ -37,26 +35,14 @@ public class Connector {
         return set;
     }
 
-    public void Insert(String query) { //Insert
+    public void writeQuery(String query) { //Wrtie to the database, Update, Delete, Append
         try {
 
-            Statement stmt3 = conn.createStatement();
-            stmt3.execute(query);
+            Statement statement = conn.createStatement();
+            statement.execute(query);
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error:.\n" + e);
         }
     }
-
-    public void Update(String query) { //Insert
-        try {
-
-            Statement stmt2 = conn.createStatement();
-            stmt2.executeUpdate(query);
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error:.\n" + e);
-        }
-    }
-
 }

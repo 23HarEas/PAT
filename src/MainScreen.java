@@ -24,24 +24,24 @@ public class MainScreen extends JFrame {
     static TableScreen tableScreen;
     static ViewBookings viewBookings;
 
-    public void reloadTables() {
-        MainScreen.tabArr.TabDBReload();
+    public void reloadDBs() {
+        MainScreen.tabArr.tabDBReload();
         MainScreen.tableArr.TableDBReload();
-        MainScreen.menuArr.MenuDBRelod();
-        MainScreen.staffArr.StaffDBReload();
-        MainScreen.ordersArr.OrderDBReload();
+        MainScreen.menuArr.menuDBReload();
+        MainScreen.staffArr.staffDBReload();
+        MainScreen.ordersArr.ordersDBReload();
     }
 
     public void refreshJTables() {
-        tblOrders.setModel(ordersArr.OrdersLoad(tblOrders));
-        tblStaff.setModel(staffArr.StaffLoad(tblStaff));
-        tblMenu.setModel(menuArr.MenuLoad(tblMenu));
+        tblOrders.setModel(ordersArr.ordersTableLoad(tblOrders));
+        tblStaff.setModel(staffArr.staffTableLoad(tblStaff));
+        tblMenu.setModel(menuArr.menuTableLoad(tblMenu));
     }
 
     public void saveJTables() {
-        menuArr.MenuSave(tblMenu);
-        staffArr.StaffSave(tblStaff);
-        ordersArr.saveOrders(tblOrders);
+        menuArr.menuTableSave(tblMenu);
+        staffArr.staffTableSave(tblStaff);
+        ordersArr.ordersTableSave(tblOrders);
         refreshJTables();
     }
 
@@ -59,10 +59,7 @@ public class MainScreen extends JFrame {
 
         refreshJTables();
     }
-
-    private void button1(ActionEvent e) {
-        // TODO add your code here
-    }
+    // TODO add your code here
 
     private void button2(ActionEvent e) {
         // TODO add your code here
@@ -77,15 +74,13 @@ public class MainScreen extends JFrame {
 
     private void button8(ActionEvent e) {
         // TODO add your code here
-        tblOrders.setModel(ordersArr.OrdersLoad(tblOrders));
+        tblOrders.setModel(ordersArr.ordersTableLoad(tblOrders));
         refreshJTables();
-
     }
 
     private void button9(ActionEvent e) {
         // TODO add your code here
         refreshJTables();
-
     }
 
     private void button5(ActionEvent e) {
@@ -390,18 +385,18 @@ public class MainScreen extends JFrame {
         // TODO add your code here
 
         JComboBox comboBox = new JComboBox();
-        comboBox.setModel(MainScreen.tabArr.BookingComboLoad(comboBox));
+        comboBox.setModel(MainScreen.tabArr.bookingComboLoad(comboBox));
         int i = JOptionPane.showConfirmDialog(null, comboBox, "Booking To Load", JOptionPane.YES_NO_OPTION, JOptionPane.DEFAULT_OPTION);
         if (i == 0) {
-            tabArr.loadBooking(comboBox.getSelectedItem() + "");
+            tabArr.bookingLoad(comboBox.getSelectedItem() + "");
         }
 
     }
 
     private void btnOrdersSave(ActionEvent e) {
         // TODO add your code here
-        ordersArr.saveOrders(tblOrders);
-        reloadTables();
+        ordersArr.ordersTableSave(tblOrders);
+        reloadDBs();
 
     }
 

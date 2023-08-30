@@ -27,7 +27,7 @@ public class TableArr {
     public TableArr() {
         try {
 
-            ResultSet tableDB = dbObj.execQuerySet("SELECT Table.TableNumber, Table.CurrentTabID, Staff.Name, Table.Capacity\n" + "FROM Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID;");
+            ResultSet tableDB = dbObj.readQuery("SELECT Table.TableNumber, Table.CurrentTabID, Staff.Name, Table.Capacity\n" + "FROM Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID;");
             while (tableDB.next()) {
 
                 int tableNumber = tableDB.getInt(1);
@@ -48,7 +48,7 @@ public class TableArr {
 
         try {
 
-            ResultSet tableDB = dbObj.execQuerySet("SELECT Table.TableNumber, Table.CurrentTabID, Staff.Name, Table.Capacity\n" + "FROM Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID;");
+            ResultSet tableDB = dbObj.readQuery("SELECT Table.TableNumber, Table.CurrentTabID, Staff.Name, Table.Capacity\n" + "FROM Staff INNER JOIN [Table] ON Staff.StaffID = Table.StaffID;");
             while (tableDB.next()) {
 
                 int tableNumber = tableDB.getInt(1);
@@ -78,7 +78,7 @@ public class TableArr {
     }
 
     public void closeTab(int tableNumber) {
-        dbObj.Insert("UPDATE [Table] SET [Table].CurrentTabID = 0 WHERE (((Table.TableNumber)= " + tableNumber + " ));");
+        dbObj.writeQuery("UPDATE [Table] SET [Table].CurrentTabID = 0 WHERE (((Table.TableNumber)= " + tableNumber + " ));");
     }
 
     public DefaultComboBoxModel TableComboLoad(JComboBox comboBox) {

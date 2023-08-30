@@ -26,7 +26,7 @@ public class NewStaff extends JFrame {
         String position = txtNewStaffPosition.getText();
         Double wage = Double.parseDouble(txtNewStaffWage.getText());
 
-        MainScreen.staffArr.newStaffItem(name, surname, cellphone, position, wage);
+        MainScreen.staffArr.staffNewItem(name, surname, cellphone, position, wage);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();
         ScreenBuild.mainScreen.saveJTables();

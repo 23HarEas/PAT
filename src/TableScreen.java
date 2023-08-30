@@ -20,7 +20,7 @@ public class TableScreen extends JFrame {
 
         if (MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable) == 0) {
             JOptionPane.showMessageDialog(rootPane, "No Active Tab, Creating New Tab");
-            MainScreen.tabArr.newTab(MainScreen.workingTable);
+            MainScreen.tabArr.tabNewItem(MainScreen.workingTable);
         }
 
         initComponents();
@@ -30,7 +30,7 @@ public class TableScreen extends JFrame {
 
     public void refreshTable() {
 
-        ScreenBuild.mainScreen.reloadTables();
+        ScreenBuild.mainScreen.reloadDBs();
 
         int workingTable = MainScreen.workingTable;
         int currentTabID = MainScreen.tableArr.getCurrentTabID(workingTable);
@@ -42,7 +42,7 @@ public class TableScreen extends JFrame {
         txtStaff.setText(currentTableObj.getStaff());
         txtPax.setText("" + currentTabObj.getPax() + "/" + currentTableObj.getCapacity());
         txtTime.setText("" + currentTabObj.getTime().format(DateTimeFormatter.ofPattern("dd MMM HH:mm")));
-        txtTotal.setText("R" + MainScreen.ordersArr.CalcTabTotal(currentTabID, MainScreen.menuArr));
+        txtTotal.setText("R" + MainScreen.ordersArr.calcTab(currentTabID, MainScreen.menuArr));
         if (currentTabObj instanceof BookingTab) {
             txtType.setText("Booking");
 
@@ -65,7 +65,7 @@ public class TableScreen extends JFrame {
         }
 
         OrdersArr orderArr = MainScreen.ordersArr;
-        tblOrders.setModel(orderArr.TabOrdersLoad(tblOrders, currentTabID));
+        tblOrders.setModel(orderArr.ordersTabTableLoad(tblOrders, currentTabID));
     }
 
     private void button1(ActionEvent e) {
@@ -92,7 +92,7 @@ public class TableScreen extends JFrame {
 
         if (option == 0) {
             MainScreen.tableArr.closeTab(MainScreen.workingTable);
-            ScreenBuild.mainScreen.reloadTables();
+            ScreenBuild.mainScreen.reloadDBs();
         }
 
         dispose();

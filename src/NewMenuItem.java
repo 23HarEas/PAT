@@ -23,7 +23,7 @@ public class NewMenuItem extends JFrame {
         String name = txtNewMenuName.getText();
         String description = txtNewMenuDescription.getText();
         Double price = Double.parseDouble(txtNewMenuPrice.getText());
-        MainScreen.menuArr.newMenuItem(name, description, price);
+        MainScreen.menuArr.menuNewItem(name, description, price);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();
         ScreenBuild.mainScreen.saveJTables();

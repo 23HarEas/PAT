@@ -51,8 +51,8 @@ public class ViewBookings extends JFrame {
     }
 
     public void refreshBookingTable() {
-        ScreenBuild.mainScreen.reloadTables();
-        tblBookings.setModel(MainScreen.tabArr.BookingLoad(tblBookings));
+        ScreenBuild.mainScreen.reloadDBs();
+        tblBookings.setModel(MainScreen.tabArr.bookingTableLoad(tblBookings));
     }
 
     private void btnBookingsRefresh(ActionEvent e) {
@@ -62,8 +62,8 @@ public class ViewBookings extends JFrame {
 
     private void btnBookingsSave(ActionEvent e) {
         // TODO add your code here
-        MainScreen.tabArr.saveBooking(tblBookings);
-        ScreenBuild.mainScreen.reloadTables();
+        MainScreen.tabArr.bookingTableSave(tblBookings);
+        ScreenBuild.mainScreen.reloadDBs();
         refreshBookingTable();
     }
 

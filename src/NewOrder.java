@@ -21,7 +21,7 @@ public class NewOrder extends JFrame {
 
     public NewOrder() {
         initComponents();
-        cmbNewOrderItem.setModel(MainScreen.menuArr.MenuComboLoad(cmbNewOrderItem));
+        cmbNewOrderItem.setModel(MainScreen.menuArr.menuComboLoad(cmbNewOrderItem));
         AutoCompleteDecorator.decorate(cmbNewOrderItem);
     }
 
@@ -31,7 +31,7 @@ public class NewOrder extends JFrame {
         String notes = txtNewOrderNotes.getText();
         int tabID = MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable);
 
-        MainScreen.ordersArr.NewOrder(itemID, tabID, notes);
+        MainScreen.ordersArr.ordersNewItem(itemID, tabID, notes);
         MainScreen.tableScreen.refreshTable();
         dispose();
     }

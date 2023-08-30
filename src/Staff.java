@@ -19,15 +19,15 @@ public class Staff {
     private String surname;
     private String cellphoneNumber;
     private String position;
-    private Double salary;
+    private Double wage;
 
-    public Staff(int staffID, String name, String surname, String cellphoneNumber, String position, Double salary) {
+    public Staff(int staffID, String name, String surname, String cellphoneNumber, String position, Double wage) {
         this.staffID = staffID;
         this.name = name;
         this.surname = surname;
         this.cellphoneNumber = cellphoneNumber;
         this.position = position;
-        this.salary = salary;
+        this.wage = wage;
     }
 
     public int getStaffID() {
@@ -50,8 +50,8 @@ public class Staff {
         return position;
     }
 
-    public Double getSalary() {
-        return salary;
+    public Double getWage() {
+        return wage;
     }
 
 }

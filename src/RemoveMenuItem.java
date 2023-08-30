@@ -16,14 +16,14 @@ public class RemoveMenuItem extends JFrame {
 
     public RemoveMenuItem() {
         initComponents();
-        cmbRemoveMenu.setModel(MainScreen.menuArr.MenuComboLoad(cmbRemoveMenu));
+        cmbRemoveMenu.setModel(MainScreen.menuArr.menuComboLoad(cmbRemoveMenu));
         AutoCompleteDecorator.decorate(cmbRemoveMenu);
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
         String remove = (String) cmbRemoveMenu.getSelectedItem();
-        MainScreen.menuArr.removeMenuItem(remove);
+        MainScreen.menuArr.menuRemoveItem(remove);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();
         ScreenBuild.mainScreen.saveJTables();

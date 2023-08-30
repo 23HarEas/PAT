@@ -27,7 +27,7 @@ public class MenuArr {
     public MenuArr() {
         try {
 
-            ResultSet menueDB = dbObj.execQuerySet("SELECT Menu.ItemID, Menu.Name, Menu.Description, Menu.Price\n" + "FROM Menu;");
+            ResultSet menueDB = dbObj.readQuery("SELECT Menu.ItemID, Menu.Name, Menu.Description, Menu.Price\n" + "FROM Menu;");
             while (menueDB.next()) {
 
                 int menuID = menueDB.getInt(1);
@@ -44,11 +44,11 @@ public class MenuArr {
         }
     }
 
-    public void MenuDBRelod() {
+    public void menuDBReload() {
         try {
 
             int i = 0;
-            ResultSet menueDB = dbObj.execQuerySet("SELECT Menu.ItemID, Menu.Name, Menu.Description, Menu.Price\n" + "FROM Menu;");
+            ResultSet menueDB = dbObj.readQuery("SELECT Menu.ItemID, Menu.Name, Menu.Description, Menu.Price\n" + "FROM Menu;");
 
             while (menueDB.next()) {
 
@@ -66,7 +66,7 @@ public class MenuArr {
         }
     }
 
-    public DefaultTableModel MenuLoad(JTable table) {
+    public DefaultTableModel menuTableLoad(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
         for (int i = 0; i < numberMenu; i++) {
@@ -75,7 +75,7 @@ public class MenuArr {
         return model;
     }
 
-    public void MenuSave(JTable menuTable) {
+    public void menuTableSave(JTable menuTable) {
 
         for (int i = 0; i < numberMenu; i++) {
 
@@ -91,20 +91,20 @@ public class MenuArr {
 
                     if (menuArr[j].getMenueID() == -1) {
 
-                        dbObj.Insert("INSERT INTO Menu ( Name, Price, Description ) VALUES( \"" + menuArr[j].getName() + "\", " + menuArr[j].getPrice() + ", \"" + menuArr[j].getDescription() + "\");");
+                        dbObj.writeQuery("INSERT INTO Menu ( Name, Price, Description ) VALUES( \"" + menuArr[j].getName() + "\", " + menuArr[j].getPrice() + ", \"" + menuArr[j].getDescription() + "\");");
                     } else {
 
-                        dbObj.Update("UPDATE Menu SET Menu.Name = \"" + menuArr[j].getName() + "\", Menu.Description = \"" + menuArr[j].getDescription() + "\", Menu.Price = " + menuArr[j].getPrice() + " WHERE (Menu.ItemID=" + menuArr[j].getMenueID() + ");");
+                        dbObj.writeQuery("UPDATE Menu SET Menu.Name = \"" + menuArr[j].getName() + "\", Menu.Description = \"" + menuArr[j].getDescription() + "\", Menu.Price = " + menuArr[j].getPrice() + " WHERE (Menu.ItemID=" + menuArr[j].getMenueID() + ");");
                     }
                 }
             }
 
-            MenuDBRelod();
+            menuDBReload();
 
         }
     }
 
-    public DefaultComboBoxModel MenuComboLoad(JComboBox comboBox) {
+    public DefaultComboBoxModel menuComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
         for (int i = 0; i < numberMenu; i++) {
@@ -129,12 +129,12 @@ public class MenuArr {
         return price;
     }
 
-    public void newMenuItem(String name, String description, Double price) {
+    public void menuNewItem(String name, String description, Double price) {
         menuArr[numberMenu] = new Menu(-1, name, description, price);
         numberMenu++;
     }
 
-    public void removeMenuItem(String item) {
+    public void menuRemoveItem(String item) {
 
         int idToRemove = Integer.parseInt(new Scanner(item).useDelimiter(" ").next());
         boolean found = false;
@@ -150,7 +150,7 @@ public class MenuArr {
 
         if (found) {
             numberMenu--;
-            dbObj.Insert("DELETE * FROM Menu WHERE (Menu.ItemID=" + idToRemove + ");");
+            dbObj.writeQuery("DELETE * FROM Menu WHERE (Menu.ItemID=" + idToRemove + ");");
         }
 
     }

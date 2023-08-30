@@ -16,14 +16,14 @@ public class RemoveOrder extends JFrame {
 
     public RemoveOrder() {
         initComponents();
-        cmbRemoveOrder.setModel(MainScreen.ordersArr.OrderComboLoad(cmbRemoveOrder));
+        cmbRemoveOrder.setModel(MainScreen.ordersArr.ordersComboLoad(cmbRemoveOrder));
         AutoCompleteDecorator.decorate(cmbRemoveOrder);
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
         String remove = (String) cmbRemoveOrder.getSelectedItem();
-        MainScreen.ordersArr.removeOrder(remove);
+        MainScreen.ordersArr.ordersRemoveItem(remove);
         MainScreen.tableScreen.refreshTable();
         dispose();
 

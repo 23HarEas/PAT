@@ -16,14 +16,14 @@ public class RemoveStaffItem extends JFrame {
 
     public RemoveStaffItem() {
         initComponents();
-        cmbRemoveStaff.setModel(MainScreen.staffArr.StaffComboLoad(cmbRemoveStaff));
+        cmbRemoveStaff.setModel(MainScreen.staffArr.staffComboLoad(cmbRemoveStaff));
         AutoCompleteDecorator.decorate(cmbRemoveStaff);
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
         String remove = (String) cmbRemoveStaff.getSelectedItem();
-        MainScreen.staffArr.removeStaffItem(remove);
+        MainScreen.staffArr.staffRemoveItem(remove);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();
         ScreenBuild.mainScreen.saveJTables();

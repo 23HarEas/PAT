@@ -16,16 +16,16 @@ public class RemoveBooking extends JFrame {
 
     public RemoveBooking() {
         initComponents();
-        cmbRemoveBooking.setModel(MainScreen.tabArr.BookingComboLoad(cmbRemoveBooking));
+        cmbRemoveBooking.setModel(MainScreen.tabArr.bookingComboLoad(cmbRemoveBooking));
         AutoCompleteDecorator.decorate(cmbRemoveBooking);
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
         String remove = (String) cmbRemoveBooking.getSelectedItem();
-        MainScreen.tabArr.removeBooking(remove);
+        MainScreen.tabArr.bookingeRemoveItem(remove);
         dispose();
-        ScreenBuild.mainScreen.reloadTables();
+        ScreenBuild.mainScreen.reloadDBs();
         MainScreen.viewBookings.refreshBookingTable();
 
     }
