@@ -28,26 +28,56 @@ public class Tab {
         this.time = time;
     }
 
+    /**
+     * Retrieves the ID of the tab.
+     *
+     * @return The ID of the tab.
+     */
     public int getTabID() {
         return tabID;
     }
 
+    /**
+     * Retrieves the number of the table.
+     *
+     * @return The number of the table.
+     */
     public int getTableNumber() {
         return tableNumber;
     }
 
+    /**
+     * Retrieves the time associated with the tab.
+     *
+     * @return The time associated with the tab.
+     */
     public LocalDateTime getTime() {
         return time;
     }
 
+    /**
+     * Retrieves the total amount for the tab.
+     *
+     * @return The total amount for the tab.
+     */
     public Double getTotal() {
         return total;
     }
 
+    /**
+     * Retrieves the number of people (pax) associated with the tab.
+     *
+     * @return The number of people associated with the tab.
+     */
     public int getPax() {
         return pax;
     }
 
+    /**
+     * Checks if the tab is a booking.
+     *
+     * @return True if the tab is a booking, false otherwise.
+     */
     public boolean isBooking() {
         return booking;
     }

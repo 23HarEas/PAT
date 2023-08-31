@@ -21,18 +21,38 @@ public class Menu {
         this.price = price;
     }
 
+    /**
+     * Retrieves the menu ID associated with an object.
+     *
+     * @return The menu ID of the object.
+     */
     public int getMenueID() {
         return menueID;
     }
 
+    /**
+     * Retrieves the name associated with an object.
+     *
+     * @return The name of the object.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Retrieves the description associated with an object.
+     *
+     * @return The description of the object.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Retrieves the price associated with an object.
+     *
+     * @return The price of the object.
+     */
     public Double getPrice() {
         return price;
     }

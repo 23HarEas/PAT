@@ -229,6 +229,7 @@ public class TableScreen extends JFrame {
             }
             tblOrders.setShowHorizontalLines(true);
             tblOrders.setShowVerticalLines(true);
+            tblOrders.setAutoCreateRowSorter(true);
             scrOrders.setViewportView(tblOrders);
         }
         contentPane.add(scrOrders, new CC().cell(9, 1, 17, 18));

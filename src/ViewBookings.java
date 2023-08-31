@@ -156,6 +156,7 @@ public class ViewBookings extends JFrame {
             }
             tblBookings.setShowHorizontalLines(true);
             tblBookings.setShowVerticalLines(true);
+            tblBookings.setAutoCreateRowSorter(true);
             scrBookings.setViewportView(tblBookings);
         }
         contentPane.add(scrBookings, new CC().cell(0, 0, 15, 1));

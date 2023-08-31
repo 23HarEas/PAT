@@ -24,6 +24,11 @@ public class MainScreen extends JFrame {
     static TableScreen tableScreen;
     static ViewBookings viewBookings;
 
+    /**
+     * Reloads data from different database tables into the arrays. Calls the
+     * corresponding DBReload methods on the arrays to refresh the data based on
+     * the current state of the associated database tables.
+     */
     public void reloadDBs() {
         MainScreen.tabArr.tabDBReload();
         MainScreen.tableArr.TableDBReload();
@@ -32,12 +37,20 @@ public class MainScreen extends JFrame {
         MainScreen.ordersArr.ordersDBReload();
     }
 
+    /**
+     * Refreshes the data displayed in the JTables by updating their models
+     * using the corresponding arrays' data.
+     */
     public void refreshJTables() {
         tblOrders.setModel(ordersArr.ordersTableLoad(tblOrders));
         tblStaff.setModel(staffArr.staffTableLoad(tblStaff));
         tblMenu.setModel(menuArr.menuTableLoad(tblMenu));
     }
 
+    /**
+     * Saves the data from JTables back to the corresponding arrays and updates
+     * the database. Then refreshes the JTables to display the updated data.
+     */
     public void saveJTables() {
         menuArr.menuTableSave(tblMenu);
         staffArr.staffTableSave(tblStaff);
@@ -48,14 +61,18 @@ public class MainScreen extends JFrame {
     public MainScreen() {
         initComponents();
 
+        setBtnIcons();
+
         tblStaff.getColumnModel().getColumn(1).setCellEditor(new NonBlankCellEditor());
         tblStaff.getColumnModel().getColumn(2).setCellEditor(new NonBlankCellEditor());
         tblStaff.getColumnModel().getColumn(3).setCellEditor(new NonBlankCellEditor());
         tblStaff.getColumnModel().getColumn(4).setCellEditor(new NonBlankCellEditor());
         tblStaff.getColumnModel().getColumn(5).setCellEditor(new NonBlankIntegerCellEditor());
+        tblStaff.getColumnModel().getColumn(5).setCellRenderer(new IntegerCellRenderer());
         tblMenu.getColumnModel().getColumn(1).setCellEditor(new NonBlankCellEditor());
         tblMenu.getColumnModel().getColumn(2).setCellEditor(new NonBlankCellEditor());
         tblMenu.getColumnModel().getColumn(3).setCellEditor(new NonBlankIntegerCellEditor());
+        tblMenu.getColumnModel().getColumn(3).setCellRenderer(new IntegerCellRenderer());
 
         refreshJTables();
     }
@@ -258,6 +275,9 @@ public class MainScreen extends JFrame {
         saveJTables();
     }
 
+    /**
+     * Set the table icons depending on their occupancy
+     */
     public void setBtnIcons() {
 
         if (tableArr.getCurrentTabID(1) == 0) {
@@ -629,7 +649,7 @@ public class MainScreen extends JFrame {
                         }
                     ) {
                         Class<?>[] columnTypes = new Class<?>[] {
-                            Integer.class, Object.class, Object.class, Object.class, Object.class, Double.class
+                            Integer.class, Object.class, Object.class, Object.class, Object.class, Integer.class
                         };
                         boolean[] columnEditable = new boolean[] {
                             false, true, true, true, true, true

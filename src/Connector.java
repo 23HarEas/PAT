@@ -11,7 +11,7 @@ public class Connector {
 
     private Connection conn = null;
 
-    public Connector() { //Connect to the database
+    public Connector() {
         String driver = "jdbc:ucanaccess://";
         String database = "Resturant.accdb";
         try {
@@ -23,7 +23,13 @@ public class Connector {
 
     }
 
-    public ResultSet readQuery(String query) { //Read from the database, Select
+    /**
+     * Executes a SELECT query on the database and retrieves the result set.
+     *
+     * @param query The SELECT query to be executed.
+     * @return A ResultSet containing the data retrieved from the query.
+     */
+    public ResultSet readQuery(String query) {
         ResultSet set = null;
         try {
             Statement statement = conn.createStatement();
@@ -35,7 +41,12 @@ public class Connector {
         return set;
     }
 
-    public void writeQuery(String query) { //Wrtie to the database, Update, Delete, Append
+    /**
+     * Executes a query that writes to the database (UPDATE, DELETE, or INSERT).
+     *
+     * @param query The query to be executed to modify the database.
+     */
+    public void writeQuery(String query) {
         try {
 
             Statement statement = conn.createStatement();

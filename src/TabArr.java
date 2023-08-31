@@ -55,6 +55,9 @@ public class TabArr {
         }
     }
 
+    /**
+     * Reloads tab data from the database into the tabArr array.
+     */
     public void tabDBReload() {
 
         for (int i = 0; i < tabArrSize; i++) {
@@ -86,10 +89,23 @@ public class TabArr {
 
     }
 
+    /**
+     * Retrieves a Tab object from the tabArr array based on the given tab ID.
+     *
+     * @param currentTabID The ID of the tab to retrieve.
+     * @return The Tab object corresponding to the given tab ID.
+     */
     public Tab getTabObj(int currentTabID) {
         return tabArr[currentTabID];
     }
 
+    /**
+     * Creates a new tab for the specified table number and updates relevant
+     * database entries.
+     *
+     * @param tableNumber The number of the table for which the new tab is
+     * created.
+     */
     public void tabNewItem(int tableNumber) {
 
         dbObj.writeQuery("INSERT INTO [Tab] (TableNumber, [Time], Booking, Pax) VALUES (" + tableNumber + ", NOW(), FALSE, -1);");
@@ -106,6 +122,12 @@ public class TabArr {
         numberTab++;
     }
 
+    /**
+     * Loads booking tab information into the specified JTable model.
+     *
+     * @param table The JTable model to load booking tab information into.
+     * @return The updated JTable model with booking tab information.
+     */
     public DefaultTableModel bookingTableLoad(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
@@ -119,6 +141,12 @@ public class TabArr {
         return model;
     }
 
+    /**
+     * Loads booking tab information into the specified JComboBox model.
+     *
+     * @param comboBox The JComboBox model to load booking tab information into.
+     * @return The updated JComboBox model with booking tab information.
+     */
     public DefaultComboBoxModel bookingComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
@@ -132,6 +160,11 @@ public class TabArr {
         return model;
     }
 
+    /**
+     * Removes a booking tab based on the provided item identifier.
+     *
+     * @param item The item identifier string containing the tab ID.
+     */
     public void bookingeRemoveItem(String item) {
 
         int idToRemove = Integer.parseInt(new Scanner(item).useDelimiter(" ").next());
@@ -147,11 +180,25 @@ public class TabArr {
 
     }
 
+    /**
+     * Creates a new booking tab with the provided information.
+     *
+     * @param tableNumber The table number for the booking.
+     * @param time The time of the booking.
+     * @param name The name of the booking.
+     * @param cellphone The cellphone number of the booking.
+     * @param pax The number of people for the booking.
+     */
     public void bookingNewItem(int tableNumber, LocalDateTime time, String name, String cellphone, int pax) {
         dbObj.writeQuery("INSERT INTO [Tab] (TableNumber, [Time], Name, CellphoneNumber, Booking, Pax) VALUES (" + tableNumber + ", \"" + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\",  \"" + name + "\"  , \"" + cellphone + "\", TRUE, " + pax + " );");
         numberTab++;
     }
 
+    /**
+     * Saves changes to booking tabs based on the provided JTable.
+     *
+     * @param bookingTable The JTable containing updated booking information.
+     */
     public void bookingTableSave(JTable bookingTable) {
 
         for (int i = 0; i < bookingTable.getModel().getRowCount(); i++) {
@@ -170,7 +217,12 @@ public class TabArr {
     }
 
     public void bookingLoad(String item) {
-
+        /**
+         * Loads a booking by updating the corresponding table with the provided
+         * item information.
+         *
+         * @param item The item string containing booking details.
+         */
         Scanner sc = new Scanner(item).useDelimiter(" ");
         int tabID = Integer.parseInt(sc.next());
         sc.next();

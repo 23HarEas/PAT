@@ -49,6 +49,9 @@ public class OrdersArr {
         }
     }
 
+    /**
+     * Reloads orders data from the database into the ordersArr array.
+     */
     public void ordersDBReload() {
 
         try {
@@ -76,6 +79,12 @@ public class OrdersArr {
 
     }
 
+    /**
+     * Loads orders data into a DefaultTableModel for display in a JTable.
+     *
+     * @param table The JTable in which to display the orders data.
+     * @return The DefaultTableModel containing the loaded orders data.
+     */
     public DefaultTableModel ordersTableLoad(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
@@ -85,6 +94,15 @@ public class OrdersArr {
         return model;
     }
 
+    /**
+     * Loads orders data for a specific tab into a DefaultTableModel for display
+     * in a JTable.
+     *
+     * @param table The JTable in which to display the orders data.
+     * @param tabID The ID of the tab for which to load orders data.
+     * @return The DefaultTableModel containing the loaded orders data for the
+     * specific tab.
+     */
     public DefaultTableModel ordersTabTableLoad(JTable table, int tabID) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
@@ -99,6 +117,13 @@ public class OrdersArr {
         return model;
     }
 
+    /**
+     * Calculates the total cost of orders associated with a specific tab.
+     *
+     * @param tabID The ID of the tab for which to calculate the total cost.
+     * @param menuArr The MenuArr object containing menu item information.
+     * @return The calculated total cost of orders for the specified tab.
+     */
     public double calcTab(int tabID, MenuArr menuArr) {
 
         int total = 0;
@@ -114,6 +139,13 @@ public class OrdersArr {
 
     }
 
+    /**
+     * Adds a new order to the database and updates the ordersArr array.
+     *
+     * @param itemID The ID of the menu item for the new order.
+     * @param tabID The ID of the tab for which the new order is placed.
+     * @param notes Any additional notes for the new order.
+     */
     public void ordersNewItem(int itemID, int tabID, String notes) {
         dbObj.writeQuery("INSERT INTO [Order] (ItemID, [Time], TabID, Notes, Status) VALUES (" + itemID + ", NOW(), " + tabID + ", \"" + notes + "\", FALSE);");
         numberOrders++;
@@ -121,6 +153,12 @@ public class OrdersArr {
 
     }
 
+    /**
+     * Removes an order from the ordersArr array and the database based on the
+     * provided order ID.
+     *
+     * @param order The order to be removed (format: "OrderID ...").
+     */
     public void ordersRemoveItem(String order) {
         int idToRemove = Integer.parseInt(new Scanner(order).useDelimiter(" ").next());
         boolean found = false;
@@ -140,6 +178,13 @@ public class OrdersArr {
         }
     }
 
+    /**
+     * Loads order information into a DefaultComboBoxModel for display in a
+     * JComboBox.
+     *
+     * @param comboBox The JComboBox in which to display the order information.
+     * @return The DefaultComboBoxModel containing the loaded order information.
+     */
     public DefaultComboBoxModel ordersComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
@@ -153,6 +198,12 @@ public class OrdersArr {
         return model;
     }
 
+    /**
+     * Saves updated order statuses from a JTable back to the database and
+     * updates the ordersArr array.
+     *
+     * @param ordersTable The JTable containing the updated order statuses.
+     */
     public void ordersTableSave(JTable ordersTable) {
         for (int i = 0; i < numberOrders; i++) {
 

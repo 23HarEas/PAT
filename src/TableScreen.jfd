@@ -65,6 +65,7 @@ new FormModel {
 					} )
 					"showHorizontalLines": true
 					"showVerticalLines": true
+					"autoCreateRowSorter": true
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 9 1 17 18"

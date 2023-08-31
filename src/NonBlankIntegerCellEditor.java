@@ -7,58 +7,61 @@
  *
  * @author harri
  */
-import javax.swing.DefaultCellEditor;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
-import javax.swing.border.Border;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.event.KeyEvent;
-import java.util.EventObject;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
-public class NonBlankIntegerCellEditor extends DefaultCellEditor {
+public class NonBlankIntegerCellEditor extends AbstractCellEditor implements TableCellEditor {
 
     private JTextField textField;
-    private Border defaultBorder;
+    private Pattern integerPattern;
+    private boolean isValidInput = true;
 
     public NonBlankIntegerCellEditor() {
-        super(new JTextField());
-        textField = (JTextField) getComponent();
-        defaultBorder = textField.getBorder();
+        textField = new JTextField();
+        integerPattern = Pattern.compile("^-?\\d+$"); // Regular expression for integer values
+
+        textField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                stopCellEditing(); // Commit the edited value when Enter is pressed
+            }
+        });
+
+        textField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                validateInput();
+            }
+        });
+    }
+
+    private void validateInput() {
+        String editedValue = textField.getText();
+        isValidInput = !editedValue.isEmpty() && integerPattern.matcher(editedValue).matches() && Integer.parseInt(editedValue) >= 0;
+        textField.setForeground(isValidInput ? Color.black : Color.red);
+    }
+
+    @Override
+    public Object getCellEditorValue() {
+        return textField.getText();
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        textField.setText(value == null ? "" : String.valueOf(value));
-        textField.setBorder(defaultBorder); // Reset border color
+        textField.setText(value != null ? value.toString() : "");
+        validateInput();
         return textField;
     }
 
     @Override
     public boolean stopCellEditing() {
-        String text = textField.getText();
-        if (text.trim().isEmpty()) {
-            textField.setBorder(new LineBorder(Color.red));
+        if (!isValidInput) {
             return false;
         }
-
-        try {
-            int intValue = Integer.parseInt(text);
-            textField.setBorder(defaultBorder);
-            return super.stopCellEditing();
-        } catch (NumberFormatException e) {
-            textField.setBorder(new LineBorder(Color.red));
-            return false;
-        }
-    }
-
-    @Override
-    public boolean shouldSelectCell(EventObject anEvent) {
-        if (anEvent instanceof KeyEvent) {
-            KeyEvent ke = (KeyEvent) anEvent;
-            return ke.getID() != KeyEvent.KEY_PRESSED || ke.getKeyCode() == KeyEvent.VK_ENTER;
-        }
-        return true;
+        return super.stopCellEditing(); // Call the default implementation to commit the value
     }
 }

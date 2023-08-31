@@ -15,14 +15,15 @@ public class ScreenBuild {
     public static MainScreen mainScreen;
 
     /**
-     * @param args the command line arguments
+     * The main entry point of the application.
+     *
+     * @param args The command-line arguments.
      */
     public static void main(String[] args) {
         // TODO code application logic here
         FlatIntelliJLaf.setup();
         mainScreen = new MainScreen();
         mainScreen.setVisible(true);
-        mainScreen.setBtnIcons();
 
     }
 

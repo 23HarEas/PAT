@@ -44,6 +44,9 @@ public class StaffArr {
         }
     }
 
+    /**
+     * Reloads staff data from the database into the staffArr array.
+     */
     public void staffDBReload() {
         try {
             ResultSet staffDB = dbObj.readQuery("SELECT Staff.StaffID, Staff.Name, Staff.Surname, Staff.CellphoneNumber, Staff.Position, Staff.Wage\n" + "FROM Staff;");
@@ -67,20 +70,42 @@ public class StaffArr {
         }
     }
 
+    /**
+     * Loads staff data into a DefaultTableModel for display in a JTable.
+     *
+     * @param table The JTable in which to display the staff data.
+     * @return The DefaultTableModel containing the loaded staff data.
+     */
     public DefaultTableModel staffTableLoad(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
         for (int i = 0; i < numberStaff; i++) {
-            model.addRow(new Object[]{staffArr[i].getStaffID(), staffArr[i].getName(), staffArr[i].getSurname(), staffArr[i].getCellphoneNumber(), staffArr[i].getPosition(), staffArr[i].getWage()});
+            model.addRow(new Object[]{staffArr[i].getStaffID(), staffArr[i].getName(), staffArr[i].getSurname(), staffArr[i].getCellphoneNumber(), staffArr[i].getPosition(), (int) Math.round(staffArr[i].getWage())});
         }
         return model;
     }
 
+    /**
+     * Adds a new staff member to the staffArr array.
+     *
+     * @param name The name of the new staff member.
+     * @param surname The surname of the new staff member.
+     * @param cellNO The cellphone number of the new staff member.
+     * @param position The position of the new staff member.
+     * @param wage The wage of the new staff member.
+     */
     public void staffNewItem(String name, String surname, String cellNO, String position, Double wage) {
         staffArr[numberStaff] = new Staff(-1, name, surname, cellNO, position, wage);
         numberStaff++;
     }
 
+    /**
+     * Loads staff information into a DefaultComboBoxModel for display in a
+     * JComboBox.
+     *
+     * @param comboBox The JComboBox in which to display the staff information.
+     * @return The DefaultComboBoxModel containing the loaded staff information.
+     */
     public DefaultComboBoxModel staffComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
@@ -90,6 +115,12 @@ public class StaffArr {
         return model;
     }
 
+    /**
+     * Removes a staff member from the staffArr array and database.
+     *
+     * @param item The item representing the staff member to be removed (staff
+     * ID).
+     */
     public void staffRemoveItem(String item) {
 
         int idToRemove = Integer.parseInt(new Scanner(item).useDelimiter(" ").next());
@@ -111,6 +142,12 @@ public class StaffArr {
 
     }
 
+    /**
+     * Saves changes made to staff data in the staffTable to both the staffArr
+     * array and the database.
+     *
+     * @param staffTable The JTable containing the staff data to be saved.
+     */
     public void staffTableSave(JTable staffTable) {
         for (int i = 0; i < numberStaff; i++) {
 

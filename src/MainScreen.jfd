@@ -126,7 +126,7 @@ new FormModel {
 								add( null )
 								add( null )
 								add( null )
-								add( class java.lang.Double )
+								add( class java.lang.Integer )
 							}, new java.util.Vector {
 								add( false )
 								add( null )

@@ -21,18 +21,38 @@ public class Table {
         this.capacity = capacity;
     }
 
+    /**
+     * Returns the table number associated with this tab.
+     *
+     * @return The table number.
+     */
     public int getTableNumber() {
         return tableNumber;
     }
 
+    /**
+     * Returns the ID of the current tab for this table.
+     *
+     * @return The current tab ID.
+     */
     public int getCurrentTabID() {
         return currentTabID;
     }
 
+    /**
+     * Returns the name of the staff member assigned to this table.
+     *
+     * @return The staff member's name.
+     */
     public String getStaff() {
         return staff;
     }
 
+    /**
+     * Returns the capacity (number of people) of this table.
+     *
+     * @return The table's capacity.
+     */
     public int getCapacity() {
         return capacity;
     }

@@ -44,6 +44,10 @@ public class TableArr {
         }
     }
 
+    /**
+     * Reloads the table data from the database and updates the internal
+     * representation of tables.
+     */
     public void TableDBReload() {
 
         try {
@@ -65,22 +69,50 @@ public class TableArr {
 
     }
 
+    /**
+     * Returns the total number of tables in the restaurant.
+     *
+     * @return The total number of tables.
+     */
     public int getNumberTables() {
         return numberTables;
     }
 
+    /**
+     * Returns the ID of the current tab associated with a specific table.
+     *
+     * @param table The table number for which to retrieve the current tab ID.
+     * @return The ID of the current tab associated with the specified table.
+     */
     public int getCurrentTabID(int table) {
         return tableArr[table].getCurrentTabID();
     }
 
+    /**
+     * Returns the current Table object associated with a specific table number.
+     *
+     * @param table The table number for which to retrieve the Table object.
+     * @return The Table object associated with the specified table number.
+     */
     public Table getCurrentTableOBJ(int table) {
         return tableArr[table];
     }
 
+    /**
+     * Closes the tab associated with the specified table number.
+     *
+     * @param tableNumber The table number for which to close the tab.
+     */
     public void closeTab(int tableNumber) {
         dbObj.writeQuery("UPDATE [Table] SET [Table].CurrentTabID = 0 WHERE (((Table.TableNumber)= " + tableNumber + " ));");
     }
 
+    /**
+     * Loads table numbers into a combo box.
+     *
+     * @param comboBox The combo box to load the table numbers into.
+     * @return The updated DefaultComboBoxModel.
+     */
     public DefaultComboBoxModel TableComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
@@ -94,6 +126,13 @@ public class TableArr {
         return model;
     }
 
+    /**
+     * Loads available pax options for a specific table into a combo box.
+     *
+     * @param comboBox The combo box to load the pax options into.
+     * @param table The table for which to load the pax options.
+     * @return The updated DefaultComboBoxModel.
+     */
     public DefaultComboBoxModel TablePax(JComboBox comboBox, int table) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();

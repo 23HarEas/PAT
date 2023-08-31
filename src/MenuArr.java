@@ -44,6 +44,9 @@ public class MenuArr {
         }
     }
 
+    /**
+     * Reloads menu data from the database into the menuArr array.
+     */
     public void menuDBReload() {
         try {
 
@@ -66,15 +69,27 @@ public class MenuArr {
         }
     }
 
+    /**
+     * Loads menu data into a DefaultTableModel for display in a JTable.
+     *
+     * @param table The JTable in which to display the menu data.
+     * @return The DefaultTableModel containing the loaded menu data.
+     */
     public DefaultTableModel menuTableLoad(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setNumRows(0);
         for (int i = 0; i < numberMenu; i++) {
-            model.addRow(new Object[]{menuArr[i].getMenueID(), menuArr[i].getName(), menuArr[i].getDescription(), menuArr[i].getPrice()});
+            model.addRow(new Object[]{menuArr[i].getMenueID(), menuArr[i].getName(), menuArr[i].getDescription(), (int) Math.round(menuArr[i].getPrice())});
         }
         return model;
     }
 
+    /**
+     * Saves changes made in the menuTable back to the database and updates the
+     * menuArr array.
+     *
+     * @param menuTable The JTable containing the edited menu data.
+     */
     public void menuTableSave(JTable menuTable) {
 
         for (int i = 0; i < numberMenu; i++) {
@@ -104,6 +119,12 @@ public class MenuArr {
         }
     }
 
+    /**
+     * Loads menu data into a DefaultComboBoxModel for display in a JComboBox.
+     *
+     * @param comboBox The JComboBox in which to display the menu data.
+     * @return The DefaultComboBoxModel containing the loaded menu data.
+     */
     public DefaultComboBoxModel menuComboLoad(JComboBox comboBox) {
         DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
         model.removeAllElements();
@@ -113,10 +134,21 @@ public class MenuArr {
         return model;
     }
 
+    /**
+     * Retrieves the number of menu items stored in the system.
+     *
+     * @return The total number of menu items.
+     */
     public int getNumberMenu() {
         return numberMenu;
     }
 
+    /**
+     * Finds and returns the total price of a menu item with the given item ID.
+     *
+     * @param itemID The item ID of the menu item to find the price for.
+     * @return The total price of the menu item with the specified item ID.
+     */
     public double findPrice(int itemID) {
         double price = 0;
 
@@ -129,11 +161,25 @@ public class MenuArr {
         return price;
     }
 
+    /**
+     * Adds a new menu item to the menuArr array and increments the total number
+     * of menu items.
+     *
+     * @param name The name of the new menu item.
+     * @param description The description of the new menu item.
+     * @param price The price of the new menu item.
+     */
     public void menuNewItem(String name, String description, Double price) {
         menuArr[numberMenu] = new Menu(-1, name, description, price);
         numberMenu++;
     }
 
+    /**
+     * Removes a menu item from the menuArr array and the database based on the
+     * provided item.
+     *
+     * @param item The menu item to be removed (format: "MenuID Name").
+     */
     public void menuRemoveItem(String item) {
 
         int idToRemove = Integer.parseInt(new Scanner(item).useDelimiter(" ").next());

@@ -14,10 +14,20 @@ public class BookingTab extends Tab {
     private String name;
     private String cellphoneNumber;
 
+    /**
+     * Retrieves the name associated with the tab.
+     *
+     * @return The name associated with the tab.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Retrieves the cellphone number associated with the tab.
+     *
+     * @return The cellphone number associated with the tab.
+     */
     public String getCellphoneNumber() {
         return cellphoneNumber;
     }
