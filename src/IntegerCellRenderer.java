@@ -10,7 +10,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class IntegerCellRenderer extends DefaultTableCellRenderer {
