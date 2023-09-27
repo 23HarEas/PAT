@@ -78,7 +78,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "btnOrdersRefresh"
 						"text": "Refresh"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button8", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnOrdersRefresh", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 13 18 3 2,growy"
 					} )
@@ -157,14 +157,14 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "btnStaffRemove"
 						"text": "Remove"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button11", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnStaffRemove", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 18 3 2,growy"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "btnStaffRefresh"
 						"text": "Refresh"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button9", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnStaffRefresh", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 13 18 3 2,growy"
 					} )
@@ -226,28 +226,28 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "btnMenuNew"
 						"text": "New"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMenuNew", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 18 3 2,growy"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "btnMenuRemove"
 						"text": "Remove"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMenuRemove", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 18 3 2,growy"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "btnMenuRefresh"
 						"text": "Refresh"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button5", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMenuRefresh", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 13 18 3 2,growy"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "btnMenuSave"
 						"text": "Save"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMenuSave", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 17 18 3 2,growy"
 					} )
@@ -268,7 +268,7 @@ new FormModel {
 						"verticalTextPosition": 3
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button42", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable1", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
@@ -280,7 +280,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button59", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable2", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 0"
 					} )
@@ -292,7 +292,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button51", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable15", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 5 0"
 					} )
@@ -304,7 +304,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button52", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable16", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 6 0"
 					} )
@@ -316,7 +316,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button43", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable3", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1"
 					} )
@@ -328,7 +328,7 @@ new FormModel {
 						"iconTextGap": 7
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button56", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable8", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 2 0 1 2"
 					} )
@@ -340,7 +340,7 @@ new FormModel {
 						"iconTextGap": 7
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button57", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable9", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 3 0 1 2"
 					} )
@@ -352,7 +352,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button60", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable14", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 0"
 					} )
@@ -364,7 +364,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button61", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable4", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 1"
 					} )
@@ -376,7 +376,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button62", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable17", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 1"
 					} )
@@ -388,7 +388,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button53", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable18", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 5 1"
 					} )
@@ -400,7 +400,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button54", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable19", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 6 1"
 					} )
@@ -412,7 +412,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button44", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable5", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 2"
 					} )
@@ -424,7 +424,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button45", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable6", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 3"
 					} )
@@ -436,7 +436,7 @@ new FormModel {
 						"iconTextGap": 7
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button55", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable11", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 3 2 1 2"
 					} )
@@ -448,7 +448,7 @@ new FormModel {
 						"iconTextGap": 7
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button50", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable10", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 2 2 1 2"
 					} )
@@ -460,7 +460,7 @@ new FormModel {
 						"iconTextGap": 0
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
 						"verticalTextPosition": 3
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button46", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable7", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 4"
 					} )
@@ -471,7 +471,7 @@ new FormModel {
 						"iconTextGap": 7
 						"horizontalTextPosition": 2
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button47", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable12", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 4 3 1"
 					} )
@@ -482,7 +482,7 @@ new FormModel {
 						"iconTextGap": 7
 						"horizontalTextPosition": 2
 						"margin": new java.awt.Insets( 0, 0, 0, 0 )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button48", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnTable13", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 4 4 3 1"
 					} )

@@ -11,6 +11,11 @@ public class Connector {
 
     private Connection conn = null;
 
+    /**
+     * Establishes a database connection using the UCanAccess JDBC driver. This
+     * constructor initializes a connection to the "Restaurant.accdb" database.
+     * If the connection cannot be established, it displays an error message.
+     */
     public Connector() {
         String driver = "jdbc:ucanaccess://";
         String database = "Resturant.accdb";

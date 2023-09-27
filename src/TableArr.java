@@ -18,8 +18,14 @@ public class TableArr {
 
     private Table tableArr[] = new Table[100];
     private int numberTables = 0;
-    Connector dbObj = new Connector();
+    private Connector dbObj = new Connector();
 
+    /**
+     * Initializes a new TableArr object and populates it with table data
+     * retrieved from the database. Each table is represented as a Table object
+     * and stored in the tableArr array. The number of tables is also counted
+     * and stored in the numberTables variable.
+     */
     public TableArr() {
         try {
 

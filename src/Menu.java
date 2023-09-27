@@ -12,9 +12,18 @@ public class Menu {
     private int menueID;
     private String name;
     private String description;
-    private Double price;
+    private double price;
 
-    public Menu(int menueID, String name, String description, Double price) {
+    /**
+     * Constructs a Menu object with the specified menu ID, name, description,
+     * and price.
+     *
+     * @param menuID The unique identifier for the menu item.
+     * @param name The name of the menu item.
+     * @param description A brief description of the menu item.
+     * @param price The price of the menu item.
+     */
+    public Menu(int menueID, String name, String description, double price) {
         this.menueID = menueID;
         this.name = name;
         this.description = description;
@@ -53,7 +62,7 @@ public class Menu {
      *
      * @return The price of the object.
      */
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 

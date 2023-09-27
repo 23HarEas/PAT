@@ -21,8 +21,13 @@ public class StaffArr {
 
     private Staff staffArr[] = new Staff[100];
     private int numberStaff = 0;
-    Connector dbObj = new Connector();
+    private Connector dbObj = new Connector();
 
+    /**
+     * Initializes a new StaffArr object by retrieving staff data from the
+     * database. Populates the staffArr array with Staff objects representing
+     * staff members.
+     */
     public StaffArr() {
         try {
             ResultSet staffDB = dbObj.readQuery("SELECT Staff.StaffID, Staff.Name, Staff.Surname, Staff.CellphoneNumber, Staff.Position, Staff.Wage\n" + "FROM Staff;");
@@ -33,7 +38,7 @@ public class StaffArr {
                 String surname = staffDB.getString(3);
                 String cellphoneNumber = staffDB.getString(4);
                 String position = staffDB.getString(5);
-                Double wage = staffDB.getDouble(6);
+                double wage = staffDB.getDouble(6);
 
                 staffArr[numberStaff] = new Staff(staffID, name, surname, cellphoneNumber, position, wage);
                 numberStaff++;
@@ -59,7 +64,7 @@ public class StaffArr {
                 String surname = staffDB.getString(3);
                 String cellphoneNumber = staffDB.getString(4);
                 String position = staffDB.getString(5);
-                Double wage = staffDB.getDouble(6);
+                double wage = staffDB.getDouble(6);
 
                 staffArr[i] = new Staff(staffID, name, surname, cellphoneNumber, position, wage);
                 i++;
@@ -94,7 +99,7 @@ public class StaffArr {
      * @param position The position of the new staff member.
      * @param wage The wage of the new staff member.
      */
-    public void staffNewItem(String name, String surname, String cellNO, String position, Double wage) {
+    public void staffNewItem(String name, String surname, String cellNO, String position, double wage) {
         staffArr[numberStaff] = new Staff(-1, name, surname, cellNO, position, wage);
         numberStaff++;
     }
@@ -156,7 +161,7 @@ public class StaffArr {
             String surname = (String) staffTable.getValueAt(i, 2);
             String cellphone = (String) staffTable.getValueAt(i, 3);
             String position = (String) staffTable.getValueAt(i, 4);
-            Double wage = Double.parseDouble("" + staffTable.getValueAt(i, 5));
+            double wage = Double.parseDouble("" + staffTable.getValueAt(i, 5));
 
             for (int j = 0; j < numberStaff; j++) {
 

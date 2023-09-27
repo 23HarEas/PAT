@@ -17,20 +17,23 @@ import net.miginfocom.swing.*;
  */
 public class NewBooking extends JFrame {
 
+    /**
+     * Constructs a NewBooking object. This constructor initializes the
+     * NewBooking form's components and sets the model for the table selection
+     * combo box to populate it with available table numbers.
+     */
     public NewBooking() {
         initComponents();
         cmbNewBookingTable.setModel(MainScreen.tableArr.TableComboLoad(cmbNewBookingTable));
     }
 
-    private void button1(ActionEvent e) {
-        // TODO add your code here
-        MainScreen.tabArr.bookingNewItem(Integer.parseInt("" + cmbNewBookingTable.getSelectedItem()), dtpNewBookingTime.getDateTimePermissive(), txtNewBookingName.getText(), txtNewBookingCellphone.getText(), Integer.parseInt("" + cmbNewBookingPax.getSelectedItem()));
-        dispose();
-        ScreenBuild.mainScreen.reloadDBs();
-        MainScreen.viewBookings.refreshBookingTable();
-
-    }
-
+    /**
+     * Custom component creation for the user interface. This method configures
+     * a DateTimePicker component for selecting the booking time. It sets up
+     * date and time settings, enforces no keyboard editing, uses 24-hour clock
+     * format, initializes the time to the current time, and generates potential
+     * time intervals in 15-minute increments.
+     */
     private void createUIComponents() {
         // TODO: add custom component creation code here
         DatePickerSettings dateSettings = new DatePickerSettings();
@@ -46,9 +49,34 @@ public class NewBooking extends JFrame {
 
     }
 
+    /**
+     * Handles the item state change event for the cmbNewBookingTable ComboBox.
+     * This method updates the available pax options in cmbNewBookingPax based
+     * on the selected table. It also reloads the databases and refreshes the
+     * booking table in the main screen.
+     *
+     * @param e The ItemEvent that occurred.
+     */
     private void cmbNewBookingTableItemStateChanged(ItemEvent e) {
         // TODO add your code here
         cmbNewBookingPax.setModel(MainScreen.tableArr.TablePax(cmbNewBookingPax, Integer.parseInt("" + cmbNewBookingTable.getSelectedItem())));
+        ScreenBuild.mainScreen.reloadDBs();
+        MainScreen.viewBookings.refreshBookingTable();
+    }
+
+    /**
+     * Handles the action event when the "Submit" button for creating a new
+     * booking is clicked. This method creates a new booking tab in the database
+     * with the provided information. It then disposes of the current window,
+     * reloads the databases, and refreshes the booking table in the main
+     * screen.
+     *
+     * @param e The ActionEvent that occurred.
+     */
+    private void btnNewBookingSubmit(ActionEvent e) {
+        // TODO add your code here
+        MainScreen.tabArr.bookingNewItem(Integer.parseInt("" + cmbNewBookingTable.getSelectedItem()), dtpNewBookingTime.getDateTimePermissive(), txtNewBookingName.getText(), txtNewBookingCellphone.getText(), Integer.parseInt("" + cmbNewBookingPax.getSelectedItem()));
+        dispose();
         ScreenBuild.mainScreen.reloadDBs();
         MainScreen.viewBookings.refreshBookingTable();
     }
@@ -133,7 +161,7 @@ public class NewBooking extends JFrame {
 
         //---- btnNewBookingSubmit ----
         btnNewBookingSubmit.setText("Add Booking");
-        btnNewBookingSubmit.addActionListener(e -> button1(e));
+        btnNewBookingSubmit.addActionListener(e -> btnNewBookingSubmit(e));
         contentPane.add(btnNewBookingSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);
         setLocationRelativeTo(null);

@@ -16,6 +16,11 @@ import net.miginfocom.swing.*;
  */
 public class TableScreen extends JFrame {
 
+    /**
+     * Initializes a new TableScreen. Checks if there is an active tab for the
+     * current table in MainScreen, and creates a new tab if none exists.
+     * Initializes and sets up the components for displaying table information.
+     */
     public TableScreen() {
 
         if (MainScreen.tableArr.getCurrentTabID(MainScreen.workingTable) == 0) {
@@ -28,6 +33,14 @@ public class TableScreen extends JFrame {
         ScreenBuild.mainScreen.setBtnIcons();
     }
 
+    /**
+     * Refreshes the information displayed in the TableScreen based on the
+     * current tab and its associated orders. This method reloads the database
+     * information, retrieves and displays details such as staff, pax, time,
+     * total, and type of the current tab. If the current tab is a booking, it
+     * also displays the booking name and phone number. Finally, it updates the
+     * table with the orders related to the current tab.
+     */
     public void refreshTable() {
 
         ScreenBuild.mainScreen.reloadDBs();
@@ -67,24 +80,30 @@ public class TableScreen extends JFrame {
         OrdersArr orderArr = MainScreen.ordersArr;
         tblOrders.setModel(orderArr.ordersTabTableLoad(tblOrders, currentTabID));
     }
+    // TODO add your code here
 
-    private void button1(ActionEvent e) {
-        // TODO add your code here
-
-    }
-
+    /**
+     * Opens a new order window when the "New Order" button is clicked.
+     */
     private void btnNewOrder(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();
         new NewOrder().setVisible(true);
     }
 
+    /**
+     * Opens a new order window when the "New Order" button is clicked.
+     */
     private void btnRemoveOrder(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();
         new RemoveOrder().setVisible(true);
     }
 
+    /**
+     * Closes the current tab for the table when the "Close Tab" button is
+     * clicked.
+     */
     private void btnCloseTab(ActionEvent e) {
         // TODO add your code here
 

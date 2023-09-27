@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class Orders {
 
     private int orderID;
-    private Boolean status;
+    private boolean status;
     private String item;
     private int table;
     private LocalDateTime time;
@@ -21,7 +21,22 @@ public class Orders {
     private int tabID;
     private int itemID;
 
-    public Orders(int orderID, Boolean status, String item, int table, LocalDateTime time, String staff, String notes, int tabID, int itemID) {
+    /**
+     * Initializes an Orders object with the provided data.
+     *
+     * @param orderID The unique identifier for the order.
+     * @param status The status of the order (e.g., true for completed, false
+     * for in progress).
+     * @param item The name of the menu item associated with the order.
+     * @param table The table number where the order was placed.
+     * @param time The date and time when the order was placed.
+     * @param staff The name of the staff member who took the order.
+     * @param notes Any additional notes or comments related to the order.
+     * @param tabID The unique identifier for the tab associated with the order.
+     * @param itemID The unique identifier for the menu item associated with the
+     * order.
+     */
+    public Orders(int orderID, boolean status, String item, int table, LocalDateTime time, String staff, String notes, int tabID, int itemID) {
         this.orderID = orderID;
         this.status = status;
         this.item = item;
@@ -47,7 +62,7 @@ public class Orders {
      *
      * @return The status of the object.
      */
-    public Boolean getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -119,7 +134,7 @@ public class Orders {
      *
      * @param status The status to be set for the object.
      */
-    public void setStatus(Boolean status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 

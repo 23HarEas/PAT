@@ -14,13 +14,32 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  */
 public class RemoveStaffItem extends JFrame {
 
+    /**
+     * Initializes the RemoveStaffItem window.
+     *
+     * This constructor is responsible for initializing the RemoveStaffItem
+     * window by setting up its components. It populates the combo box with
+     * staff members loaded from MainScreen's staffArr and decorates it for
+     * auto-completion.
+     */
     public RemoveStaffItem() {
         initComponents();
         cmbRemoveStaff.setModel(MainScreen.staffArr.staffComboLoad(cmbRemoveStaff));
         AutoCompleteDecorator.decorate(cmbRemoveStaff);
     }
 
-    private void button1(ActionEvent e) {
+    /**
+     * Handles the submit action to remove a staff member.
+     *
+     * This method is triggered when the "Submit" button is clicked in the
+     * RemoveStaffItem window. It retrieves the selected staff member from the
+     * combo box, removes the staff member from MainScreen's staffArr, disposes
+     * of the current window, and refreshes and saves the JTables in the main
+     * screen.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
+    private void btnRemoveStaffSubmit(ActionEvent e) {
         // TODO add your code here
         String remove = (String) cmbRemoveStaff.getSelectedItem();
         MainScreen.staffArr.staffRemoveItem(remove);
@@ -74,7 +93,7 @@ public class RemoveStaffItem extends JFrame {
 
         //---- btnRemoveStaffSubmit ----
         btnRemoveStaffSubmit.setText("Remove Staff Member");
-        btnRemoveStaffSubmit.addActionListener(e -> button1(e));
+        btnRemoveStaffSubmit.addActionListener(e -> btnRemoveStaffSubmit(e));
         contentPane.add(btnRemoveStaffSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);
         setLocationRelativeTo(null);

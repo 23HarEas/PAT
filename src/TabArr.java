@@ -25,8 +25,15 @@ public class TabArr {
     private int tabArrSize = 100;
     private Tab tabArr[] = new Tab[tabArrSize];
     private int numberTab = 0;
-    Connector dbObj = new Connector();
+    private Connector dbObj = new Connector();
 
+    /**
+     * Initializes a new TabArr object by retrieving tab information from the
+     * database and creating Tab or BookingTab objects. The retrieved data
+     * includes tab ID, table number, pax, booking status, timestamp, name, and
+     * cellphone number (for bookings). If a tab is not a booking, a Tab object
+     * is created; otherwise, a BookingTab object is created.
+     */
     public TabArr() {
         try {
 

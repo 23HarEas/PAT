@@ -23,15 +23,26 @@ public class OrdersArr {
 
     private Orders ordersArr[] = new Orders[100];
     private int numberOrders = 0;
-    Connector dbObj = new Connector();
+    private Connector dbObj = new Connector();
 
+    /**
+     * Initializes an OrdersArr object by retrieving order data from the
+     * database and populating the array.
+     *
+     * This constructor fetches order data from the database, including order
+     * ID, status, menu item name, table number, order time, staff name, notes,
+     * tab ID, and menu item ID. It then creates Orders objects for each order
+     * record and populates the ordersArr array.
+     *
+     * @throws SQLException If there is an issue with executing the SQL query.
+     */
     public OrdersArr() {
         try {
             ResultSet ordersDB = dbObj.readQuery("SELECT Order.OrderID, Menu.Name, Order.Status, Tab.TableNumber, Order.Time, Staff.Name, Order.Notes, Tab.TabID, Order.ItemID\n" + "FROM (Staff INNER JOIN ([Table] INNER JOIN Tab ON Table.TableNumber = Tab.TableNumber) ON Staff.StaffID = Table.StaffID) INNER JOIN (Menu INNER JOIN [Order] ON Menu.ItemID = Order.ItemID) ON Tab.TabID = Order.TabID ORDER BY Order.OrderID;");
             while (ordersDB.next()) {
 
                 int orderID = ordersDB.getInt(1);
-                Boolean status = ordersDB.getBoolean(3);
+                boolean status = ordersDB.getBoolean(3);
                 String item = ordersDB.getString(2);
                 int table = ordersDB.getInt(4);
                 LocalDateTime time = LocalDateTime.parse(ordersDB.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"));
@@ -60,7 +71,7 @@ public class OrdersArr {
             while (ordersDB.next()) {
 
                 int orderID = ordersDB.getInt(1);
-                Boolean status = ordersDB.getBoolean(3);
+                boolean status = ordersDB.getBoolean(3);
                 String item = ordersDB.getString(2);
                 int table = ordersDB.getInt(4);
                 LocalDateTime time = LocalDateTime.parse(ordersDB.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"));

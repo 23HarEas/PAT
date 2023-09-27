@@ -15,13 +15,27 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  */
 public class NewOrder extends JFrame {
 
+    /**
+     * Initializes the NewOrder window. This method initializes the components
+     * in the NewOrder window, sets up the combo box for selecting menu items by
+     * loading menu items from menuArr, and decorates the combo box to enable
+     * auto-complete functionality.
+     */
     public NewOrder() {
         initComponents();
         cmbNewOrderItem.setModel(MainScreen.menuArr.menuComboLoad(cmbNewOrderItem));
         AutoCompleteDecorator.decorate(cmbNewOrderItem);
     }
 
-    private void button1(ActionEvent e) {
+    /**
+     * Handles the submission of a new order. This method retrieves the selected
+     * menu item, notes, and the current tab ID, then creates a new order item
+     * in the ordersArr. Afterward, it refreshes the table view and disposes of
+     * the NewOrder window.
+     *
+     * @param e The ActionEvent triggered by the submission button.
+     */
+    private void btnNewOrderSubmit(ActionEvent e) {
         // TODO add your code here
         int itemID = Integer.parseInt(new Scanner(cmbNewOrderItem.getSelectedItem() + "").useDelimiter(" ").next());
         String notes = txtNewOrderNotes.getText();
@@ -84,7 +98,7 @@ public class NewOrder extends JFrame {
 
         //---- btnNewOrderSubmit ----
         btnNewOrderSubmit.setText("Place Order");
-        btnNewOrderSubmit.addActionListener(e -> button1(e));
+        btnNewOrderSubmit.addActionListener(e -> btnNewOrderSubmit(e));
         contentPane.add(btnNewOrderSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);
         setLocationRelativeTo(null);

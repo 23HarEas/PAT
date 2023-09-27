@@ -14,20 +14,38 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  */
 public class RemoveBooking extends JFrame {
 
+    /**
+     * Initializes a RemoveBooking window.
+     *
+     * This constructor initializes the RemoveBooking window, populating the
+     * combo box with booking information using the bookingComboLoad method from
+     * MainScreen's tabArr. It also decorates the combo box for a better user
+     * experience.
+     */
     public RemoveBooking() {
         initComponents();
         cmbRemoveBooking.setModel(MainScreen.tabArr.bookingComboLoad(cmbRemoveBooking));
         AutoCompleteDecorator.decorate(cmbRemoveBooking);
     }
 
-    private void button1(ActionEvent e) {
+    /**
+     * Handles the removal of a booking.
+     *
+     * This method is called when the "Submit" button in the RemoveBooking
+     * window is clicked. It retrieves the selected booking information from the
+     * combo box, removes the booking using the bookingeRemoveItem method from
+     * MainScreen's tabArr, disposes of the window, reloads the databases, and
+     * refreshes the booking table.
+     *
+     * @param e The ActionEvent representing the button click.
+     */
+    private void btnRemoveBookingSubmit(ActionEvent e) {
         // TODO add your code here
         String remove = (String) cmbRemoveBooking.getSelectedItem();
         MainScreen.tabArr.bookingeRemoveItem(remove);
         dispose();
         ScreenBuild.mainScreen.reloadDBs();
         MainScreen.viewBookings.refreshBookingTable();
-
     }
 
     private void initComponents() {
@@ -75,7 +93,7 @@ public class RemoveBooking extends JFrame {
 
         //---- btnRemoveBookingSubmit ----
         btnRemoveBookingSubmit.setText("Remove Item");
-        btnRemoveBookingSubmit.addActionListener(e -> button1(e));
+        btnRemoveBookingSubmit.addActionListener(e -> btnRemoveBookingSubmit(e));
         contentPane.add(btnRemoveBookingSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);
         setLocationRelativeTo(null);

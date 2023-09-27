@@ -14,15 +14,28 @@ import net.miginfocom.swing.*;
  */
 public class NewMenuItem extends JFrame {
 
+    /**
+     * Constructs a new NewMenuItem window. This constructor initializes and
+     * displays the components of the NewMenuItem window.
+     */
     public NewMenuItem() {
         initComponents();
     }
 
-    private void button1(ActionEvent e) {
+    /**
+     * Handles the submit button click event in the NewMenuItem window. This
+     * method retrieves the menu item's name, description, and price from the
+     * input fields, creates a new menu item with this information, and adds it
+     * to the menuArr. Then, it disposes of the window, refreshes the tables on
+     * the main screen, and saves the changes.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
+    private void btnNewMenuSubmit(ActionEvent e) {
         // TODO add your code here
         String name = txtNewMenuName.getText();
         String description = txtNewMenuDescription.getText();
-        Double price = Double.parseDouble(txtNewMenuPrice.getText());
+        double price = Double.parseDouble(txtNewMenuPrice.getText());
         MainScreen.menuArr.menuNewItem(name, description, price);
         dispose();
         ScreenBuild.mainScreen.refreshJTables();
@@ -87,7 +100,7 @@ public class NewMenuItem extends JFrame {
 
         //---- btnNewMenuSubmit ----
         btnNewMenuSubmit.setText("Add Item");
-        btnNewMenuSubmit.addActionListener(e -> button1(e));
+        btnNewMenuSubmit.addActionListener(e -> btnNewMenuSubmit(e));
         contentPane.add(btnNewMenuSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);
         setLocationRelativeTo(null);

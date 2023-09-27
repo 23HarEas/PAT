@@ -14,17 +14,30 @@ import net.miginfocom.swing.*;
  */
 public class NewStaff extends JFrame {
 
+    /**
+     * Initializes and constructs a new NewStaff window. This constructor
+     * initializes the components and constructs a new window for adding staff
+     * members.
+     */
     public NewStaff() {
         initComponents();
     }
 
-    private void button1(ActionEvent e) {
+    /**
+     * Handles the submission of a new staff member. This method extracts
+     * information from the input fields, creates a new staff member, adds it to
+     * the staffArr, disposes of the current window, and refreshes and saves the
+     * main screen's JTables.
+     *
+     * @param e The ActionEvent triggered by the submit button.
+     */
+    private void btnNewStaffSubmit(ActionEvent e) {
         // TODO add your code here
         String name = txtNewStaffName.getText();
         String surname = txtNewStaffSurname.getText();
         String cellphone = txtNewStaffCell.getText();
         String position = txtNewStaffPosition.getText();
-        Double wage = Double.parseDouble(txtNewStaffWage.getText());
+        double wage = Double.parseDouble(txtNewStaffWage.getText());
 
         MainScreen.staffArr.staffNewItem(name, surname, cellphone, position, wage);
         dispose();
@@ -104,7 +117,7 @@ public class NewStaff extends JFrame {
 
         //---- btnNewStaffSubmit ----
         btnNewStaffSubmit.setText("Add Staff Member");
-        btnNewStaffSubmit.addActionListener(e -> button1(e));
+        btnNewStaffSubmit.addActionListener(e -> btnNewStaffSubmit(e));
         contentPane.add(btnNewStaffSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);
         setLocationRelativeTo(null);

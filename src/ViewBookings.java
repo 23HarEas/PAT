@@ -18,6 +18,10 @@ import net.miginfocom.swing.*;
  */
 public class ViewBookings extends JFrame {
 
+    /**
+     * Initializes the ViewBookings form, configures table column cell editors
+     * and renderers, and refreshes the booking table.
+     */
     public ViewBookings() {
         initComponents();
 
@@ -44,22 +48,46 @@ public class ViewBookings extends JFrame {
 
     }
 
+    /**
+     * Handles the "Remove Booking" button click event. Opens the RemoveBooking
+     * form to remove a booking.
+     *
+     * @param e The ActionEvent triggered by the button click.
+     */
     private void btnBookingsRemove(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();
         new RemoveBooking().setVisible(true);
     }
 
+    /**
+     * Refreshes the booking table. Reloads the database data and updates the
+     * booking table with the latest information.
+     */
     public void refreshBookingTable() {
         ScreenBuild.mainScreen.reloadDBs();
         tblBookings.setModel(MainScreen.tabArr.bookingTableLoad(tblBookings));
     }
 
+    /**
+     * Event handler for the "Refresh" button in the bookings view. Calls the
+     * refreshBookingTable method to update the booking table with the latest
+     * data.
+     *
+     * @param e The ActionEvent triggered by clicking the "Refresh" button.
+     */
     private void btnBookingsRefresh(ActionEvent e) {
         // TODO add your code here
         refreshBookingTable();
     }
 
+    /**
+     * Event handler for the "Save" button in the bookings view. Calls the
+     * bookingTableSave method to save changes made in the booking table,
+     * reloads the database, and refreshes the booking table with updated data.
+     *
+     * @param e The ActionEvent triggered by clicking the "Save" button.
+     */
     private void btnBookingsSave(ActionEvent e) {
         // TODO add your code here
         MainScreen.tabArr.bookingTableSave(tblBookings);
@@ -67,6 +95,12 @@ public class ViewBookings extends JFrame {
         refreshBookingTable();
     }
 
+    /**
+     * Event handler for the "New" button in the bookings view. Opens a new
+     * booking form for creating a new booking when the button is clicked.
+     *
+     * @param e The ActionEvent triggered by clicking the "New" button.
+     */
     private void btnBookingsNew(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();

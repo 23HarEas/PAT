@@ -21,8 +21,17 @@ public class MenuArr {
 
     private Menu menuArr[] = new Menu[100];
     private int numberMenu = 0;
-    Connector dbObj = new Connector();
+    private Connector dbObj = new Connector();
 
+    /**
+     * Constructs a MenuArr object and populates it with menu items retrieved
+     * from a database. This constructor reads menu item data from a database
+     * query result set and creates Menu objects for each item, adding them to
+     * the MenuArr array.
+     *
+     * @throws SQLException If there's an issue with the database connection or
+     * query execution.
+     */
     public MenuArr() {
         try {
 
@@ -32,7 +41,7 @@ public class MenuArr {
                 int menuID = menueDB.getInt(1);
                 String name = menueDB.getString(2);
                 String description = menueDB.getString(3);
-                Double price = menueDB.getDouble(4);
+                double price = menueDB.getDouble(4);
 
                 menuArr[numberMenu] = new Menu(menuID, name, description, price);
                 numberMenu++;
@@ -57,7 +66,7 @@ public class MenuArr {
                 int menuID = menueDB.getInt(1);
                 String name = menueDB.getString(2);
                 String description = menueDB.getString(3);
-                Double price = menueDB.getDouble(4);
+                double price = menueDB.getDouble(4);
 
                 menuArr[i] = new Menu(menuID, name, description, price);
                 i++;
@@ -96,7 +105,7 @@ public class MenuArr {
             int menuID = Integer.parseInt("" + menuTable.getValueAt(i, 0));
             String name = (String) menuTable.getValueAt(i, 1);
             String description = (String) menuTable.getValueAt(i, 2);
-            Double price = Double.parseDouble("" + menuTable.getValueAt(i, 3));
+            double price = Double.parseDouble("" + menuTable.getValueAt(i, 3));
 
             for (int j = 0; j < numberMenu; j++) {
 
@@ -168,7 +177,7 @@ public class MenuArr {
      * @param description The description of the new menu item.
      * @param price The price of the new menu item.
      */
-    public void menuNewItem(String name, String description, Double price) {
+    public void menuNewItem(String name, String description, double price) {
         menuArr[numberMenu] = new Menu(-1, name, description, price);
         numberMenu++;
     }

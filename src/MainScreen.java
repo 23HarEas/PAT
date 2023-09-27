@@ -58,6 +58,12 @@ public class MainScreen extends JFrame {
         refreshJTables();
     }
 
+    /**
+     * Constructs a new MainScreen object. Initializes the components, sets
+     * button icons, and configures cell editors and cell renderers for the
+     * staff and menu tables. It also refreshes the displayed data in the
+     * tables.
+     */
     public MainScreen() {
         initComponents();
 
@@ -76,193 +82,27 @@ public class MainScreen extends JFrame {
 
         refreshJTables();
     }
-    // TODO add your code here
 
-    private void button2(ActionEvent e) {
-        // TODO add your code here
-        FlatIntelliJLaf.setup();
-        new NewMenuItem().setVisible(true);
-
-    }
-
-    private void createUIComponents() {
-        // TODO: add custom component creation code here
-    }
-
-    private void button8(ActionEvent e) {
-        // TODO add your code here
-        tblOrders.setModel(ordersArr.ordersTableLoad(tblOrders));
-        refreshJTables();
-    }
-
-    private void button9(ActionEvent e) {
-        // TODO add your code here
-        refreshJTables();
-    }
-
-    private void button5(ActionEvent e) {
-        // TODO add your code here
-        refreshJTables();
-    }
-
-    private void button42(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 1;
-        FlatIntelliJLaf.setup();
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button59(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 2;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button43(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 3;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button61(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 4;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button44(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 5;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button45(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 6;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button46(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 7;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button56(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 8;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button57(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 9;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button50(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 10;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-
-    }
-
-    private void button55(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 11;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button47(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 12;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button48(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 13;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button60(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 14;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button51(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 15;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button52(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 16;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button62(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 17;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button53(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 18;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button54(ActionEvent e) {
-        // TODO add your code here
-        workingTable = 19;
-        tableScreen = new TableScreen();
-        tableScreen.setVisible(true);
-    }
-
-    private void button11(ActionEvent e) {
-        // TODO add your code here
-        FlatIntelliJLaf.setup();
-        new RemoveStaffItem().setVisible(true);
-    }
-
-    private void button3(ActionEvent e) {
-        // TODO add your code here
-        FlatIntelliJLaf.setup();
-        new RemoveMenuItem().setVisible(true);
-    }
-
-    private void button4(ActionEvent e) {
-        // TODO add your code here
-        saveJTables();
-    }
-
+    /**
+     * Event handler for the "Remove Menu Item" button click. Sets up the Flat
+     * IntelliJ Look and Feel, creating a modern UI style, and opens the
+     * "RemoveMenuItem" window for removing menu items.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
     private void btnMenuRemove(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();
         new RemoveMenuItem().setVisible(true);
     }
 
+    /**
+     * Event handler for the "New Staff" button click. Sets up the Flat IntelliJ
+     * Look and Feel, creating a modern UI style, and opens the "NewStaff"
+     * window for adding new staff members.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
     private void btnStaffNew(ActionEvent e) {
         // TODO add your code here
         FlatIntelliJLaf.setup();
@@ -270,6 +110,13 @@ public class MainScreen extends JFrame {
 
     }
 
+    /**
+     * Event handler for the "Save" button click in the staff management
+     * section. Calls the "saveJTables" method to save any changes made to staff
+     * information.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
     private void btnStaffSave(ActionEvent e) {
         // TODO add your code here
         saveJTables();
@@ -395,12 +242,25 @@ public class MainScreen extends JFrame {
         }
     }
 
+    /**
+     * Event handler for the "View Bookings" button click in the table view
+     * section. Initializes and displays the "ViewBookings" window.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
     private void btnTableViewBooking(ActionEvent e) {
         // TODO add your code here
         viewBookings = new ViewBookings();
         viewBookings.setVisible(true);
     }
 
+    /**
+     * Event handler for the "Load Booking" button click in the table view
+     * section. Displays a JComboBox containing booking options and loads the
+     * selected booking.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
     private void btnTableLoadBooking(ActionEvent e) {
         // TODO add your code here
 
@@ -413,11 +273,219 @@ public class MainScreen extends JFrame {
 
     }
 
+    /**
+     * Event handler for the "Save" button click in the Orders section. Saves
+     * changes made to orders data and reloads databases.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
     private void btnOrdersSave(ActionEvent e) {
         // TODO add your code here
         ordersArr.ordersTableSave(tblOrders);
         reloadDBs();
 
+    }
+
+    /**
+     * Event handler for the "Refresh" button click in the Orders section.
+     * Refreshes the orders table and other components.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
+    private void btnOrdersRefresh(ActionEvent e) {
+        // TODO add your code here
+        tblOrders.setModel(ordersArr.ordersTableLoad(tblOrders));
+        refreshJTables();
+    }
+
+    /**
+     * Event handler for the "Remove" button click in the Staff section. Opens a
+     * dialog to remove a staff member item.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
+    private void btnStaffRemove(ActionEvent e) {
+        // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new RemoveStaffItem().setVisible(true);
+    }
+
+    /**
+     * Event handler for the "Refresh" button click in the Staff section.
+     * Refreshes the displayed data in the tables.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
+    private void btnStaffRefresh(ActionEvent e) {
+        // TODO add your code here
+        refreshJTables();
+    }
+
+    /**
+     * Event handler for the "New" button click in the Menu section. Opens a new
+     * dialog to create a new menu item.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
+    private void btnMenuNew(ActionEvent e) {
+        // TODO add your code here
+        FlatIntelliJLaf.setup();
+        new NewMenuItem().setVisible(true);
+    }
+
+    /**
+     * Event handler for the "Refresh" button click in the Menu section.
+     * Refreshes the data displayed in the menu table.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
+    private void btnMenuRefresh(ActionEvent e) {
+        // TODO add your code here
+        refreshJTables();
+    }
+
+    /**
+     * Event handler for the "Save" button click in the Menu section. Saves any
+     * changes made to the menu data.
+     *
+     * @param e The ActionEvent object representing the button click event.
+     */
+    private void btnMenuSave(ActionEvent e) {
+        // TODO add your code here
+        saveJTables();
+    }
+
+    private void btnTable1(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 1;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable2(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 2;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable3(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 3;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable4(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 4;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable5(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 5;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable6(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 6;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable7(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 7;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable12(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 12;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable10(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 10;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable8(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 8;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable9(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 9;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable11(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 11;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable14(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 14;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable17(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 17;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable15(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 15;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable18(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 18;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable16(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 16;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable19(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 19;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
+    }
+
+    private void btnTable13(ActionEvent e) {
+        // TODO add your code here
+        workingTable = 13;
+        tableScreen = new TableScreen();
+        tableScreen.setVisible(true);
     }
 
     private void initComponents() {
@@ -575,7 +643,7 @@ public class MainScreen extends JFrame {
 
                 //---- btnOrdersRefresh ----
                 btnOrdersRefresh.setText("Refresh");
-                btnOrdersRefresh.addActionListener(e -> button8(e));
+                btnOrdersRefresh.addActionListener(e -> btnOrdersRefresh(e));
                 pnlOrders.add(btnOrdersRefresh, new CC().cell(13, 18, 3, 2).growY());
 
                 //---- btnOrdersSave ----
@@ -681,12 +749,12 @@ public class MainScreen extends JFrame {
 
                 //---- btnStaffRemove ----
                 btnStaffRemove.setText("Remove");
-                btnStaffRemove.addActionListener(e -> button11(e));
+                btnStaffRemove.addActionListener(e -> btnStaffRemove(e));
                 pnlStaff.add(btnStaffRemove, new CC().cell(4, 18, 3, 2).growY());
 
                 //---- btnStaffRefresh ----
                 btnStaffRefresh.setText("Refresh");
-                btnStaffRefresh.addActionListener(e -> button9(e));
+                btnStaffRefresh.addActionListener(e -> btnStaffRefresh(e));
                 pnlStaff.add(btnStaffRefresh, new CC().cell(13, 18, 3, 2).growY());
 
                 //---- btnStaffSave ----
@@ -787,22 +855,22 @@ public class MainScreen extends JFrame {
 
                 //---- btnMenuNew ----
                 btnMenuNew.setText("New");
-                btnMenuNew.addActionListener(e -> button2(e));
+                btnMenuNew.addActionListener(e -> btnMenuNew(e));
                 pnlMenu.add(btnMenuNew, new CC().cell(0, 18, 3, 2).growY());
 
                 //---- btnMenuRemove ----
                 btnMenuRemove.setText("Remove");
-                btnMenuRemove.addActionListener(e -> button3(e));
+                btnMenuRemove.addActionListener(e -> btnMenuRemove(e));
                 pnlMenu.add(btnMenuRemove, new CC().cell(4, 18, 3, 2).growY());
 
                 //---- btnMenuRefresh ----
                 btnMenuRefresh.setText("Refresh");
-                btnMenuRefresh.addActionListener(e -> button5(e));
+                btnMenuRefresh.addActionListener(e -> btnMenuRefresh(e));
                 pnlMenu.add(btnMenuRefresh, new CC().cell(13, 18, 3, 2).growY());
 
                 //---- btnMenuSave ----
                 btnMenuSave.setText("Save");
-                btnMenuSave.addActionListener(e -> button4(e));
+                btnMenuSave.addActionListener(e -> btnMenuSave(e));
                 pnlMenu.add(btnMenuSave, new CC().cell(17, 18, 3, 2).growY());
             }
             tpnMainScreen.addTab("Menu", pnlMenu);
@@ -836,7 +904,7 @@ public class MainScreen extends JFrame {
                 btnTable1.setVerticalTextPosition(SwingConstants.BOTTOM);
                 btnTable1.setIconTextGap(0);
                 btnTable1.setMargin(new Insets(0, 0, 0, 0));
-                btnTable1.addActionListener(e -> button42(e));
+                btnTable1.addActionListener(e -> btnTable1(e));
                 pnlTables.add(btnTable1, new CC().cell(0, 0));
 
                 //---- btnTable2 ----
@@ -846,7 +914,7 @@ public class MainScreen extends JFrame {
                 btnTable2.setIconTextGap(0);
                 btnTable2.setMargin(new Insets(0, 0, 0, 0));
                 btnTable2.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable2.addActionListener(e -> button59(e));
+                btnTable2.addActionListener(e -> btnTable2(e));
                 pnlTables.add(btnTable2, new CC().cell(1, 0));
 
                 //---- btnTable15 ----
@@ -856,7 +924,7 @@ public class MainScreen extends JFrame {
                 btnTable15.setIconTextGap(0);
                 btnTable15.setMargin(new Insets(0, 0, 0, 0));
                 btnTable15.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable15.addActionListener(e -> button51(e));
+                btnTable15.addActionListener(e -> btnTable15(e));
                 pnlTables.add(btnTable15, new CC().cell(5, 0));
 
                 //---- btnTable16 ----
@@ -866,7 +934,7 @@ public class MainScreen extends JFrame {
                 btnTable16.setIconTextGap(0);
                 btnTable16.setMargin(new Insets(0, 0, 0, 0));
                 btnTable16.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable16.addActionListener(e -> button52(e));
+                btnTable16.addActionListener(e -> btnTable16(e));
                 pnlTables.add(btnTable16, new CC().cell(6, 0));
 
                 //---- btnTable3 ----
@@ -876,7 +944,7 @@ public class MainScreen extends JFrame {
                 btnTable3.setIconTextGap(0);
                 btnTable3.setMargin(new Insets(0, 0, 0, 0));
                 btnTable3.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable3.addActionListener(e -> button43(e));
+                btnTable3.addActionListener(e -> btnTable3(e));
                 pnlTables.add(btnTable3, new CC().cell(0, 1));
 
                 //---- btnTable8 ----
@@ -886,7 +954,7 @@ public class MainScreen extends JFrame {
                 btnTable8.setIconTextGap(7);
                 btnTable8.setMargin(new Insets(0, 0, 0, 0));
                 btnTable8.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable8.addActionListener(e -> button56(e));
+                btnTable8.addActionListener(e -> btnTable8(e));
                 pnlTables.add(btnTable8, new CC().cell(2, 0, 1, 2));
 
                 //---- btnTable9 ----
@@ -896,7 +964,7 @@ public class MainScreen extends JFrame {
                 btnTable9.setIconTextGap(7);
                 btnTable9.setMargin(new Insets(0, 0, 0, 0));
                 btnTable9.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable9.addActionListener(e -> button57(e));
+                btnTable9.addActionListener(e -> btnTable9(e));
                 pnlTables.add(btnTable9, new CC().cell(3, 0, 1, 2));
 
                 //---- btnTable14 ----
@@ -906,7 +974,7 @@ public class MainScreen extends JFrame {
                 btnTable14.setIconTextGap(0);
                 btnTable14.setMargin(new Insets(0, 0, 0, 0));
                 btnTable14.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable14.addActionListener(e -> button60(e));
+                btnTable14.addActionListener(e -> btnTable14(e));
                 pnlTables.add(btnTable14, new CC().cell(4, 0));
 
                 //---- btnTable4 ----
@@ -916,7 +984,7 @@ public class MainScreen extends JFrame {
                 btnTable4.setIconTextGap(0);
                 btnTable4.setMargin(new Insets(0, 0, 0, 0));
                 btnTable4.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable4.addActionListener(e -> button61(e));
+                btnTable4.addActionListener(e -> btnTable4(e));
                 pnlTables.add(btnTable4, new CC().cell(1, 1));
 
                 //---- btnTable17 ----
@@ -926,7 +994,7 @@ public class MainScreen extends JFrame {
                 btnTable17.setIconTextGap(0);
                 btnTable17.setMargin(new Insets(0, 0, 0, 0));
                 btnTable17.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable17.addActionListener(e -> button62(e));
+                btnTable17.addActionListener(e -> btnTable17(e));
                 pnlTables.add(btnTable17, new CC().cell(4, 1));
 
                 //---- btnTable18 ----
@@ -936,7 +1004,7 @@ public class MainScreen extends JFrame {
                 btnTable18.setIconTextGap(0);
                 btnTable18.setMargin(new Insets(0, 0, 0, 0));
                 btnTable18.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable18.addActionListener(e -> button53(e));
+                btnTable18.addActionListener(e -> btnTable18(e));
                 pnlTables.add(btnTable18, new CC().cell(5, 1));
 
                 //---- btnTable19 ----
@@ -946,7 +1014,7 @@ public class MainScreen extends JFrame {
                 btnTable19.setIconTextGap(0);
                 btnTable19.setMargin(new Insets(0, 0, 0, 0));
                 btnTable19.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable19.addActionListener(e -> button54(e));
+                btnTable19.addActionListener(e -> btnTable19(e));
                 pnlTables.add(btnTable19, new CC().cell(6, 1));
 
                 //---- btnTable5 ----
@@ -956,7 +1024,7 @@ public class MainScreen extends JFrame {
                 btnTable5.setIconTextGap(0);
                 btnTable5.setMargin(new Insets(0, 0, 0, 0));
                 btnTable5.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable5.addActionListener(e -> button44(e));
+                btnTable5.addActionListener(e -> btnTable5(e));
                 pnlTables.add(btnTable5, new CC().cell(0, 2));
 
                 //---- btnTable6 ----
@@ -966,7 +1034,7 @@ public class MainScreen extends JFrame {
                 btnTable6.setIconTextGap(0);
                 btnTable6.setMargin(new Insets(0, 0, 0, 0));
                 btnTable6.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable6.addActionListener(e -> button45(e));
+                btnTable6.addActionListener(e -> btnTable6(e));
                 pnlTables.add(btnTable6, new CC().cell(0, 3));
 
                 //---- btnTable11 ----
@@ -976,7 +1044,7 @@ public class MainScreen extends JFrame {
                 btnTable11.setIconTextGap(7);
                 btnTable11.setMargin(new Insets(0, 0, 0, 0));
                 btnTable11.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable11.addActionListener(e -> button55(e));
+                btnTable11.addActionListener(e -> btnTable11(e));
                 pnlTables.add(btnTable11, new CC().cell(3, 2, 1, 2));
 
                 //---- btnTable10 ----
@@ -986,7 +1054,7 @@ public class MainScreen extends JFrame {
                 btnTable10.setIconTextGap(7);
                 btnTable10.setMargin(new Insets(0, 0, 0, 0));
                 btnTable10.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable10.addActionListener(e -> button50(e));
+                btnTable10.addActionListener(e -> btnTable10(e));
                 pnlTables.add(btnTable10, new CC().cell(2, 2, 1, 2));
 
                 //---- btnTable7 ----
@@ -996,7 +1064,7 @@ public class MainScreen extends JFrame {
                 btnTable7.setIconTextGap(0);
                 btnTable7.setMargin(new Insets(0, 0, 0, 0));
                 btnTable7.setVerticalTextPosition(SwingConstants.BOTTOM);
-                btnTable7.addActionListener(e -> button46(e));
+                btnTable7.addActionListener(e -> btnTable7(e));
                 pnlTables.add(btnTable7, new CC().cell(0, 4));
 
                 //---- btnTable12 ----
@@ -1005,7 +1073,7 @@ public class MainScreen extends JFrame {
                 btnTable12.setIconTextGap(7);
                 btnTable12.setHorizontalTextPosition(SwingConstants.LEFT);
                 btnTable12.setMargin(new Insets(0, 0, 0, 0));
-                btnTable12.addActionListener(e -> button47(e));
+                btnTable12.addActionListener(e -> btnTable12(e));
                 pnlTables.add(btnTable12, new CC().cell(1, 4, 3, 1));
 
                 //---- btnTable13 ----
@@ -1014,7 +1082,7 @@ public class MainScreen extends JFrame {
                 btnTable13.setIconTextGap(7);
                 btnTable13.setHorizontalTextPosition(SwingConstants.LEFT);
                 btnTable13.setMargin(new Insets(0, 0, 0, 0));
-                btnTable13.addActionListener(e -> button48(e));
+                btnTable13.addActionListener(e -> btnTable13(e));
                 pnlTables.add(btnTable13, new CC().cell(4, 4, 3, 1));
 
                 //---- btnTableLoadBooking ----

@@ -14,6 +14,15 @@ public class Table {
     private String staff;
     private int capacity;
 
+    /**
+     * Initializes a new Table object with the given parameters.
+     *
+     * @param tableNumber The unique number associated with this table.
+     * @param currentTabID The ID of the current tab associated with this table.
+     * @param staff The name of the staff member associated with this table.
+     * @param capacity The capacity (number of people) that this table can
+     * accommodate.
+     */
     public Table(int tableNumber, int currentTabID, String staff, int capacity) {
         this.tableNumber = tableNumber;
         this.currentTabID = currentTabID;

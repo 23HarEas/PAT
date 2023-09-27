@@ -15,9 +15,19 @@ public class Staff {
     private String surname;
     private String cellphoneNumber;
     private String position;
-    private Double wage;
+    private double wage;
 
-    public Staff(int staffID, String name, String surname, String cellphoneNumber, String position, Double wage) {
+    /**
+     * Constructs a new Staff object with the provided information.
+     *
+     * @param staffID The unique identifier for the staff member.
+     * @param name The first name of the staff member.
+     * @param surname The last name of the staff member.
+     * @param cellphoneNumber The cellphone number of the staff member.
+     * @param position The position or role of the staff member.
+     * @param wage The wage or salary of the staff member.
+     */
+    public Staff(int staffID, String name, String surname, String cellphoneNumber, String position, double wage) {
         this.staffID = staffID;
         this.name = name;
         this.surname = surname;
@@ -76,7 +86,7 @@ public class Staff {
      *
      * @return The wage of the staff member.
      */
-    public Double getWage() {
+    public double getWage() {
         return wage;
     }
 

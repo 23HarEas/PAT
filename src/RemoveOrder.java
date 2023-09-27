@@ -14,19 +14,38 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  */
 public class RemoveOrder extends JFrame {
 
+    /**
+     * Initializes the RemoveOrder window.
+     *
+     * This constructor is responsible for initializing the RemoveOrder window
+     * components. It populates the combo box with orders using the
+     * ordersComboLoad method from MainScreen's ordersArr and decorates the
+     * combo box with AutoComplete functionality. This window allows users to
+     * select and remove specific orders.
+     */
     public RemoveOrder() {
         initComponents();
         cmbRemoveOrder.setModel(MainScreen.ordersArr.ordersComboLoad(cmbRemoveOrder));
         AutoCompleteDecorator.decorate(cmbRemoveOrder);
     }
 
-    private void button1(ActionEvent e) {
+    /**
+     * Handles the removal of a selected order.
+     *
+     * This method is triggered when the user clicks the submit button to remove
+     * an order. It retrieves the selected order from the combo box, passes it
+     * to the ordersRemoveItem method in MainScreen's ordersArr to remove the
+     * order from the database, refreshes the table display, and closes the
+     * RemoveOrder window.
+     *
+     * @param e The ActionEvent triggered by clicking the submit button.
+     */
+    private void btnRemoveOrderSubmit(ActionEvent e) {
         // TODO add your code here
         String remove = (String) cmbRemoveOrder.getSelectedItem();
         MainScreen.ordersArr.ordersRemoveItem(remove);
         MainScreen.tableScreen.refreshTable();
         dispose();
-
     }
 
     private void initComponents() {
@@ -74,7 +93,7 @@ public class RemoveOrder extends JFrame {
 
         //---- btnRemoveOrderSubmit ----
         btnRemoveOrderSubmit.setText("Remove Order");
-        btnRemoveOrderSubmit.addActionListener(e -> button1(e));
+        btnRemoveOrderSubmit.addActionListener(e -> btnRemoveOrderSubmit(e));
         contentPane.add(btnRemoveOrderSubmit, new CC().cell(1, 7, 7, 1));
         setSize(500, 500);
         setLocationRelativeTo(null);

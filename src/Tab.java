@@ -13,12 +13,22 @@ public class Tab {
 
     private int tabID;
     private int tableNumber;
-    private Double total;
+    private double total;
     private int pax;
     private boolean booking;
     private LocalDateTime time;
     private int numberOrders;
 
+    /**
+     * Initializes a new Tab object with the provided information.
+     *
+     * @param tabID The unique identifier for the tab.
+     * @param tableNumber The number of the table associated with the tab.
+     * @param pax The number of people (pax) for the tab.
+     * @param booking A boolean indicating whether the tab is a booking (true)
+     * or a regular tab (false).
+     * @param time The date and time when the tab was created or booked.
+     */
     public Tab(int tabID, int tableNumber, int pax, boolean booking, LocalDateTime time) {
         this.tabID = tabID;
         this.tableNumber = tableNumber;
@@ -60,7 +70,7 @@ public class Tab {
      *
      * @return The total amount for the tab.
      */
-    public Double getTotal() {
+    public double getTotal() {
         return total;
     }
 
